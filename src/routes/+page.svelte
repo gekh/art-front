@@ -1,2 +1,11 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+  import Login from './Login.svelte';
+  import SignUp from './SignUp.svelte';
+</script>
+
+<h1>ArtCompass</h1>
+
+
+<Login />
+
+<SignUp />
