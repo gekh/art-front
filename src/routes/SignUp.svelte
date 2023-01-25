@@ -51,7 +51,7 @@
 		</div>
 
 		<div>
-			<input required placeholder="Почта" type="email" bind:value={email} />
+			<input required placeholder="Почта" type="email" bind:value={email} minlength="5" maxlength="70" />
 		</div>
 
 		<div>

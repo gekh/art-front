@@ -9,12 +9,12 @@
 
 	async function login() {
 		isLoading = true;
-		error = "";
+		error = '';
 		try {
 			const user = await pb.collection('users').authWithPassword(email, password);
 			console.log(user);
 		} catch (err: any) {
-			error = "Неверный логин или пароль.";
+			error = 'Неверный логин или пароль.';
 			console.log(err.data.message);
 		}
 		isLoading = false;
@@ -34,12 +34,21 @@
 	<form class="login-form" on:submit|preventDefault={login}>
 		<h2>Вход</h2>
 		<div>
-			<div><input type="email" required placeholder="Почта" bind:value={email} /></div>
+			<div>
+				<input
+					type="email"
+					placeholder="Почта"
+					required
+					bind:value={email}
+					minlength="5"
+					maxlength="70"
+				/>
+			</div>
 			<div>
 				<input
 					type="password"
-					required
 					placeholder="Пароль"
+					required
 					bind:value={password}
 					minlength="5"
 					maxlength="70"
