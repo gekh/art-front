@@ -4,7 +4,7 @@ module.exports = {
       name: 'ArtCompass',
       exec_mode: 'cluster',
       instances: 'max',
-      script: 'build/index.js',
+      script: './build/index.js',
       env_production: {
         NODE_ENV: 'production',
         HOST: "127.0.0.1",
