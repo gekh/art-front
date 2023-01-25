@@ -18,6 +18,7 @@ module.exports = {
     production: {
       user: 'art',
       host: '89.108.78.111',
+      key: 'deploy.key',
       ref: 'origin/main',
       repo: 'git@art-front.github.com:gekh/art-front.git',
       path: '/var/vhosts/art-front/',
