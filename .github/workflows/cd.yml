@@ -27,7 +27,7 @@ jobs:
           echo HOST=127.0.0.1 >> .env
           echo PORT=4000 >> .env
           echo ORIGIN=http://artcompas.com >> .env
-          echo =http://127.0.0.1:8090=http://dashboard.artcompas.com >> .env
+          echo PUBLIC_POCKETBASE_URL=http://dashboard.artcompas.com >> .env
 
       - name: Install PM2
         run: npm i pm2 -g
