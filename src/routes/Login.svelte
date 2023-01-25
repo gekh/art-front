@@ -42,7 +42,7 @@
 					placeholder="Пароль"
 					bind:value={password}
 					minlength="5"
-					maxlength="75"
+					maxlength="70"
 				/>
 			</div>
 			<ActionBtn {isLoading}>Войти</ActionBtn>

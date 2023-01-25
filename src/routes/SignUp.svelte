@@ -55,7 +55,14 @@
 		</div>
 
 		<div>
-			<input required placeholder="Пароль" type="password" bind:value={password} minlength="5" maxlength="75" />
+			<input
+				required
+				placeholder="Пароль"
+				type="password"
+				bind:value={password}
+				minlength="5"
+				maxlength="70"
+			/>
 		</div>
 
 		<div>
