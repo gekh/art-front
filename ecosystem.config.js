@@ -5,6 +5,7 @@ module.exports = {
       exec_mode: 'cluster',
       instances: 'max',
       script: 'build/index.js',
+      PORT:4000,
       env_production: {
         NODE_ENV: 'production',
         HOST:"127.0.0.1",
