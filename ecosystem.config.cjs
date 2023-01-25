@@ -5,8 +5,11 @@ module.exports = {
       exec_mode: 'cluster',
       instances: 'max',
       script: './build/index.js',
-      node_args : '-r dotenv/config',
+      node_args: '-r dotenv/config',
       env: {
+        PUBLIC_POCKETBASE_URL: "http://dashboard.artcompas.com",
+      },
+      env_production: {
         NODE_ENV: 'production',
         HOST: "127.0.0.1",
         PORT: 4000,
