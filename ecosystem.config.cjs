@@ -10,6 +10,7 @@ module.exports = {
         HOST: "127.0.0.1",
         PORT: 4000,
         ORIGIN: "http://artcompas.com",
+        PUBLIC_POCKETBASE_URL: "http://dashboard.artcompas.com",
       },
     },
   ],
