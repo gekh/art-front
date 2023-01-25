@@ -19,7 +19,7 @@ module.exports = {
       user: 'art',
       host: '89.108.78.111',
       ref: 'origin/main',
-      repo: 'git@github.com:gekh/art-front.git',
+      repo: 'git@art-front.github.com:gekh/art-front.git',
       path: '/var/vhosts/art-front/',
       'post-deploy': 'npm install && npm run build && pm2 reload ecosystem.config.js --env production',
     }
