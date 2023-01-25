@@ -23,7 +23,7 @@
 {#if $currentUser}
 	<p>
 		Signed in as <b>{$currentUser.name}</b>
-		<button class=btn on:click={signOut}>Sign Out</button>
+		<button class=btn on:click|self={signOut}>Sign Out</button>
 	</p>
 {:else}
 
@@ -32,7 +32,7 @@
 		<div>
 			<div><input placeholder="Почта" type="text" bind:value={email} /></div>
 			<div><input placeholder="Пароль" type="password" bind:value={password} /></div>
-			<button class=btn on:click={login}>Войти</button>
+			<button class=btn on:click|self={login}>Войти</button>
 			{#if error}
 				{ error }
 			{/if}

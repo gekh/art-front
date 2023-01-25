@@ -54,7 +54,7 @@
 			<input placeholder="Пароль" type="password" bind:value={password} />
 		</div>
 
-		<div><button class=btn on:click={signUp}>Отправить</button></div>
+		<div><button class=btn on:click|self={signUp}>Отправить</button></div>
 
 		{#if errors.length > 0}
 			{#each errors as err}
