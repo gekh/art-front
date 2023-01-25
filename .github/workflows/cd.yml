@@ -21,17 +21,17 @@ jobs:
           SSH_KNOWN_HOSTS: ${{secrets.SSH_KNOWN_HOSTS}}
 
       # (optional - only needed if your config uses environment variables)
-      - name: Create env file
-        run: |
-          touch .env
-          echo HOST=127.0.0.1 >> .env
-          echo PORT=4000 >> .env
-          echo ORIGIN=http://artcompas.com >> .env
-          echo PUBLIC_POCKETBASE_URL=http://dashboard.artcompas.com >> .env
+      # - name: Create env file
+      #   run: |
+      #     touch .env
+      #     echo HOST=127.0.0.1 >> .env
+      #     echo PORT=4000 >> .env
+      #     echo ORIGIN=http://artcompas.com >> .env
+      #     echo PUBLIC_POCKETBASE_URL=http://dashboard.artcompas.com >> .env
 
       - name: Install PM2
         run: npm i pm2 -g
 
       - name: Deploy
-        run: env $(cat .env | grep -v \"#\" | xargs) pm2 deploy ecosystem.config.cjs production
-        # run: pm2 deploy ecosystem.config.cjs production
+        # run: env $(cat .env | grep -v \"#\" | xargs) pm2 deploy ecosystem.config.cjs production
+        run: pm2 deploy ecosystem.config.cjs production

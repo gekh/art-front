@@ -5,6 +5,7 @@
 
 <h1>ArtCompass</h1>
 
+<p>deploy test</p>
 
 <Login />
 
