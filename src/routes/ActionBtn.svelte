@@ -12,7 +12,7 @@
 
 <style lang="postcss">
 	button {
-		@apply m-3 py-2 px-20 border border-black bg-white transition ease-in-out duration-300;
+		@apply m-3 py-2 px-3 border border-black bg-white transition ease-in-out duration-300;
 	}
 
 	button:hover {

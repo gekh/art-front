@@ -51,11 +51,11 @@
 		</div>
 
 		<div>
-			<input required placeholder="Почта" type="text" bind:value={email} />
+			<input required placeholder="Почта" type="email" bind:value={email} />
 		</div>
 
 		<div>
-			<input required placeholder="Пароль" type="password" bind:value={password} />
+			<input required placeholder="Пароль" type="password" bind:value={password} minlength="5" maxlength="75" />
 		</div>
 
 		<div>
