@@ -21,7 +21,7 @@ module.exports = {
       ref: 'origin/main',
       repo: 'git@art-front.github.com:gekh/art-front.git',
       path: '/var/vhosts/art-front/',
-      'post-deploy': 'npm install && npm run build && pm2 reload ecosystem.config.js --env production',
+      'post-deploy': 'npm install && npm run build && pm2 reload ecosystem.config.cjs --env production',
     }
   }
 };
