@@ -6,7 +6,7 @@ module.exports = {
       instances: 'max',
       script: './build/index.js',
       node_args : '-r dotenv/config',
-      env_production: {
+      env: {
         NODE_ENV: 'production',
         HOST: "127.0.0.1",
         PORT: 4000,
