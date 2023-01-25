@@ -1,10 +1,12 @@
 <script lang="ts">
 	import { currentUser, pb } from '../pocketbase';
+	import ActionBtn from './ActionBtn.svelte';
 
 	let name: string;
 	let email: string;
 	let password: string;
 	let errors: Array<string> = [];
+	let isLoading = false;
 
 	async function login() {
 		const user = await pb.collection('users').authWithPassword(email, password);
@@ -12,6 +14,7 @@
 	}
 
 	async function signUp() {
+		isLoading = true;
 		try {
 			const data = {
 				name,
@@ -32,6 +35,7 @@
 		} catch (err) {
 			console.error(err);
 		}
+		isLoading = false;
 	}
 
 	function signOut() {
@@ -40,21 +44,23 @@
 </script>
 
 {#if !$currentUser}
-	<form class="sign-up-form" on:submit|preventDefault>
+	<form class="sign-up-form" on:submit|preventDefault={signUp}>
 		<h2>Регистрация</h2>
 		<div>
-			<input placeholder="Имя" type="text" bind:value={name} />
+			<input required placeholder="Имя" type="text" bind:value={name} />
 		</div>
 
 		<div>
-			<input placeholder="Почта" type="text" bind:value={email} />
+			<input required placeholder="Почта" type="text" bind:value={email} />
 		</div>
 
 		<div>
-			<input placeholder="Пароль" type="password" bind:value={password} />
+			<input required placeholder="Пароль" type="password" bind:value={password} />
 		</div>
 
-		<div><button class=btn on:click={signUp}>Отправить</button></div>
+		<div>
+			<ActionBtn {isLoading}>Отправить</ActionBtn>
+		</div>
 
 		{#if errors.length > 0}
 			{#each errors as err}

@@ -18,10 +18,3 @@ form.login-form input, form.sign-up-form input {
   @apply p-4 m-2 border border-black;
 }
 
-.btn {
-  @apply m-2 p-3 border border-black bg-white transition ease-in-out duration-300;
-}
-
-.btn:hover {
-  @apply border-white text-white bg-black transition ease-in-out duration-300;
-}
