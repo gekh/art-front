@@ -1,12 +1,17 @@
 <script lang="ts">
-  import Login from './Login.svelte';
-  import SignUp from './SignUp.svelte';
+	import Login from './Login.svelte';
+	import SignUp from './SignUp.svelte';
 </script>
 
 <h1>ArtCompass</h1>
 
-<p>A nu KA !</p>
+<div class="flex justify-center">
+	<Login />
+	<SignUp />
+</div>
 
-<Login />
-
-<SignUp />
+<style lang="postcss">
+	:global(html) {
+		background-color: theme(colors.gray.100);
+	}
+</style>

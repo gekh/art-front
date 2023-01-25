@@ -4,6 +4,7 @@
 	let name: string;
 	let email: string;
 	let password: string;
+	let errors: Array<string> = [];
 
 	async function login() {
 		const user = await pb.collection('users').authWithPassword(email, password);
@@ -14,12 +15,20 @@
 		try {
 			const data = {
 				name,
-        email,
+				email,
 				password,
 				passwordConfirm: password
 			};
-			const createdUser = await pb.collection('users').create(data);
-			await login();
+			try {
+				const createdUser = await pb.collection('users').create(data);
+				await login();
+			} catch (err: any) {
+				errors = [];
+				for (let key in err.data.data) {
+					errors = [...errors, key + ': ' + err.data.data[key].message];
+					console.log(key + ': ' + err.data.data[key].message);
+				}
+			}
 		} catch (err) {
 			console.error(err);
 		}
@@ -31,21 +40,27 @@
 </script>
 
 {#if !$currentUser}
-  <h2>Sign Up</h2>
 
-	<form on:submit|preventDefault>
+<form class="sign-up-form" on:submit|preventDefault>
+		<h2>Регистрация</h2>
 		<div>
-			<input placeholder="name" type="text" bind:value={name} />
+			<input placeholder="Имя" type="text" bind:value={name} />
 		</div>
 
 		<div>
-			<input placeholder="Email" type="text" bind:value={email} />
+			<input placeholder="Почта" type="text" bind:value={email} />
 		</div>
 
 		<div>
-			<input placeholder="Password" type="password" bind:value={password} />
+			<input placeholder="Пароль" type="password" bind:value={password} />
 		</div>
 
-		<div><button on:click={signUp}>Sign Up</button></div>
+		<div><button on:click={signUp}>Отправить</button></div>
+
+		{#if errors.length > 0}
+			{#each errors as err}
+				<div>{err}</div>
+			{/each}
+		{/if}
 	</form>
 {/if}
