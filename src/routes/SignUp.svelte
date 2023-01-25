@@ -40,8 +40,7 @@
 </script>
 
 {#if !$currentUser}
-
-<form class="sign-up-form" on:submit|preventDefault>
+	<form class="sign-up-form" on:submit|preventDefault>
 		<h2>Регистрация</h2>
 		<div>
 			<input placeholder="Имя" type="text" bind:value={name} />
@@ -55,7 +54,7 @@
 			<input placeholder="Пароль" type="password" bind:value={password} />
 		</div>
 
-		<div><button on:click={signUp}>Отправить</button></div>
+		<div><button class=btn on:click={signUp}>Отправить</button></div>
 
 		{#if errors.length > 0}
 			{#each errors as err}
