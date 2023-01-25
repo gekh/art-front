@@ -9,11 +9,12 @@
 
 	async function login() {
 		isLoading = true;
+		error = "";
 		try {
 			const user = await pb.collection('users').authWithPassword(email, password);
 			console.log(user);
 		} catch (err: any) {
-			error = err.data.message;
+			error = "Неверный логин или пароль.";
 			console.log(err.data.message);
 		}
 		isLoading = false;
@@ -33,11 +34,20 @@
 	<form class="login-form" on:submit|preventDefault={login}>
 		<h2>Вход</h2>
 		<div>
-			<div><input required placeholder="Почта" type="text" bind:value={email} /></div>
-			<div><input required placeholder="Пароль" type="password" bind:value={password} /></div>
+			<div><input type="email" required placeholder="Почта" bind:value={email} /></div>
+			<div>
+				<input
+					type="password"
+					required
+					placeholder="Пароль"
+					bind:value={password}
+					minlength="5"
+					maxlength="75"
+				/>
+			</div>
 			<ActionBtn {isLoading}>Войти</ActionBtn>
 			{#if error}
-				{error}
+				<div>{error}</div>
 			{/if}
 		</div>
 	</form>
