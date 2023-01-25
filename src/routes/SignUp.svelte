@@ -40,22 +40,22 @@
 </script>
 
 {#if !$currentUser}
-	<h2>Sign Up</h2>
 
-	<form on:submit|preventDefault>
+<form class="sign-up-form" on:submit|preventDefault>
+		<h2>Регистрация</h2>
 		<div>
-			<input placeholder="name" type="text" bind:value={name} />
+			<input placeholder="Имя" type="text" bind:value={name} />
 		</div>
 
 		<div>
-			<input placeholder="Email" type="text" bind:value={email} />
+			<input placeholder="Почта" type="text" bind:value={email} />
 		</div>
 
 		<div>
-			<input placeholder="Password" type="password" bind:value={password} />
+			<input placeholder="Пароль" type="password" bind:value={password} />
 		</div>
 
-		<div><button on:click={signUp}>Sign Up</button></div>
+		<div><button on:click={signUp}>Отправить</button></div>
 
 		{#if errors.length > 0}
 			{#each errors as err}

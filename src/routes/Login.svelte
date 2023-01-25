@@ -26,13 +26,13 @@
 		<button on:click={signOut}>Sign Out</button>
 	</p>
 {:else}
-	<h2>Login</h2>
 
-	<form on:submit|preventDefault>
+<form class="login-form" on:submit|preventDefault>
+		<h2>Вход</h2>
 		<div>
-			<input placeholder="Email" type="text" bind:value={email} />
-			<input placeholder="Password" type="password" bind:value={password} />
-			<button on:click={login}>Login</button>
+			<div><input placeholder="Почта" type="text" bind:value={email} /></div>
+			<div><input placeholder="Пароль" type="password" bind:value={password} /></div>
+			<button on:click={login}>Войти</button>
 			{#if error}
 				{ error }
 			{/if}
