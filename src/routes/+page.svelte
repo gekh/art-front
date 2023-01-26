@@ -1,17 +1,20 @@
 <script lang="ts">
-	import Login from './Login.svelte';
-	import SignUp from './SignUp.svelte';
 </script>
 
-<h1>ArtCompass</h1>
+<svelte:head>
+	<title>Art Compas</title>
+	<meta content="Art Compass" property="og:title" />
+	<meta content="Art Compass" property="twitter:title" />
+</svelte:head>;
 
-<div class="flex justify-center">
-	<Login />
-	<SignUp />
-</div>
+<template lang="pug">
+	div.body
+		h1 Art Compass
+
+</template>
 
 <style lang="postcss">
-	:global(html) {
-		background-color: theme(colors.gray.100);
+	.body {
+		@apply bg-black
 	}
 </style>
