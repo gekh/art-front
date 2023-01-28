@@ -6,13 +6,13 @@
   on:click={onClose}
 	id="modalBackdrop"
 	class="backdrop-default"
-	style="z-index: 1000; position: absolute; left: 0px; margin: 0px; background: rgb(255, 255, 255); opacity: 0.55; top: 0px; height: 13959px; width: 1280px;"
+	style="z-index: 1000; position: fixed; top: 0; bottom:0; left: 0; right:0; margin: 0px; background: rgb(255, 255, 255); opacity: 0.55;"
 />
 
 <div
 	id="modalContent"
 	class="modal-default"
-	style="z-index: 1001; position: absolute; top: 0px; left: 50%; margin-left:-200px; display: block; padding-top: 0px;"
+	style="z-index: 1001; position: fixed; top: 0px; left: 50%; margin-left:-200px; display: block; padding-top: 0px;"
 >
 	<div class="ctools-modal-dialog modal-dialog" style="width: 1024px; height: 344px;">
 		<div class="modal-content">
