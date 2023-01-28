@@ -15,7 +15,7 @@
     .flex.ml-auto
       .Menu.flex.items-center.opacity-90
         a(href="#top") Главная
-        a(href="#how-to-stat") Как начать
+        a(href="#how-to-start") Как начать
         a(href="#for-whom") Кому подойдет
         a(href="#for-cutomer") Для заказчика
         a(href="#for-artist") Для исполнителя
