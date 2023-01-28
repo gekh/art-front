@@ -1,3 +1,43 @@
+<script lang="ts">
+	import Registration from './Registration.svelte';
+
+	let show_registration = false;
+	function showRegistration(event: Event) {
+		event.preventDefault();
+    disableScroll();
+		show_registration = true;
+	}
+
+  function hideRegistration(event: Event) {
+    event.preventDefault();
+    enableScroll();
+		show_registration = false;
+  }
+
+  let prevBodyPosition: string;
+  let prevBodyOverflow: string;
+  let prevBodyWidth: string;
+
+  const disableScroll = () => {
+    scrollY = window.scrollY;
+    prevBodyPosition = document.body.style.position;
+    prevBodyOverflow = document.body.style.overflow;
+    prevBodyWidth = document.body.style.width;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.overflow = 'hidden';
+    document.body.style.width = '100%';
+  };
+
+  const enableScroll = () => {
+    document.body.style.position = prevBodyPosition || '';
+    document.body.style.top = '';
+    document.body.style.overflow = prevBodyOverflow || '';
+    document.body.style.width = prevBodyWidth || '';
+    window.scrollTo(0, scrollY);
+  };
+</script>
+
 <svelte:head>
 	<title>Art Compas</title>
 	<meta content="Art Compass" property="og:title" />
@@ -12,6 +52,10 @@
 	></script>
 	<script defer src="/main/js/script.js?1" type="text/javascript"></script>
 </svelte:head>
+
+{#if show_registration}
+	<Registration onClose={hideRegistration} />
+{/if}
 
 <div
 	data-collapse="medium"
@@ -155,7 +199,7 @@
 						data-w-id="97effa1b-e190-0439-45e1-6ea1e7f2d4f1"
 						href="#reg"
 						class="button-1 w-button"
-						on:click|preventDefault={() => alert('reg')}>Регистрация</a
+						on:click={showRegistration}>Регистрация</a
 					>
 				</div>
 			</div>
@@ -747,8 +791,11 @@
 			</div>
 			<div class="div-block-336">
 				<div class="cherta_3" />
-				<a data-w-id="0be8da58-62f5-d28a-cb8d-d0e4ec741073" href="#" class="button-1 w-button"
-					>Регистрация</a
+				<a
+					data-w-id="0be8da58-62f5-d28a-cb8d-d0e4ec741073"
+					href="#reg"
+					class="button-1 w-button"
+					on:click={showRegistration}>Регистрация</a
 				>
 			</div>
 		</div>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { currentUser, pb } from '../pocketbase';
+	import { currentUser, pb } from '../../pocketbase';
 	import ActionBtn from './ActionBtn.svelte';
 
 	let name: string;
