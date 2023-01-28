@@ -66,7 +66,7 @@
 	role="banner"
 	class="navbar-2 w-nav"
 >
-	<a href="#1" class="brand-2 w-nav-brand"
+	<a href="#top" class="brand-2 w-nav-brand"
 		><img
 			src="/main/images/5c80effd8d66f45b69c58056_D09CD0BED0BDD182D0B0D0B6D0BDD0B0D18F20D0BED0B1D0BBD0B0D181D182D18C20101.svg"
 			loading="lazy"
@@ -87,22 +87,22 @@
 	</div>
 	<div style="opacity:0" class="div-block-404">
 		<div class="div-block-402">
-			<a href="#1" class="link-block-303 w-inline-block"
+			<a href="#top" class="link-block-303 w-inline-block"
 				><div class="text-block-17">Главная</div>
 				<div class="div-block-373" /></a
-			><a href="#2" class="link-block-303 w-inline-block"
+			><a href="#how-to-start" class="link-block-303 w-inline-block"
 				><div class="text-block-17">Как начать</div>
 				<div class="div-block-373" /></a
-			><a href="#3" class="link-block-303 w-inline-block"
+			><a href="#for-whom" class="link-block-303 w-inline-block"
 				><div class="text-block-17">Кому подойдёт</div>
 				<div class="div-block-373" /></a
-			><a href="#4" class="link-block-303 w-inline-block"
+			><a href="#for-cutomer" class="link-block-303 w-inline-block"
 				><div class="text-block-17">Для заказчика</div>
 				<div class="div-block-373" /></a
-			><a href="#5" class="link-block-303 w-inline-block"
+			><a href="#for-artist" class="link-block-303 w-inline-block"
 				><div class="text-block-17">Для исполнителя</div>
 				<div class="div-block-373" /></a
-			><a href="#7" class="link-block-303 w-inline-block"
+			><a href="#benefits" class="link-block-303 w-inline-block"
 				><div class="text-block-17">В чем польза</div>
 				<div class="div-block-373" /></a
 			>
@@ -110,7 +110,7 @@
 	</div>
 </div>
 <div class="div-block-405">
-	<a href="#1" class="brand-2 w-nav-brand"
+	<a href="#top" class="brand-2 w-nav-brand"
 		><img
 			src="/main/images/5c80effd8d66f45b69c58056_D09CD0BED0BDD182D0B0D0B6D0BDD0B0D18F20D0BED0B1D0BBD0B0D181D182D18C20101.svg"
 			loading="lazy"
@@ -120,22 +120,22 @@
 	>
 	<div class="div-block-404">
 		<div class="div-block-402">
-			<a href="#1" class="link-block-303 w-inline-block"
+			<a href="#top" class="link-block-303 w-inline-block"
 				><div class="text-block-17">Главная</div>
 				<div class="div-block-373" /></a
-			><a href="#2" class="link-block-303 w-inline-block"
+			><a href="#how-to-start" class="link-block-303 w-inline-block"
 				><div class="text-block-17">Как начать</div>
 				<div class="div-block-373" /></a
-			><a href="#3" class="link-block-303 w-inline-block"
+			><a href="#for-whom" class="link-block-303 w-inline-block"
 				><div class="text-block-17">Кому подойдёт</div>
 				<div class="div-block-373" /></a
-			><a href="#4" class="link-block-303 w-inline-block"
+			><a href="#for-cutomer" class="link-block-303 w-inline-block"
 				><div class="text-block-17">Для заказчика</div>
 				<div class="div-block-373" /></a
-			><a href="#5" class="link-block-303 w-inline-block"
+			><a href="#for-artist" class="link-block-303 w-inline-block"
 				><div class="text-block-17">Для исполнителя</div>
 				<div class="div-block-373" /></a
-			><a href="#7" class="link-block-303 w-inline-block"
+			><a href="#benefits" class="link-block-303 w-inline-block"
 				><div class="text-block-17">В чем польза</div>
 				<div class="div-block-373" /></a
 			>
@@ -156,7 +156,7 @@
 		class="image-38-copy"
 	/>
 </div>
-<div id="1" data-w-id="6b99ee31-88d8-092e-8ee5-e4d40760ddf7" style="opacity:0" class="section-16">
+<div id="top" data-w-id="6b99ee31-88d8-092e-8ee5-e4d40760ddf7" style="opacity:0" class="section-16">
 	<div class="div-block-321">
 		<div class="div-block-366">
 			<div class="div-block-339">
@@ -233,7 +233,7 @@
 	</div>
 	<div class="div-block-372" />
 </div>
-<div id="2" data-w-id="aebc7c43-140d-1979-ed26-1c655c177914" class="section-20">
+<div id="how-to-start" data-w-id="aebc7c43-140d-1979-ed26-1c655c177914" class="section-20">
 	<div class="div-block-341">
 		<div class="div-block-311">
 			<div class="div-block-340">
@@ -260,35 +260,35 @@
 				</p>
 				<div class="div-block-336">
 					<div class="cherta_3" />
-					<a href="#" class="link-block-302 w-inline-block"
+					<a href="#link" class="link-block-302 w-inline-block"
 						><img
 							src="/main/images/5f5a413c0f92c3e22f5f0084_D09CD0BED0BDD182D0B0D0B6D0BDD0B0D18F20D0BED0B1D0BBD0B0D181D182D18C20166.png"
 							loading="lazy"
 							alt=""
 							class="image-47"
 						/></a
-					><a href="#" class="link-block-302 w-inline-block"
+					><a href="#link" class="link-block-302 w-inline-block"
 						><img
 							src="/main/images/5f5a413d1de0fe16b0590601_D09CD0BED0BDD182D0B0D0B6D0BDD0B0D18F20D0BED0B1D0BBD0B0D181D182D18C20146.png"
 							loading="lazy"
 							alt=""
 							class="image-47"
 						/></a
-					><a href="#" class="link-block-302 w-inline-block"
+					><a href="#link" class="link-block-302 w-inline-block"
 						><img
 							src="/main/images/5f5a413c984fd1db3a265aba_D09CD0BED0BDD182D0B0D0B6D0BDD0B0D18F20D0BED0B1D0BBD0B0D181D182D18C20236.png"
 							loading="lazy"
 							alt=""
 							class="image-47"
 						/></a
-					><a href="#" class="link-block-302 w-inline-block"
+					><a href="#link" class="link-block-302 w-inline-block"
 						><img
 							src="/main/images/5f5a413d5ca26c4f33126edb_D09CD0BED0BDD182D0B0D0B6D0BDD0B0D18F20D0BED0B1D0BBD0B0D181D182D18C20246.png"
 							loading="lazy"
 							alt=""
 							class="image-47"
 						/></a
-					><a href="#" class="link-block-302 w-inline-block"
+					><a href="#link" class="link-block-302 w-inline-block"
 						><img
 							src="/main/images/5f5a413d24bfc1501c1123ae_D09CD0BED0BDD182D0B0D0B6D0BDD0B0D18F20D0BED0B1D0BBD0B0D181D182D18C20256.png"
 							loading="lazy"
@@ -310,7 +310,7 @@
 	</div>
 	<div class="div-block-393" />
 </div>
-<div id="3" data-w-id="7d9ce869-5787-c2a3-aa22-47b4e6fe6a18" class="section-19">
+<div id="for-whom" data-w-id="7d9ce869-5787-c2a3-aa22-47b4e6fe6a18" class="section-19">
 	<div class="div-block-344">
 		<div class="div-block-349">
 			<div class="div-block-326">
@@ -351,7 +351,7 @@
 		<div class="div-block-348" />
 	</div>
 </div>
-<div id="4" data-w-id="82262af8-b8c2-dfc6-3d9e-eccff3550a5d" class="section-17">
+<div id="for-cutomer" data-w-id="82262af8-b8c2-dfc6-3d9e-eccff3550a5d" class="section-17">
 	<div class="div-block-374">
 		<div class="div-block-385">
 			<div class="div-block-340">
@@ -560,7 +560,7 @@
 	</div>
 	<div class="div-block-388" />
 </div>
-<div id="5" data-w-id="2bd93e98-8a89-b3f6-8b02-1350d713367b" class="section-24">
+<div id="for-artist" data-w-id="2bd93e98-8a89-b3f6-8b02-1350d713367b" class="section-24">
 	<div class="div-block-375">
 		<div class="div-block-386">
 			<div class="div-block-340">
@@ -683,35 +683,35 @@
 			</p>
 			<div class="div-block-336">
 				<div class="cherta_3" />
-				<a href="#" class="link-block-302 w-inline-block"
+				<a href="#link" class="link-block-302 w-inline-block"
 					><img
 						src="/main/images/5f5a413c0f92c3e22f5f0084_D09CD0BED0BDD182D0B0D0B6D0BDD0B0D18F20D0BED0B1D0BBD0B0D181D182D18C20166.png"
 						loading="lazy"
 						alt=""
 						class="image-47"
 					/></a
-				><a href="#" class="link-block-302 w-inline-block"
+				><a href="#link" class="link-block-302 w-inline-block"
 					><img
 						src="/main/images/5f5a413d1de0fe16b0590601_D09CD0BED0BDD182D0B0D0B6D0BDD0B0D18F20D0BED0B1D0BBD0B0D181D182D18C20146.png"
 						loading="lazy"
 						alt=""
 						class="image-47"
 					/></a
-				><a href="#" class="link-block-302 w-inline-block"
+				><a href="#link" class="link-block-302 w-inline-block"
 					><img
 						src="/main/images/5f5a413c984fd1db3a265aba_D09CD0BED0BDD182D0B0D0B6D0BDD0B0D18F20D0BED0B1D0BBD0B0D181D182D18C20236.png"
 						loading="lazy"
 						alt=""
 						class="image-47"
 					/></a
-				><a href="#" class="link-block-302 w-inline-block"
+				><a href="#link" class="link-block-302 w-inline-block"
 					><img
 						src="/main/images/5f5a413d5ca26c4f33126edb_D09CD0BED0BDD182D0B0D0B6D0BDD0B0D18F20D0BED0B1D0BBD0B0D181D182D18C20246.png"
 						loading="lazy"
 						alt=""
 						class="image-47"
 					/></a
-				><a href="#" class="link-block-302 w-inline-block"
+				><a href="#link" class="link-block-302 w-inline-block"
 					><img
 						src="/main/images/5f5a413d24bfc1501c1123ae_D09CD0BED0BDD182D0B0D0B6D0BDD0B0D18F20D0BED0B1D0BBD0B0D181D182D18C20256.png"
 						loading="lazy"
@@ -723,7 +723,7 @@
 		</div>
 	</div>
 </div>
-<div id="7" data-w-id="811d5e79-2a5d-27d1-d97c-8540bb2ec6f0" class="section-21">
+<div id="benefits" data-w-id="811d5e79-2a5d-27d1-d97c-8540bb2ec6f0" class="section-21">
 	<div class="div-block-379">
 		<div class="div-block-329">
 			<div class="div-block-340">
