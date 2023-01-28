@@ -1014,9 +1014,6 @@
 			line-height: 46px;
 		}
 	}
-	.form-group {
-		margin-bottom: 15px;
-	}
 	.radio,
 	.checkbox {
 		position: relative;
