@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Login from '../../components/Login.svelte';
-	import SignUp from '../../components/SignUp.svelte';
+	import Login from '../../components/forms/Login.svelte';
+	import SignUp from '../../components/forms/SignUp.svelte';
 </script>
 
 <h1>ArtCompass</h1>
