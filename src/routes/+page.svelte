@@ -14,6 +14,7 @@
 		show_registration = false;
   }
 
+	let scrollY: number;
   let prevBodyPosition: string;
   let prevBodyOverflow: string;
   let prevBodyWidth: string;
