@@ -14861,7 +14861,7 @@ module.exports = _interopRequireDefault;
  * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
- * 
+ *
  */
 
 /*eslint-disable no-self-compare */
@@ -16575,9 +16575,9 @@ function getQuerySelector(_ref) {
       nodeId = pair[1]; // Short circuit query if we're on the wrong page
       // $FlowIgnore — if documentElement is null crash
 
-      if (pageId !== document.documentElement.getAttribute(WF_PAGE)) {
-        return null;
-      }
+      // if (pageId !== document.documentElement.getAttribute(WF_PAGE)) {
+      //   return null;
+      // }
     }
 
     return "[data-w-id=\"".concat(nodeId, "\"], [data-w-id^=\"").concat(nodeId, "_instance\"]");
@@ -16587,12 +16587,12 @@ function getQuerySelector(_ref) {
 }
 
 function getValidDocument(pageId) {
-  if (pageId == null || // $FlowIgnore — if documentElement is null crash
-  pageId === document.documentElement.getAttribute(WF_PAGE)) {
+  // if (pageId == null || // $FlowIgnore — if documentElement is null crash
+  // pageId === document.documentElement.getAttribute(WF_PAGE)) {
     return document;
-  }
+  // }
 
-  return null;
+  // return null;
 }
 
 function queryDocument(baseSelector, descendantSelector) {
