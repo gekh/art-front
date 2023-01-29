@@ -1,5 +1,59 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	export let onClose: any;
+	import { currentUser, pb } from '../pocketbase';
+
+	let name: string;
+	let email: string;
+	let password: string;
+	let passwordRepeat: string;
+	let errors: Array<string> = [];
+	let isLoading = false;
+
+	onMount(async () => {
+		if (currentUser) {
+			name = $currentUser?.name
+		}
+	});
+
+	async function login() {
+		const user = await pb.collection('users').authWithPassword(email, password);
+		// name = user.record.name;
+		console.log(user);
+	}
+
+	async function signUp() {
+		if (password !== passwordRepeat) {
+			errors = ['Пароль и Повтор пароля не совпадают'];
+			return;
+		}
+		isLoading = true;
+		try {
+			const data = {
+				name,
+				email,
+				password,
+				passwordConfirm: password
+			};
+			try {
+				const createdUser = await pb.collection('users').create(data);
+				await login();
+			} catch (err: any) {
+				errors = [];
+				for (let key in err.data.data) {
+					errors = [...errors, key + ': ' + err.data.data[key].message];
+					console.log(key + ': ' + err.data.data[key].message);
+				}
+			}
+		} catch (err) {
+			console.error(err);
+		}
+		isLoading = false;
+	}
+
+	function signOut() {
+		pb.authStore.clear();
+	}
 </script>
 
 <div
@@ -16,167 +70,203 @@
 >
 	<div class="ctools-modal-dialog modal-dialog" style="width: 1024px; height: 344px;">
 		<div class="modal-content">
-			<div class="modal-header">
-				<button
-					on:click={onClose}
-					type="button"
-					class="close ctools-close-modal ctools-close-modal-processed"
-					aria-hidden="true">×</button
+			{#if !$currentUser}
+				<div class="modal-header">
+					<button
+						on:click={onClose}
+						type="button"
+						class="close ctools-close-modal ctools-close-modal-processed"
+						aria-hidden="true">×</button
+					>
+					<h4 id="modal-title" class="modal-title">Регистрация</h4>
+				</div>
+				<div
+					id="modal-content"
+					class="modal-body"
+					style="width: 1000px; max-height: calc(100vh - 70px);"
 				>
-				<h4 id="modal-title" class="modal-title">Регистрация</h4>
-			</div>
-			<div
-				id="modal-content"
-				class="modal-body"
-				style="width: 1000px; max-height: calc(100vh - 70px);"
-			>
-				<form
-					class="user-info-from-cookie ctools-use-modal-processed"
-					enctype="multipart/form-data"
-					action="/?q=modal_forms/ajax/register"
-					method="post"
-					id="user-register-form"
-					accept-charset="UTF-8"
-				>
-					<div>
-						<div id="edit-account" class="form-wrapper form-group">
-							<div class="form-item form-item-name form-type-textfield form-group">
-								<label class="control-label" for="edit-name"
-									>Имя пользователя <span
-										class="form-required"
-										title="Это поле обязательно для заполнения.">*</span
-									></label
-								>
-								<input
-									class="username form-control form-text required"
-									title=""
-									data-toggle="tooltip"
-									type="text"
-									id="edit-name"
-									name="name"
-									value=""
-									size="30"
-									maxlength="60"
-									data-original-title="Пробелы разрешены; знаки пунктуации запрещены, за исключением точек, тире, апострофов и знаков подчеркивания."
-								/>
-							</div>
-							<div class="form-item form-item-mail form-type-textfield form-group">
-								<label class="control-label" for="edit-mail"
-									>E-mail адрес <span
-										class="form-required"
-										title="Это поле обязательно для заполнения.">*</span
-									></label
-								>
-								<input
-									class="form-control form-text required"
-									type="text"
-									id="edit-mail"
-									name="mail"
-									value=""
-									size="30"
-									maxlength="254"
-								/>
-								<div class="help-block">
-									Существующий адрес электронной почты. Все почтовые сообщения с сайта будут
-									отсылаться на этот адрес. Адрес электронной почты не будет публиковаться и будет
-									использован только по вашему желанию: для восстановления пароля или для получения
-									новостей и уведомлений по электронной почте.
-								</div>
-							</div>
-							<div class="form-item form-item-pass form-type-password-confirm form-group">
-								<div class="row">
-									<div
-										class="form-item form-item-pass-pass1 form-type-password form-group col-sm-6 col-md-4 has-feedback"
+					<form
+						class="user-info-from-cookie ctools-use-modal-processed"
+						enctype="multipart/form-data"
+						action="/?q=modal_forms/ajax/register"
+						method="post"
+						id="user-register-form"
+						accept-charset="UTF-8"
+						on:submit|preventDefault={signUp}
+					>
+						<div>
+							<div id="edit-account" class="form-wrapper form-group">
+								<div class="form-item form-item-name form-type-textfield form-group">
+									<label class="control-label" for="edit-name"
+										>Имя пользователя <span
+											class="form-required"
+											title="Это поле обязательно для заполнения.">*</span
+										></label
 									>
-										<label class="control-label" for="edit-pass-pass1"
-											>Пароль <span
-												class="form-required"
-												title="Это поле обязательно для заполнения.">*</span
+									<input
+										class="username form-control form-text required"
+										title=""
+										data-toggle="tooltip"
+										type="text"
+										id="edit-name"
+										name="name"
+										size="30"
+										maxlength="60"
+										data-original-title="Пробелы разрешены; знаки пунктуации запрещены, за исключением точек, тире, апострофов и знаков подчеркивания."
+										bind:value={name}
+									/>
+								</div>
+								<div class="form-item form-item-mail form-type-textfield form-group">
+									<label class="control-label" for="edit-mail"
+										>E-mail адрес <span
+											class="form-required"
+											title="Это поле обязательно для заполнения.">*</span
+										></label
+									>
+									<input
+										class="form-control form-text required"
+										type="text"
+										id="edit-mail"
+										name="mail"
+										size="30"
+										maxlength="254"
+										bind:value={email}
+									/>
+									<div class="help-block">
+										Существующий адрес электронной почты. Все почтовые сообщения с сайта будут
+										отсылаться на этот адрес. Адрес электронной почты не будет публиковаться и будет
+										использован только по вашему желанию: для восстановления пароля или для
+										получения новостей и уведомлений по электронной почте.
+									</div>
+								</div>
+								<div class="form-item form-item-pass form-type-password-confirm form-group">
+									<div class="row">
+										<div
+											class="form-item form-item-pass-pass1 form-type-password form-group col-sm-6 col-md-4 has-feedback"
+										>
+											<label class="control-label" for="edit-pass-pass1"
+												>Пароль <span
+													class="form-required"
+													title="Это поле обязательно для заполнения.">*</span
+												>
+												<div class="label" aria-live="assertive" /></label
 											>
-											<div class="label" aria-live="assertive" /></label
-										>
-										<input
-											class="password-field form-control form-text required password-processed"
-											type="password"
-											id="edit-pass-pass1"
-											name="pass[pass1]"
-											size="25"
-											maxlength="128"
-										/><span class="glyphicon form-control-feedback" />
-										<div class="progress">
-											<div
-												class="progress-bar"
-												role="progressbar"
-												aria-valuenow="0"
-												aria-valuemin="0"
-												aria-valuemax="100"
-											/>
+											<input
+												class="password-field form-control form-text required password-processed"
+												type="password"
+												id="edit-pass-pass1"
+												name="pass[pass1]"
+												size="25"
+												maxlength="128"
+												bind:value={password}
+											/><span class="glyphicon form-control-feedback" />
+											<div class="progress">
+												<div
+													class="progress-bar"
+													role="progressbar"
+													aria-valuenow="0"
+													aria-valuemin="0"
+													aria-valuemax="100"
+												/>
+											</div>
 										</div>
-									</div>
-									<div
-										class="form-item form-item-pass-pass2 form-type-password form-group col-sm-6 col-md-4 has-feedback"
-									>
-										<label class="control-label" for="edit-pass-pass2"
-											>Повторите пароль <span
-												class="form-required"
-												title="Это поле обязательно для заполнения.">*</span
-											></label
+										<div
+											class="form-item form-item-pass-pass2 form-type-password form-group col-sm-6 col-md-4 has-feedback"
 										>
-										<input
-											class="password-confirm form-control form-text required"
-											type="password"
-											id="edit-pass-pass2"
-											name="pass[pass2]"
-											size="25"
-											maxlength="128"
-										/><span class="glyphicon form-control-feedback" />
+											<label class="control-label" for="edit-pass-pass2"
+												>Повторите пароль <span
+													class="form-required"
+													title="Это поле обязательно для заполнения.">*</span
+												></label
+											>
+											<input
+												class="password-confirm form-control form-text required"
+												type="password"
+												id="edit-pass-pass2"
+												name="pass[pass2]"
+												size="25"
+												maxlength="128"
+												bind:value={passwordRepeat}
+											/><span class="glyphicon form-control-feedback" />
+										</div>
+										<div class="help-block password-help" />
 									</div>
-									<div class="help-block password-help" />
 								</div>
+								<input type="hidden" name="timezone" value="Europe/Moscow" />
 							</div>
-							<input type="hidden" name="timezone" value="Europe/Moscow" />
-						</div>
-						<input
-							type="hidden"
-							name="form_build_id"
-							value="form-KDvQNq4y8yMgmJdBcwZqlEt3ImVhWgPI-LguuOKdu44"
-						/>
-						<input type="hidden" name="form_id" value="user_register_form" />
-						<div class="form-item form-item-fz152-agreement form-type-checkbox checkbox" style="font-size: 12px; margin-top: -20px;">
-							<label class="control-label" for="edit-fz152-agreement">
-								<input
-									required="required"
-									type="checkbox"
-									id="edit-fz152-agreement"
-									name="fz152_agreement"
-									value="1"
-									class="form-checkbox required"
-								/>
-								Я даю согласие на
-								<a href="/privacy-policy" target="_blank" rel="nofollow"
-									>обработку моих персональных данных</a
+							<input
+								type="hidden"
+								name="form_build_id"
+								value="form-KDvQNq4y8yMgmJdBcwZqlEt3ImVhWgPI-LguuOKdu44"
+							/>
+							<input type="hidden" name="form_id" value="user_register_form" />
+							<div
+								class="form-item form-item-fz152-agreement form-type-checkbox checkbox"
+								style="font-size: 12px; margin-top: -20px;"
+							>
+								<label class="control-label" for="edit-fz152-agreement">
+									<input
+										required="required"
+										type="checkbox"
+										id="edit-fz152-agreement"
+										name="fz152_agreement"
+										value="1"
+										class="form-checkbox required"
+									/>
+									Я даю согласие на
+									<a href="/privacy-policy" target="_blank" rel="nofollow"
+										>обработку моих персональных данных</a
+									>
+									и соглашаюсь с
+									<a href="#" target="_blank" rel="nofollow"
+										>публичной офертой ООО АРТкомпас» и правилами сайта</a
+									>.
+									<span class="form-required" title="Это поле обязательно для заполнения.">*</span
+									></label
 								>
-								и соглашаюсь с
-								<a href="#" target="_blank" rel="nofollow"
-									>публичной офертой ООО АРТкомпас» и правилами сайта</a
-								>.
-								<span class="form-required" title="Это поле обязательно для заполнения.">*</span
-								></label
-							>
+							</div>
+							<br />
+							<div class="form-actions form-wrapper form-group" id="edit-actions">
+								<button
+									type="submit"
+									id="edit-submit"
+									name="op"
+									value="Регистрация"
+									class="btn btn-default form-submit">Регистрация</button
+								>
+							</div>
+							{#if errors.length > 0}
+								{#each errors as err}
+									<div>{err}</div>
+								{/each}
+							{/if}
 						</div>
-						<br />
-						<div class="form-actions form-wrapper form-group" id="edit-actions">
-							<button
-								type="submit"
-								id="edit-submit"
-								name="op"
-								value="Регистрация"
-								class="btn btn-default form-submit">Регистрация</button
-							>
-						</div>
-					</div>
-				</form>
-			</div>
+					</form>
+				</div>
+			{:else}
+				<div style="padding: 40px; font-size: 18px;">
+					Уже зарегестрирован как <b>{name}</b>
+					<br>
+					<br>
+					<button class="btn btn-default form-submit" on:click={signOut} style="color: #fff;
+					display: flex;
+					height: 52px;
+					padding: 0px 32px;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					border: 1px solid #08ade9;
+					border-radius: 150px;
+					background-color: #08ade9;
+					transition: border-color 500ms ease, background-color 500ms ease;
+					font-family: 'Open Sans', sans-serif;
+					font-size: 15px;
+					line-height: 1em;
+					font-weight: 700;">
+						Выйти
+					</button>
+				</div>
+			{/if}
 		</div>
 	</div>
 </div>
