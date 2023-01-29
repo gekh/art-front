@@ -63,12 +63,8 @@
 	style="z-index: 1000; position: fixed; top: 0; bottom:0; left: 0; right:0; margin: 0px; background: rgb(255, 255, 255); opacity: 0.55;"
 />
 
-<div
-	id="modalContent"
-	class="modal-default"
-	style="z-index: 1001; position: fixed; top: 0px; left: 50%; margin-left:-200px; display: block; padding-top: 0px;"
->
-	<div class="ctools-modal-dialog modal-dialog" style="width: 1024px; height: 344px;">
+<div id="modalContent" class="modal-default">
+	<div class="ctools-modal-dialog modal-dialog">
 		<div class="modal-content">
 			{#if !$currentUser}
 				<div class="modal-header">
@@ -80,11 +76,7 @@
 					>
 					<h4 id="modal-title" class="modal-title">Регистрация</h4>
 				</div>
-				<div
-					id="modal-content"
-					class="modal-body"
-					style="width: 1000px; max-height: calc(100vh - 70px);"
-				>
+				<div id="modal-content" class="modal-body" style="max-height: calc(100vh - 70px);">
 					<form
 						class="user-info-from-cookie ctools-use-modal-processed"
 						enctype="multipart/form-data"
@@ -277,11 +269,34 @@
 	.modal-dialog {
 		height: 100% !important;
 	}
+
+	#modalContent {
+		z-index: 1001;
+		position: fixed;
+		top: 0px;
+		left: 50%;
+		margin-left: -200px;
+		display: block;
+		padding-top: 0px;
+	}
 	#modalContent .ctools-modal-dialog.modal-dialog {
 		width: 400px !important;
 		margin: 0;
 		height: 100% !important;
 	}
+
+	@media (max-width: 450px) {
+		#modalContent {
+			left:0;
+			margin-left:0;
+		}
+		#modalContent .ctools-modal-dialog.modal-dialog {
+			width: 100% !important;
+			margin: 0;
+			height: 100% !important;
+		}
+	}
+
 	#modalContent .ctools-modal-dialog.modal-dialog .modal-content {
 		border-radius: 0;
 		height: 100% !important;
