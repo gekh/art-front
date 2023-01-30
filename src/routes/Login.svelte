@@ -6,7 +6,6 @@
 	let name: string;
 	let email: string;
 	let password: string;
-	let passwordRepeat: string;
 	let errors: Array<string> = [];
 	let isLoading = false;
 
@@ -16,37 +15,16 @@
 		}
 	});
 
-	async function login() {
-		const user = await pb.collection('users').authWithPassword(email, password);
-		// name = user.record.name;
-		console.log(user);
-	}
-
-	async function signUp() {
-		if (password !== passwordRepeat) {
-			errors = ['Пароль и Повтор пароля не совпадают'];
-			return;
-		}
+  async function login() {
 		isLoading = true;
+		errors = [];
 		try {
-			const data = {
-				name,
-				email,
-				password,
-				passwordConfirm: password
-			};
-			try {
-				const createdUser = await pb.collection('users').create(data);
-				await login();
-			} catch (err: any) {
-				errors = [];
-				for (let key in err.data.data) {
-					errors = [...errors, key + ': ' + err.data.data[key].message];
-					console.log(key + ': ' + err.data.data[key].message);
-				}
-			}
-		} catch (err) {
-			console.error(err);
+			const user = await pb.collection('users').authWithPassword(email, password);
+      name = $currentUser?.name;
+			console.log(user);
+		} catch (err: any) {
+			errors = ['Неверный логин или пароль.'];
+			console.log(err.data.message);
 		}
 		isLoading = false;
 	}
@@ -74,7 +52,7 @@
 						class="close ctools-close-modal ctools-close-modal-processed"
 						aria-hidden="true">×</button
 					>
-					<h4 id="modal-title" class="modal-title">Регистрация</h4>
+					<h4 id="modal-title" class="modal-title">Вход</h4>
 				</div>
 				<div id="modal-content" class="modal-body" style="max-height: calc(100vh - 70px);">
 					<form
@@ -83,30 +61,11 @@
 						action="/?q=modal_forms/ajax/register"
 						method="post"
 						id="user-register-form"
-						on:submit|preventDefault={signUp}
+						on:submit|preventDefault={login}
 					>
 						<div>
 							<div id="edit-account" class="form-wrapper form-group">
-								<div class="form-item form-item-name form-type-textfield form-group">
-									<label class="control-label" for="edit-name"
-										>Имя пользователя <span
-											class="form-required"
-											title="Это поле обязательно для заполнения.">*</span
-										></label
-									>
-									<input
-										class="username form-control form-text required"
-										title=""
-										data-toggle="tooltip"
-										type="text"
-										id="edit-name"
-										name="name"
-										size="30"
-										maxlength="60"
-										data-original-title="Пробелы разрешены; знаки пунктуации запрещены, за исключением точек, тире, апострофов и знаков подчеркивания."
-										bind:value={name}
-									/>
-								</div>
+
 								<div class="form-item form-item-mail form-type-textfield form-group">
 									<label class="control-label" for="edit-mail"
 										>E-mail адрес <span
@@ -152,25 +111,6 @@
 												bind:value={password}
 											/><span class="glyphicon form-control-feedback" />
 										</div>
-										<div
-											class="form-item form-item-pass-pass2 form-type-password form-group col-sm-6 col-md-4 has-feedback"
-										>
-											<label class="control-label" for="edit-pass-pass2"
-												>Повторите пароль <span
-													class="form-required"
-													title="Это поле обязательно для заполнения.">*</span
-												></label
-											>
-											<input
-												class="password-confirm form-control form-text required"
-												type="password"
-												id="edit-pass-pass2"
-												name="pass[pass2]"
-												size="25"
-												maxlength="128"
-												bind:value={passwordRepeat}
-											/><span class="glyphicon form-control-feedback" />
-										</div>
 										<div class="help-block password-help" />
 									</div>
 								</div>
@@ -181,36 +121,13 @@
 								name="form_build_id"
 								value="form-KDvQNq4y8yMgmJdBcwZqlEt3ImVhWgPI-LguuOKdu44"
 							/>
-							<input type="hidden" name="form_id" value="user_register_form" />
-							<div
-								class="form-item form-item-fz152-agreement form-type-checkbox checkbox"
-								style="font-size: 12px; margin-top: -20px;"
-							>
-								<label class="control-label" for="edit-fz152-agreement">
-									<input
-										required
-										type="checkbox"
-										id="edit-fz152-agreement"
-										name="fz152_agreement"
-										value="1"
-										class="form-checkbox required"
-									/>
-									Я даю согласие на
-									<a href="/privacy-policy" target="_blank">обработку моих персональных данных</a
-									>
-									и соглашаюсь с
-									<a href="/oferta" target="_blank">публичной офертой ООО АРТкомпас» и правилами сайта</a>.
-									<span class="form-required" title="Это поле обязательно для заполнения.">*</span
-									></label>
-							</div>
 							<br />
 							<div class="form-actions form-wrapper form-group" id="edit-actions">
 								<button
 									type="submit"
 									id="edit-submit"
 									name="op"
-									value="Регистрация"
-									class="btn btn-default form-submit">Регистрация</button
+									class="btn btn-default form-submit">Войти</button
 								>
 							</div>
 							{#if errors.length > 0}
