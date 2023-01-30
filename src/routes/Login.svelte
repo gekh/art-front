@@ -44,16 +44,16 @@
 <div id="modalContent" class="modal-default">
 	<div class="ctools-modal-dialog modal-dialog">
 		<div class="modal-content">
+      <div class="modal-header">
+        <button
+          on:click={onClose}
+          type="button"
+          class="close ctools-close-modal ctools-close-modal-processed"
+          aria-hidden="true">×</button
+        >
+        <h4 id="modal-title" class="modal-title">Вход</h4>
+      </div>
 			{#if !$currentUser}
-				<div class="modal-header">
-					<button
-						on:click={onClose}
-						type="button"
-						class="close ctools-close-modal ctools-close-modal-processed"
-						aria-hidden="true">×</button
-					>
-					<h4 id="modal-title" class="modal-title">Вход</h4>
-				</div>
         {#if isLoading }
           <div style="padding: 40px; font-size: 18px;">
             Обождите...
