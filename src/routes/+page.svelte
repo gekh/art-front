@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Registration from './Registration.svelte';
+	import Login from './Login.svelte';
 
 	let show_registration = false;
 	function showRegistration(event: Event) {
@@ -12,6 +13,19 @@
     event.preventDefault();
     enableScroll();
 		show_registration = false;
+  }
+
+	let show_login = false;
+	function showLogin(event: Event) {
+		event.preventDefault();
+    disableScroll();
+		show_login = true;
+	}
+
+	function hideLogin(event: Event) {
+    event.preventDefault();
+    enableScroll();
+		show_login = false;
   }
 
 	let scrollY: number;
@@ -56,6 +70,10 @@
 
 {#if show_registration}
 	<Registration onClose={hideRegistration} />
+{/if}
+
+{#if show_login}
+	<Login onClose={hideLogin} />
 {/if}
 
 <div
@@ -201,6 +219,13 @@
 						href="#reg"
 						class="button-1 w-button"
 						on:click={showRegistration}>Регистрация</a
+					>
+					<span style="padding: 0 5px"></span>
+					<a
+						data-w-id="97effa1b-e190-0439-45e1-6ea1e7f2d4f1"
+						href="#reg"
+						class="button-1 w-button"
+						on:click={showLogin}>Вход</a
 					>
 				</div>
 			</div>
