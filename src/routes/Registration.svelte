@@ -196,16 +196,12 @@
 										class="form-checkbox required"
 									/>
 									Я даю согласие на
-									<a href="/privacy-policy" target="_blank" rel="nofollow"
-										>обработку моих персональных данных</a
+									<a href="/privacy-policy" target="_blank">обработку моих персональных данных</a
 									>
 									и соглашаюсь с
-									<a href="#oferta" target="_blank" rel="nofollow"
-										>публичной офертой ООО АРТкомпас» и правилами сайта</a
-									>.
+									<a href="/oferta" target="_blank">публичной офертой ООО АРТкомпас» и правилами сайта</a>.
 									<span class="form-required" title="Это поле обязательно для заполнения.">*</span
-									></label
-								>
+									></label>
 							</div>
 							<br />
 							<div class="form-actions form-wrapper form-group" id="edit-actions">

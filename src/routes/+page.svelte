@@ -87,22 +87,22 @@
 	</div>
 	<div style="opacity:0" class="div-block-404">
 		<div class="div-block-402">
-			<a href="#top" class="link-block-303 w-inline-block"
+			<a href="#top" class="link-block-303 w-inline-block w-nav-button"
 				><div class="text-block-17">Главная</div>
 				<div class="div-block-373" /></a
-			><a href="#how-to-start" class="link-block-303 w-inline-block"
+			><a href="#how-to-start" class="link-block-303 w-inline-block w-nav-button"
 				><div class="text-block-17">Как начать</div>
 				<div class="div-block-373" /></a
-			><a href="#for-whom" class="link-block-303 w-inline-block"
+			><a href="#for-whom" class="link-block-303 w-inline-block w-nav-button"
 				><div class="text-block-17">Кому подойдёт</div>
 				<div class="div-block-373" /></a
-			><a href="#for-cutomer" class="link-block-303 w-inline-block"
+			><a href="#for-cutomer" class="link-block-303 w-inline-block w-nav-button"
 				><div class="text-block-17">Для заказчика</div>
 				<div class="div-block-373" /></a
-			><a href="#for-artist" class="link-block-303 w-inline-block"
+			><a href="#for-artist" class="link-block-303 w-inline-block w-nav-button"
 				><div class="text-block-17">Для исполнителя</div>
 				<div class="div-block-373" /></a
-			><a href="#benefits" class="link-block-303 w-inline-block"
+			><a href="#benefits" class="link-block-303 w-inline-block w-nav-button"
 				><div class="text-block-17">В чем польза</div>
 				<div class="div-block-373" /></a
 			>
