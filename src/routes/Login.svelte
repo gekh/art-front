@@ -55,7 +55,9 @@
 					<h4 id="modal-title" class="modal-title">Вход</h4>
 				</div>
         {#if isLoading }
-					Обождите...
+          <div style="padding: 40px; font-size: 18px;">
+            Обождите...
+          </div>
 				{:else}
           <div id="modal-content" class="modal-body" style="max-height: calc(100vh - 70px);">
             <form
