@@ -65,7 +65,7 @@
 		integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
 		crossorigin="anonymous"
 	></script>
-	<script defer src="/main/js/script.js?1" type="text/javascript"></script>
+	<script defer src="/main/js/script.js?2" type="text/javascript"></script>
 </svelte:head>
 
 {#if show_registration}
