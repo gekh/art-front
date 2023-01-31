@@ -19,12 +19,12 @@
 
     Menu("{is_menu_button_clicked}")
 
-    a.logo(href='#top' on:click|preventDefault!='{toTop}')
+    a.logo(href="/" on:click!="{toTop}")
       img(src="logo/logo.svg" alt="Logo")
 
     a.city(href="#/") Псебай
 
-    a.profile
+    a.profile(href="#/")
       img(src="images/profile.svg" alt="Profile")
 
   .filler
