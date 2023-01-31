@@ -191,7 +191,7 @@
 									class="form-item form-item-fz152-agreement form-type-checkbox checkbox"
 									style="font-size: 12px; margin-top: -20px;"
 								>
-									<label class="control-label" for="edit-fz152-agreement">
+									<label class="control-label" for="edit-fz152-agreement" style="line-height: 1.2; font-weight:normal;">
 										<input
 											required
 											type="checkbox"
@@ -201,10 +201,10 @@
 											class="form-checkbox required"
 										/>
 										Я даю согласие на
-										<a href="/privacy-policy" target="_blank">обработку моих персональных данных</a
+										<a href="/privacy-policy" style="color:#08ade9" target="_blank">обработку моих персональных данных</a
 										>
 										и соглашаюсь с
-										<a href="/privacy-policy" target="_blank">публичной офертой ООО АРТкомпас» и правилами сайта</a>.
+										<a href="/privacy-policy" style="color:#08ade9" target="_blank">публичной офертой ООО АРТкомпас» и правилами сайта</a>.
 										<span class="form-required" title="Это поле обязательно для заполнения.">*</span
 										></label>
 								</div>

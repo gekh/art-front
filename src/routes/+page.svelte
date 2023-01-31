@@ -174,7 +174,7 @@
 		class="image-38-copy"
 	/>
 </div>
-<div id="top" data-w-id="6b99ee31-88d8-092e-8ee5-e4d40760ddf7" style="opacity:0" class="section-16">
+<div id="top" data-w-id="6b99ee31-88d8-092e-8ee5-e4d40760ddf7" style="opacity:1" class="section-16">
 	<div class="div-block-321">
 		<div class="div-block-366">
 			<div class="div-block-339">
