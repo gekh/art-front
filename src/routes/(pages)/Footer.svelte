@@ -32,28 +32,32 @@
       a(href="#") Конфиденциальность
       a(href="#") Правила сайта
 
+
+  .copyright
+    | Copyright 2018–2023 «Арткомпас». Все права защищены. При полном или частичном
+    | использовании материалов ссылка на «Арткомпас» обязательна.
 </template>
 
 <style lang="postcss">
 	footer {
 		@apply bg-black mx-auto grid;
 		grid-template-columns: auto auto auto auto;
-    justify-content: center;
+		justify-content: center;
 		padding: 84px 2vw 220px 2vw;
 		margin-top: 52px;
 	}
 
-  @media (max-width:1100px) {
-    footer {
-      @apply grid-cols-2 grid-rows-2;
-    }
-  }
+	@media (max-width: 1100px) {
+		footer {
+			@apply grid-cols-2 grid-rows-2;
+		}
+	}
 
-  @media (max-width:600px) {
-    footer {
-      @apply grid-cols-1 grid-rows-4;
-    }
-  }
+	@media (max-width: 600px) {
+		footer {
+			@apply grid-cols-1 grid-rows-4;
+		}
+	}
 
 	h2 {
 		color: #999999;
@@ -75,16 +79,26 @@
 		@apply px-8;
 	}
 
-  p {
-    @apply mb-5 text-white whitespace-nowrap;
-  }
+	p {
+		@apply mb-5 text-white whitespace-nowrap;
+	}
 
-  a {
-    @apply block mb-5 text-white whitespace-nowrap;
-    transition: color 500ms ease;
-  }
+	a {
+		@apply block mb-5 text-white whitespace-nowrap;
+		transition: color 500ms ease;
+	}
 
-  a:hover {
-    color: #08ade9;
-  }
+	a:hover {
+		color: #08ade9;
+	}
+
+	.copyright {
+		color: white;
+		padding: 14px 20px;
+		background: #933;
+    background-image: url("/images/bg/guitar-tp.jpg");
+    background-position: 50% 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+	}
 </style>
