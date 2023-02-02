@@ -71,12 +71,11 @@
 	}
 
 	.separator {
-		@apply w-8 h-1 mt-5 bg-white;
-		margin-bottom: 52px;
+		@apply w-8 h-1 mt-5 mb-5 bg-white;
 	}
 
 	.col {
-		@apply px-8;
+		@apply px-8 mt-8;
 	}
 
 	p {
