@@ -9,25 +9,20 @@
 	<meta content="Art Compass" property="twitter:title" />
 </svelte:head>
 
-<template lang="pug">
-	.Front
-		NavBar
-		.BackFill
-		.BackBubbles
-		Top
-		.h-96 hi there
-		.h-96 hi there
-		.h-96 hi there
-		.h-96 hi there
-</template>
+<div>
+	<NavBar />
+	<div class="back-fill" />
+	<div class="back-bubbles" />
+	<Top />
+</div>
 
 <style lang="postcss">
-	.BackFill {
+	.back-fill {
 		@apply fixed left-0 right-0 top-0 bottom-0;
 		background: linear-gradient(-45deg, #001739, #032241);
 	}
 
-	.BackBubbles {
+	.back-bubbles {
 		@apply fixed left-0 right-0 top-0 bottom-0 opacity-50;
 		background: url('images/front/bg-bubbles.png') 50% 50%;
 		background-size: cover;

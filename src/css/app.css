@@ -8,3 +8,23 @@ html, body {
 	font-size: 16px; /* don't change, it's for tailwind.css and rem-based sizes. Should be exaxctly 16px.*/
 	/* letter-spacing: 1px; */
 }
+
+@layer utilities {
+	.trans-all {
+		transition: all 500ms ease;
+	}
+
+	.trans-color {
+		transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+		transition-timing-function: ease;
+		transition-duration: 500ms;
+	}
+
+	.trans-trans {
+		transition: transform 500ms ease;
+	}
+}
+
+* {
+	z-index: 0;
+}

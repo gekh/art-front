@@ -11,41 +11,36 @@
 	}
 </script>
 
-<template lang="pug">
-  header#top
-    button.menu-button(on:click!="{() => is_menu_button_clicked = is_menu_button_clicked ? false : true}")
-      .m-line-top(class!="{is_menu_button_clicked ? 'active' : ''}")
-      .m-line-bottom(class!="{is_menu_button_clicked ? 'active' : ''}")
+<header id="top" class="fixed top-0 inset-x-0 flex h-[52px] z-20">
+	<button
+		class="menu-button"
+		on:click={() => (is_menu_button_clicked = is_menu_button_clicked ? false : true)}
+	>
+		<div class="m-line-top {is_menu_button_clicked ? 'active' : ''}" />
+		<div class="m-line-bottom {is_menu_button_clicked ? 'active' : ''}" />
+	</button>
 
-    Menu("{is_menu_button_clicked}")
+	<Menu {is_menu_button_clicked} />
 
-    a.logo(href="/" on:click!="{toTop}")
-      img(src="logo/logo.svg" alt="Logo")
+	<a href="/" class="logo" on:click={toTop}>
+		<img src="logo/logo.svg" alt="Logo" />
+	</a>
 
-    a.city(href="#/") Псебай
+	<a href="#/" class="city">Псебай</a>
 
-    a.profile(href="#/")
-      img(src="images/profile.svg" alt="Profile")
-
-  .filler
-</template>
+	<a href="#/" class="profile">
+		<img src="images/profile.svg" alt="Profile" />
+	</a>
+</header>
+<div class="h-[84px]" />
 
 <style lang="postcss">
-	header {
-		@apply fixed top-0 left-0 right-0 flex;
-		height: 52px;
-	}
-
-	.filler {
-		height: 84px;
-	}
-
 	.menu-button {
 		width: 52px;
 		height: 52px;
 		background: black;
 		padding: 22px 16px;
-		z-index: 10;
+		z-index: 30;
 	}
 
 	.m-line-top,
@@ -64,13 +59,13 @@
 
 	.logo,
 	.profile {
+		@apply bg-biruza;
 		width: 52px;
 		height: 52px;
 		padding: 10px;
-		background: #08ade9;
 		-webkit-transition: background-color 500ms ease, border-color 500ms ease;
 		transition: background-color 500ms ease, border-color 500ms ease;
-		z-index: 10;
+		z-index: 20;
 	}
 	.profile {
 		padding: 16px;
@@ -91,6 +86,6 @@
 	}
 
 	.city:hover {
-		color: #08ade9;
+		@apply text-biruza;
 	}
 </style>
