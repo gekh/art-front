@@ -38,7 +38,7 @@
 	on:click={onClose}
 	id="modalBackdrop"
 	class="backdrop-default"
-	style="z-index: 1000; position: fixed; top: 0; bottom:0; left: 0; right:0; margin: 0px; background: rgb(255, 255, 255); opacity: 0.55;"
+	style="z-index: 1000; position: fixed; inset: 0; margin: 0; background: rgb(255, 255, 255); opacity: 0.55;"
 />
 
 <div id="modalContent" class="modal-default">
@@ -177,9 +177,6 @@
 </div>
 
 <style>
-	a:hover {
-		text-decoration: none;
-	}
 	#modalBackdrop {
 		background: rgba(20, 20, 20, 0.7) !important;
 		opacity: 1 !important;

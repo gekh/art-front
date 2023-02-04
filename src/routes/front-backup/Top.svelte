@@ -6,73 +6,87 @@
 	];
 </script>
 
-<template lang="pug">
-  .Top
-    .BackLight
-    .Left
-      div
-        .BigLogo
-          img(src="images/front/top-big-logo.svg" alt="Big ArtCompas Logo")
-        h1 Art
-          span.font-light compas
-        .flex
-          .flex.flex-col.items-center
-            .flex.relative
-              img.OwnerPhoto.rounded-full(src="images/front/top-owner.jpg" alt="owner")
-              .OwnerBadge
-            .text-left.mt-2
-              p(style="font-weight: bold; font-style: normal;") Основатель
-              p.font-light.italic Тимур Абитов
-          .OwnerSaying
-            p Наша платформа помогает соединить исполнителей и заказчиков, для создания мероприятий в любом городе России
+<div class="top">
+	<div class="back-light" />
+	<div class="left">
+		<div>
+			<div class="big-logo">
+				<img src="images/front/top-big-logo.svg" alt="Big ArtCompas Logo" />
+			</div>
+			<h1>
+				Art
+				<span class="font-light">compas</span>
+			</h1>
+			<div class="flex">
+				<div class="flex flex-col items-center">
+					<div class="flex relative">
+						<img src="images/front/top-owner.jpg" alt="owner" class="owner-photo rounded-full" />
+						<div class="owner-badge" />
+					</div>
+				</div>
+				<div class="text-left mt-2">
+					<p class="text-bold non-italic">Основатель</p>
+					<p class="font-light italic">Тимур Абитов</p>
+				</div>
+				<div class="owner-saying">
+					<p>
+						Наша платформа помогает соединить исполнителей и заказчиков, для создания мероприятий в
+						любом городе России
+					</p>
+				</div>
+			</div>
 
-        .flex.items-center
-          .Dash
-          a.RegBtn(href="#reg" on:click|preventDefault!="{() => alert('reg')}") Регистрация
+			<div class="flex items-center">
+				<div class="dash" />
+				<a href="#reg" class="reg-btn" on:click|preventDefault={() => alert('reg')}>Регистрация</a>
+			</div>
+		</div>
+	</div>
 
-
-    .Right.flex.flex-col.justify-end
-      +each('motivations as motivation, i')
-        .flex.items-center.mb-5(style="margin-top: 52px")
-          .Dash
-          h3 0{i+1}
-        p(style="max-width: 200px") {motivation}
-
-</template>
+	<div class="right flex flex-col justify-end">
+		{#each motivations as motivation, i}
+			<div class="flex items-center mb-5 mt-[52px]">
+				<div class="dash" />
+				<h3>0{i + 1}</h3>
+			</div>
+			<p class="max-w-[200px]">{motivation}</p>
+		{/each}
+	</div>
+</div>
 
 <style lang="postcss">
-	.Dash {
+	.dash {
 		@apply h-px w-5 mr-5 bg-white;
 	}
-	.Top {
+	.top {
 		@apply relative flex h-screen;
 		padding-bottom: 10%;
 		min-height: 800px;
 	}
 
-	.BackLight {
+	.back-light {
 		@apply absolute left-0 right-0 top-0 bottom-0;
 		background: url('images/front/top-back-light.png') 50% 50%;
 		background-size: cover;
 	}
 
-	.Left {
+	.left {
 		@apply relative flex flex-col items-end justify-end;
 		width: 62.5%;
 	}
 
-	.Right {
+	.right {
 		@apply relative;
 		padding-left: 5%;
 		width: 37.5%;
 	}
 
-	.BigLogo {
+	.big-logo {
 		height: 150px;
 		overflow: hidden;
 	}
 
-	.BigLogo img {
+	.big-logo img {
 		height: 220px;
 	}
 
@@ -95,17 +109,17 @@
 		text-fill-color: transparent;
 	}
 
-	.OwnerPhoto {
+	.owner-photo {
 		width: 52px;
 		height: 52px;
 	}
 
-	.OwnerBadge {
+	.owner-badge {
 		@apply absolute left-auto top-auto right-0 bottom-0 h-3 w-3 border-solid rounded-full border-2;
 		background-color: #6ab547;
 	}
 
-	.OwnerSaying {
+	.owner-saying {
 		max-width: 400px;
 		padding: 20px;
 		margin-bottom: 32px;
@@ -115,7 +129,7 @@
 		border-radius: 0px 5000px 5000px;
 	}
 
-	.RegBtn {
+	.reg-btn {
 		@apply flex items-center rounded-full font-normal;
 		height: 52px;
 		padding: 0px 32px;

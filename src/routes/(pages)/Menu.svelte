@@ -2,19 +2,18 @@
 	export let is_menu_button_clicked: boolean;
 </script>
 
-<template lang="pug">
-  .menu(class!="{is_menu_button_clicked ? 'active' : ''}")
-    a(href='#/') Главная
-    a(href='#/') Топ
-    a(href='#/') Исполнители и группы
-    a(href='#/') Заказчики
-    a(href='#/') Тендеры
-    a(href='#/') Помощь
-    a(href='#/') Форум
-    .separator
-    a.small.active(href='#/') Русский
-    a.small(href='#/') English
-</template>
+<div class="menu z-20 {is_menu_button_clicked ? 'active' : ''}">
+	<a href="#/">Главная</a>
+	<a href="#/">Топ</a>
+	<a href="#/">Исполнители и группы</a>
+	<a href="#/">Заказчики</a>
+	<a href="#/">Тендеры</a>
+	<a href="#/">Помощь</a>
+	<a href="#/">Форум</a>
+	<div class="separator" />
+	<a href="#/" class="small active">Русский</a>
+	<a href="#/" class="small">English</a>
+</div>
 
 <style lang="postcss">
 	.menu {
@@ -52,7 +51,7 @@
 
 	.menu > a:hover,
 	.menu > a.active {
-		color: #08ade9;
+		@apply text-biruza;
 	}
 
 	.menu > a.active {
@@ -65,8 +64,7 @@
 	}
 
 	.separator {
-		@apply h-px mb-8;
-		background-color: #999;
+		@apply h-px mb-8 bg-silvery;
 		width: 100px;
 		margin-right: 100px;
 	}
