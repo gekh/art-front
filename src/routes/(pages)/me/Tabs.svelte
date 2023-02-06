@@ -23,7 +23,7 @@
   ];
 </script>
 
-<div class="flex px-[52px] text-graphite font-bold">
+<div class="flex flex-wrap px-[52px] text-graphite font-bold">
   {#each tabs as tab}
     <button
       value={tab.key}

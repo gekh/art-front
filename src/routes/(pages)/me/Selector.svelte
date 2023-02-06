@@ -94,7 +94,9 @@
   </div>
 
   <div class="relative font-light text-silvery flex items-center">
-    {accounts[cur_role][cur_account]}
+    <div class="max-w-[90vw] whitespace-nowrap overflow-hidden overflow-ellipsis">
+      {accounts[cur_role][cur_account]}
+    </div>
     {#if Object.keys(accounts[cur_role]).length > 1}
       <input
         id="account"
