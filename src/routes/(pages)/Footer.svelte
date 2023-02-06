@@ -1,12 +1,12 @@
 <footer>
-	<div class="col">
+	<div class="col w-[300px] md:w-auto mx-auto">
 		<h2 class="bright">Artcompas</h2>
 		<div class="separator" />
 		<p>354002, г. Сочи,<br /> ул. Черноморская, д. 15</p>
 		<p>+7 (862) 200-00-00</p>
 		<p>+7 (862) 555-10-00</p>
 	</div>
-	<div class="col">
+	<div class="col w-[300px] md:w-auto mx-auto">
 		<h2>Сотрудничество</h2>
 		<div class="separator" />
 		<a href="#/">О проекте</a>
@@ -15,7 +15,7 @@
 		<a href="#/">Доверие и безопасность</a>
 		<a href="#/">Часто задаваемые вопросы</a>
 	</div>
-	<div class="col">
+	<div class="col w-[300px] md:w-auto mx-auto">
 		<h2>О компании</h2>
 		<div class="separator" />
 		<a href="#/">О нас</a>
@@ -24,7 +24,7 @@
 		<a href="#/">Вакансии</a>
 		<a href="#/">Связаться с нами</a>
 	</div>
-	<div class="col">
+	<div class="col w-[300px] md:w-auto mx-auto">
 		<h2>Устав</h2>
 		<div class="separator" />
 		<a href="#/">Условия контракта</a>
