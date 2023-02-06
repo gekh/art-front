@@ -35,7 +35,7 @@
   ];
 </script>
 
-<div class="flex gap-4 flex-wrap">
+<div class="flex gap-4 flex-wrap justify-center md:justify-start">
   {#each forms as form}
     <div class="relative p-5 w-[320px] bg-white">
       <button

@@ -60,16 +60,18 @@
   ];
 </script>
 
-<div class="flex items-center mb-8">
+<div class="flex flex-wrap gap-5 items-center mb-8">
   <ActionBtn>Написать отзыв</ActionBtn>
-  <div class="ml-5 text-silvery">Сортировать:</div>
-  <select name="sort" class="ml-2 text-silvery bg-transparent">
-    <option value="asc">по возрастанию</option>
-    <option value="desc">по убыванию</option>
-  </select>
+  <div class="flex items-center">
+    <div class="text-silvery">Сортировать:</div>
+    <select name="sort" class="ml-2 text-silvery bg-transparent">
+      <option value="asc">по возрастанию</option>
+      <option value="desc">по убыванию</option>
+    </select>
+  </div>
 </div>
 
-<div class="flex gap-4 flex-wrap">
+<div class="flex gap-4 flex-wrap justify-center md:justify-start">
   {#each reviews as r}
     <div class="relative px-5 py-10 w-[320px] bg-white">
       <div class="flex mb-[52px]">

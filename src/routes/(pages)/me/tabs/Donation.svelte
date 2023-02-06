@@ -26,7 +26,7 @@
   ];
 </script>
 
-<div class="flex gap-4 flex-wrap">
+<div class="flex gap-4 flex-wrap justify-center md:justify-start">
   {#each donations as d}
     <div class="relative flex flex-col p-5 w-[320px] bg-white">
       <h2 class="mb-4 text-[26px] font-bold text-graphite">{d.title}</h2>

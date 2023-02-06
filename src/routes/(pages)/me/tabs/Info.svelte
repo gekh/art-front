@@ -37,7 +37,7 @@
   ];
 </script>
 
-<div class="flex gap-4 flex-wrap">
+<div class="flex gap-4 flex-wrap justify-center md:justify-start">
   {#each forms as form}
   <div class="relative p-5 w-[320px] bg-white">
       <button class="absolute right-0 top-0 flex items-center justify-center w-[52px] h-[52px] bg-biruza hover:bg-pinky trans-color">
