@@ -1,4 +1,12 @@
 <script lang="ts">
+    import Docs from './tabs/Docs.svelte';
+    import Donation from './tabs/Donation.svelte';
+    import General from './tabs/General.svelte';
+  import Info from './tabs/Info.svelte';
+    import Invites from './tabs/Invites.svelte';
+    import Portfolio from './tabs/Portfolio.svelte';
+    import Reviews from './tabs/Reviews.svelte';
+
   let cur_tab = 'info';
   const changeTab = (e: Event) => {
     cur_tab = (e.target as HTMLInputElement).value;
@@ -29,8 +37,22 @@
   {/each}
 </div>
 
-<div class="px-[52px] bg-cloudy">
-  <div class="text-[100px] py-5">CONTENT</div>
+<div class="py-[84px] px-[52px] bg-cloudy">
+  {#if cur_tab === 'info'}
+    <Info />
+  {:else if cur_tab === 'reviews'}
+    <Reviews />
+  {:else if cur_tab === 'portfolio'}
+    <Portfolio />
+  {:else if cur_tab === 'invites'}
+    <Invites />
+  {:else if cur_tab === 'docs'}
+    <Docs />
+  {:else if cur_tab === 'general'}
+    <General />
+  {:else if cur_tab === 'donation'}
+    <Donation />
+  {/if}
 </div>
 
 <style lang="postcss">
