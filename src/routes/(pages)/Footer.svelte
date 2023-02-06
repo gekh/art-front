@@ -40,23 +40,10 @@
 
 <style lang="postcss">
 	footer {
-		@apply bg-black mx-auto grid;
-		grid-template-columns: auto auto auto auto;
+		@apply bg-black mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4;
 		justify-content: center;
 		padding: 84px 2vw 220px 2vw;
 		margin-top: 52px;
-	}
-
-	@media (max-width: 1100px) {
-		footer {
-			@apply grid-cols-2 grid-rows-2;
-		}
-	}
-
-	@media (max-width: 600px) {
-		footer {
-			@apply grid-cols-1 grid-rows-4;
-		}
 	}
 
 	h2 {

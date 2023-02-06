@@ -6,16 +6,16 @@
 
   enum Role {
     customer = 'customer',
-    artist = 'artist',
+    performer = 'performer',
     band = 'band',
   }
 
   type TRole = keyof typeof Role;
 
-  let cur_role = Role.artist;
+  let cur_role = Role.performer;
   const roles = {
     [Role.customer]: 'Заказчик',
-    [Role.artist]: 'Исполнитель',
+    [Role.performer]: 'Исполнитель',
     [Role.band]: 'Группа',
   };
 
@@ -28,7 +28,7 @@
     cur_account = parseInt(Object.keys(accounts[cur_role])[0]);
   };
 
-  // LEGALS
+  // ACCOUNTS
 
   let cur_account: number = 21;
   type TAccounts = { [key in Role]: { [key: number]: string } };
@@ -37,18 +37,10 @@
     	12: 'ООО Увлекательные помидоры',
     	745: 'ИП Агатова Ж. И.'
     },
-    [Role.artist]: {
-      21: 'Перкусионист Валера Игнатов',
+    [Role.performer]: {
+      21: 'Саксофонист Валера Игнатов',
       213: 'Барабанщик Людовиг Бахмучев',
       1423: 'Вокалист Анна Кйолкоген',
-      2423: 'Вокалист Анна Кйолкоген',
-      3423: 'Вокалист Анна Кйолкоген',
-      4423: 'Вокалист Анна Кйолкоген',
-      5423: 'Вокалист Анна Кйолкоген',
-      6423: 'Вокалист Анна Кйолкоген',
-      7423: 'Вокалист Анна Кйолкоген',
-      8423: 'Вокалист Анна Кйолкоген',
-      9423: 'Вокалист Анна Кйолкоген',
     },
     [Role.band]: {
       125: 'Бороды и ветви',
@@ -63,7 +55,7 @@
   let show_accounts = false;
 </script>
 
-<div class="selector mb-5 text-[26px] flex flex-col md:flex-row">
+<div class="selector mb-5 px-[52px] text-[26px] flex flex-col md:flex-row">
   <div class="relative mr-8 font-bold text-graphite flex items-center z-10">
     {roles[cur_role]}
     {#if Object.keys(accounts).length > 1}
@@ -81,8 +73,8 @@
       </label>
       <nav
         use:clickoutside on:clickoutside={() => show_roles = false}
-        class="absolute top-8 max-h-0 peer-checked:max-h-60 overflow-y-hidden flex flex-col
-             bg-biruza text-white text-[15px] shadow-2xl trans-all"
+        class="absolute top-8 flex flex-col max-h-0 peer-checked:max-h-60 overflow-y-hidden
+             text-[15px] bg-biruza text-white shadow-2xl trans-all"
       >
         {#each Object.keys(accounts) as role}
           {#if role !== cur_role}
@@ -118,7 +110,8 @@
       </label>
       <nav
         use:clickoutside on:clickoutside={() => show_accounts = false}
-        class="absolute top-8 max-h-0 peer-checked:max-h-96 overflow-y-hidden flex flex-col bg-biruza text-white text-[15px] shadow-2xl trans-all"
+        class="absolute top-8 flex flex-col max-h-0 peer-checked:max-h-96 overflow-y-hidden
+              text-[15px] bg-biruza text-white shadow-2xl trans-all"
       >
         {#each Object.entries(accounts[cur_role]) as [id, label]}
           {#if parseInt(id) !== cur_account}
@@ -138,7 +131,7 @@
   </div>
 </div>
 
-<div class="mb-8">
+<div class="mb-8 px-[52px]">
   <button class="flex items-center text-silvery hover:text-biruza trans-color">
     <img class="h-5 w-5 mr-2" src="images/icons/plus.svg" alt="add role" /> Добавить
   </button>
