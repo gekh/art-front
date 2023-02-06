@@ -73,8 +73,8 @@
       </label>
       <nav
         use:clickoutside on:clickoutside={() => show_roles = false}
-        class="absolute top-8 max-h-0 peer-checked:max-h-60 overflow-y-hidden flex flex-col
-             bg-biruza text-white shadow-2xl trans-all"
+        class="absolute top-8 flex flex-col max-h-0 peer-checked:max-h-60 overflow-y-hidden
+             text-[15px] bg-biruza text-white shadow-2xl trans-all"
       >
         {#each Object.keys(accounts) as role}
           {#if role !== cur_role}
@@ -110,7 +110,8 @@
       </label>
       <nav
         use:clickoutside on:clickoutside={() => show_accounts = false}
-        class="absolute top-8 max-h-0 peer-checked:max-h-96 overflow-y-hidden flex flex-col bg-biruza text-white shadow-2xl trans-all"
+        class="absolute top-8 flex flex-col max-h-0 peer-checked:max-h-96 overflow-y-hidden
+              text-[15px] bg-biruza text-white shadow-2xl trans-all"
       >
         {#each Object.entries(accounts[cur_role]) as [id, label]}
           {#if parseInt(id) !== cur_account}

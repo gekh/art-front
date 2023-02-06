@@ -15,12 +15,12 @@
 </script>
 
 <div class="flex mb-8 px-[52px]">
-  <div class="flex w-[136px] h-[136px]">
+  <div class="flex-[0_0_136px] flex w-[136px] h-[136px]">
     <img src="images/samples/drummer.jpg" alt="avatar" class="object-cover rounded-full" />
   </div>
   <div class="ml-5">
     <div class="mb-5 text-silvery">Псебай</div>
-    <h2 class="mb-5 text-[26px] text-graphite font-bold leading-none">Владимир Мягков</h2>
+    <h2 class="mb-5 text-[26px] text-graphite font-bold leading-none">Барабанщик Людовиг Бахмучев</h2>
     <div class="flex mb-10">
       {#each Object.entries(socials) as [key, link]}
         <a href="{link}" class="w-5 h-5 mr-5"><img src="{socials_images[key]}" alt="{key}"></a>
