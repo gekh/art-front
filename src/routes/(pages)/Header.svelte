@@ -29,7 +29,7 @@
 	<a href="#/" class="city">Псебай</a>
 
 	<a href="#/" class="profile">
-		<img src="images/profile.svg" alt="Profile" />
+		<img src="images/icons/profile.svg" alt="Profile" />
 	</a>
 </header>
 <div class="h-[84px]" />

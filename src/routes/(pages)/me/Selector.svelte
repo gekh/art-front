@@ -6,16 +6,16 @@
 
   enum Role {
     customer = 'customer',
-    artist = 'artist',
+    performer = 'performer',
     band = 'band',
   }
 
   type TRole = keyof typeof Role;
 
-  let cur_role = Role.artist;
+  let cur_role = Role.performer;
   const roles = {
     [Role.customer]: 'Заказчик',
-    [Role.artist]: 'Исполнитель',
+    [Role.performer]: 'Исполнитель',
     [Role.band]: 'Группа',
   };
 
@@ -28,7 +28,7 @@
     cur_account = parseInt(Object.keys(accounts[cur_role])[0]);
   };
 
-  // LEGALS
+  // ACCOUNTS
 
   let cur_account: number = 21;
   type TAccounts = { [key in Role]: { [key: number]: string } };
@@ -37,18 +37,10 @@
     	12: 'ООО Увлекательные помидоры',
     	745: 'ИП Агатова Ж. И.'
     },
-    [Role.artist]: {
-      21: 'Перкусионист Валера Игнатов',
+    [Role.performer]: {
+      21: 'Саксофонист Валера Игнатов',
       213: 'Барабанщик Людовиг Бахмучев',
       1423: 'Вокалист Анна Кйолкоген',
-      2423: 'Вокалист Анна Кйолкоген',
-      3423: 'Вокалист Анна Кйолкоген',
-      4423: 'Вокалист Анна Кйолкоген',
-      5423: 'Вокалист Анна Кйолкоген',
-      6423: 'Вокалист Анна Кйолкоген',
-      7423: 'Вокалист Анна Кйолкоген',
-      8423: 'Вокалист Анна Кйолкоген',
-      9423: 'Вокалист Анна Кйолкоген',
     },
     [Role.band]: {
       125: 'Бороды и ветви',

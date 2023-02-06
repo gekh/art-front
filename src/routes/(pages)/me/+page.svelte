@@ -5,6 +5,7 @@
 
 	import Time from 'svelte-time';
 	import Selector from './Selector.svelte';
+	import ProfileCard from './ProfileCard.svelte';
 </script>
 
 <div class="px-[52px] pb-[52px]">
@@ -13,7 +14,7 @@
 			<img class="mr-2 h-5" src="images/icons/left-angle.svg" alt="back arrow icon" />
 			<span>Назад</span>
 		</a>
-		{#if user}
+		{#if $user}
 			<div class="flex-1 ml-auto text-right">
 				Дата регистрации:
 				<Time timestamp={new Date($user ? $user.created : '')} format="DD.MM.YYYY" />
@@ -21,6 +22,7 @@
 		{/if}
 	</div>
   <Selector />
+  <ProfileCard />
   <div class="text-[100px] p-5">CONTENT</div>
   <div class="text-[100px] p-5">CONTENT</div>
   <div class="text-[100px] p-5">CONTENT</div>
