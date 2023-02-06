@@ -36,12 +36,10 @@
 	}
 
 	p {
-		font-size: 15px;
 		margin: 10px 40px;
 	}
 
 	ul {
-		font-size: 15px;
 		margin: 10px 40px;
 		list-style: circle;
 	}

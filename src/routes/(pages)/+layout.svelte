@@ -4,6 +4,8 @@
   import Footer from './Footer.svelte';
 </script>
 
+<div class="text-[15px]">
 <Header />
 <slot></slot>
 <Footer />
+</div>

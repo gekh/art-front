@@ -55,7 +55,7 @@
   let show_accounts = false;
 </script>
 
-<div class="selector mb-5 text-[26px] flex flex-col md:flex-row">
+<div class="selector mb-5 px-[52px] text-[26px] flex flex-col md:flex-row">
   <div class="relative mr-8 font-bold text-graphite flex items-center z-10">
     {roles[cur_role]}
     {#if Object.keys(accounts).length > 1}
@@ -74,7 +74,7 @@
       <nav
         use:clickoutside on:clickoutside={() => show_roles = false}
         class="absolute top-8 max-h-0 peer-checked:max-h-60 overflow-y-hidden flex flex-col
-             bg-biruza text-white text-[15px] shadow-2xl trans-all"
+             bg-biruza text-white shadow-2xl trans-all"
       >
         {#each Object.keys(accounts) as role}
           {#if role !== cur_role}
@@ -110,7 +110,7 @@
       </label>
       <nav
         use:clickoutside on:clickoutside={() => show_accounts = false}
-        class="absolute top-8 max-h-0 peer-checked:max-h-96 overflow-y-hidden flex flex-col bg-biruza text-white text-[15px] shadow-2xl trans-all"
+        class="absolute top-8 max-h-0 peer-checked:max-h-96 overflow-y-hidden flex flex-col bg-biruza text-white shadow-2xl trans-all"
       >
         {#each Object.entries(accounts[cur_role]) as [id, label]}
           {#if parseInt(id) !== cur_account}
@@ -130,7 +130,7 @@
   </div>
 </div>
 
-<div class="mb-8">
+<div class="mb-8 px-[52px]">
   <button class="flex items-center text-silvery hover:text-biruza trans-color">
     <img class="h-5 w-5 mr-2" src="images/icons/plus.svg" alt="add role" /> Добавить
   </button>

@@ -14,19 +14,19 @@
   };
 </script>
 
-<div class="flex mb-8">
+<div class="flex mb-8 px-[52px]">
   <div class="flex w-[136px] h-[136px]">
     <img src="images/samples/drummer.jpg" alt="avatar" class="object-cover rounded-full" />
   </div>
   <div class="ml-5">
-    <div class="mb-5 text-[15px] text-silvery">Псебай</div>
+    <div class="mb-5 text-silvery">Псебай</div>
     <h2 class="mb-5 text-[26px] text-graphite font-bold leading-none">Владимир Мягков</h2>
     <div class="flex mb-10">
       {#each Object.entries(socials) as [key, link]}
         <a href="{link}" class="w-5 h-5 mr-5"><img src="{socials_images[key]}" alt="{key}"></a>
       {/each}
     </div>
-    <div class="flex font-bold text-[15px] text-graphite">
+    <div class="flex font-bold text-graphite">
       <div class="w-[60px] flex items-center">
         <img src="images/icons/star.svg" alt="stars" class="w-3 h-3 mr-2" />
         5

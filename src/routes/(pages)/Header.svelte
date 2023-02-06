@@ -77,7 +77,6 @@
 
 	.city {
 		@apply px-5 ml-auto flex items-center;
-		font-size: 15px;
 		height: 52px;
 		color: #494949;
 		background: rgba(255, 255, 255, 0.7);
