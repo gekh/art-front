@@ -34,8 +34,8 @@
   type TAccounts = { [key in Role]: { [key: number]: string } };
   const accounts: TAccounts = {
     [Role.customer]: {
-    	12: 'ООО Увлекательные помидоры',
-    	745: 'ИП Агатова Ж. И.'
+      12: 'ООО Увлекательные помидоры',
+      745: 'ИП Агатова Ж. И.',
     },
     [Role.performer]: {
       21: 'Саксофонист Валера Игнатов',
@@ -55,24 +55,25 @@
   let show_accounts = false;
 </script>
 
-<div class="selector mb-5 px-[5%] text-[26px] flex flex-col md:flex-row">
+<div class="relative z-10 selector mb-5 px-[5%] text-[26px] flex flex-col md:flex-row">
   <div class="relative mr-8 font-bold text-graphite flex items-center z-10">
     {roles[cur_role]}
     {#if Object.keys(accounts).length > 1}
-      <input
-        id="role"
-        type="checkbox"
-        class="peer hidden w-0 h-0"
-        bind:checked={show_roles}
-      />
+      <input id="role" type="checkbox" class="peer hidden w-0 h-0" bind:checked={show_roles} />
       <label
         for="role"
         class="flex items-center justify-center w-10 h-10 -rotate-90 peer-checked:rotate-90 trans-all cursor-pointer"
+        on:click|preventDefault={() => {
+          show_roles = show_roles ? false : true;
+        }}
       >
         <img class="h-5" src="images/icons/left-angle.svg" alt="select role" />
       </label>
       <nav
-        use:clickoutside on:clickoutside={() => show_roles = false}
+        use:clickoutside
+        on:clickoutside={(e) => {
+          show_roles = false;
+        }}
         class="absolute top-8 flex flex-col max-h-0 peer-checked:max-h-60 overflow-y-hidden
              text-[15px] bg-biruza text-white shadow-2xl trans-all"
       >
@@ -107,11 +108,14 @@
       <label
         for="account"
         class="flex items-center justify-center w-10 h-10 -rotate-90 peer-checked:rotate-90 trans-all cursor-pointer"
+        on:click|preventDefault={() => {show_accounts = show_accounts ? false : true}}
+        on:keypress={() => {}}
       >
         <img class="h-5" src="images/icons/left-angle.svg" alt="select role" />
       </label>
       <nav
-        use:clickoutside on:clickoutside={() => show_accounts = false}
+        use:clickoutside
+        on:clickoutside={() => (show_accounts = false)}
         class="absolute top-8 flex flex-col max-h-0 peer-checked:max-h-96 overflow-y-hidden
               text-[15px] bg-biruza text-white shadow-2xl trans-all"
       >
