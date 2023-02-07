@@ -61,6 +61,7 @@
         for="role"
         class="group flex items-center cursor-pointer"
         on:click|preventDefault={() => {
+          show_accounts = false;
           show_roles = show_roles ? false : true;
         }}
         on:keypress={() => {}}
@@ -118,6 +119,7 @@
         for="account"
         class="group flex items-center cursor-pointer"
         on:click|preventDefault={() => {
+          show_roles = false;
           show_accounts = show_accounts ? false : true;
         }}
         on:keypress={() => {}}
