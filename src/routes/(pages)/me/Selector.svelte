@@ -1,18 +1,13 @@
 <script lang="ts">
   import { clickoutside } from '@svelte-put/clickoutside';
+  import { slide } from 'svelte/transition';
+  import { Role } from '../../../enums/Role';
+  import { cur_role } from '../../../stores/role';
+
   // TODO: check if selected account belonges to user
 
   // ROLES
 
-  enum Role {
-    customer = 'customer',
-    performer = 'performer',
-    band = 'band',
-  }
-
-  type TRole = keyof typeof Role;
-
-  let cur_role = Role.performer;
   const roles = {
     [Role.customer]: 'Заказчик',
     [Role.performer]: 'Исполнитель',
@@ -24,13 +19,12 @@
   };
 
   const changeRole = (e: Event) => {
-    cur_role = (e.target as HTMLInputElement).value as Role;
-    cur_account = parseInt(Object.keys(accounts[cur_role])[0]);
+    $cur_role = (e.target as HTMLInputElement).value as Role;
+    cur_account = parseInt(Object.keys(accounts[$cur_role])[0]);
   };
 
   // ACCOUNTS
 
-  let cur_account: number = 21;
   type TAccounts = { [key in Role]: { [key: number]: string } };
   const accounts: TAccounts = {
     [Role.customer]: {
@@ -47,6 +41,8 @@
     },
   };
 
+  let cur_account: number = parseInt(Object.keys(accounts[$cur_role])[0]);
+
   const changeAccount = (e: Event) => {
     cur_account = parseInt((e.target as HTMLInputElement).value);
   };
@@ -57,48 +53,62 @@
 
 <div class="relative z-10 selector mb-5 px-[5%] text-[26px] flex flex-col md:flex-row">
   <div class="relative mr-8 font-bold text-graphite flex items-center z-10">
-    {roles[cur_role]}
-    {#if Object.keys(accounts).length > 1}
+    {#if Object.keys(accounts).length <= 1}
+      {roles[$cur_role]}
+    {:else}
       <input id="role" type="checkbox" class="peer hidden w-0 h-0" bind:checked={show_roles} />
       <label
         for="role"
-        class="flex items-center justify-center w-10 h-10 -rotate-90 peer-checked:rotate-90 trans-all cursor-pointer"
+        class="group flex items-center cursor-pointer"
         on:click|preventDefault={() => {
+          show_accounts = false;
           show_roles = show_roles ? false : true;
         }}
+        on:keypress={() => {}}
       >
-        <img class="h-5" src="images/icons/left-angle.svg" alt="select role" />
+        {roles[$cur_role]}
+
+        <div
+          class="flex items-center justify-center w-10 h-10
+                 -rotate-90 group-peer-checked:rotate-90 trans-all"
+        >
+          <img src="images/icons/left-angle.svg" alt="select role" class="h-5 " />
+        </div>
       </label>
-      <nav
-        use:clickoutside
-        on:clickoutside={(e) => {
-          show_roles = false;
-        }}
-        class="absolute top-8 flex flex-col max-h-0 peer-checked:max-h-60 overflow-y-hidden
+      {#if show_roles}
+        <nav
+          use:clickoutside
+          on:clickoutside={(e) => {
+            show_roles = false;
+          }}
+          transition:slide
+          class="absolute top-8 flex flex-col overflow-y-hidden
              text-[15px] bg-biruza text-white shadow-2xl trans-all"
-      >
-        {#each Object.keys(accounts) as role}
-          {#if role !== cur_role}
-            <button
-              value={role}
-              on:click={changeRole}
-              class="min-h-[52px] max-w-[50vw] px-8
+        >
+          {#each Object.keys(accounts) as role}
+            {#if role !== $cur_role}
+              <button
+                value={role}
+                on:click={changeRole}
+                class="min-h-[52px] max-w-[50vw] px-8
                      flex items-center justify-center
                      font-normal hover:text-graphite trans-color text-center"
-            >
-              {getRoleLabel(role)}
-            </button>
-          {/if}
-        {/each}
-      </nav>
+              >
+                {getRoleLabel(role)}
+              </button>
+            {/if}
+          {/each}
+        </nav>
+      {/if}
     {/if}
   </div>
 
   <div class="relative font-light text-silvery flex items-center">
-    <div class="max-w-[90vw] whitespace-nowrap overflow-hidden overflow-ellipsis">
-      {accounts[cur_role][cur_account]}
-    </div>
-    {#if Object.keys(accounts[cur_role]).length > 1}
+    {#if Object.keys(accounts[$cur_role]).length <= 1}
+      <div class="max-w-[90vw] whitespace-nowrap overflow-hidden overflow-ellipsis">
+        {accounts[$cur_role][cur_account]}
+      </div>
+    {:else}
       <input
         id="account"
         type="checkbox"
@@ -107,32 +117,46 @@
       />
       <label
         for="account"
-        class="flex items-center justify-center w-10 h-10 -rotate-90 peer-checked:rotate-90 trans-all cursor-pointer"
-        on:click|preventDefault={() => {show_accounts = show_accounts ? false : true}}
+        class="group flex items-center cursor-pointer"
+        on:click|preventDefault={() => {
+          show_roles = false;
+          show_accounts = show_accounts ? false : true;
+        }}
         on:keypress={() => {}}
       >
-        <img class="h-5" src="images/icons/left-angle.svg" alt="select role" />
+        <div class="max-w-[90vw] whitespace-nowrap overflow-hidden overflow-ellipsis">
+          {accounts[$cur_role][cur_account]}
+        </div>
+        <div
+          class="group flex items-center justify-center w-10 h-10
+                 -rotate-90 group-peer-checked:rotate-90 trans-all"
+        >
+          <img src="images/icons/left-angle.svg" alt="select role" class="h-5 " />
+        </div>
       </label>
-      <nav
-        use:clickoutside
-        on:clickoutside={() => (show_accounts = false)}
-        class="absolute top-8 flex flex-col max-h-0 peer-checked:max-h-96 overflow-y-hidden
+      {#if show_accounts}
+        <nav
+          transition:slide
+          use:clickoutside
+          on:clickoutside={() => (show_accounts = false)}
+          class="absolute top-8 flex flex-col overflow-y-hidden
               text-[15px] bg-biruza text-white shadow-2xl trans-all"
-      >
-        {#each Object.entries(accounts[cur_role]) as [id, label]}
-          {#if parseInt(id) !== cur_account}
-            <button
-              value={id}
-              on:click={changeAccount}
-              class="min-h-[52px] max-w-[50vw] px-8
+        >
+          {#each Object.entries(accounts[$cur_role]) as [id, label]}
+            {#if parseInt(id) !== cur_account}
+              <button
+                value={id}
+                on:click={changeAccount}
+                class="min-h-[52px] max-w-[50vw] px-8
                    flex items-center justify-center
                    font-normal hover:text-graphite trans-color text-center"
-            >
-              {label}
-            </button>
-          {/if}
-        {/each}
-      </nav>
+              >
+                {label}
+              </button>
+            {/if}
+          {/each}
+        </nav>
+      {/if}
     {/if}
   </div>
 </div>

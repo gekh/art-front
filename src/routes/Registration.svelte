@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
 	export let onClose: any;
 	import { currentUser, pb } from '../pocketbase';
@@ -17,9 +18,8 @@
 	});
 
 	async function login() {
-		const user = await pb.collection('users').authWithPassword(email, password);
-		// name = user.record.name;
-		console.log(user);
+		await pb.collection('users').authWithPassword(email, password);
+		goto('/me');
 	}
 
 	async function signUp() {

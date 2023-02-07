@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
 	export let onClose: any;
 	import { currentUser, pb } from '../pocketbase';
@@ -27,6 +28,7 @@
 			console.log(err.data.message);
 		}
 		isLoading = false;
+		goto('/me');
 	}
 
 	function signOut() {

@@ -66,10 +66,10 @@
 </script>
 
 <div class="mb-[52px]">
-  <ActionBtn>Собрать новое</ActionBtn>
+  <ActionBtn>
+    Добавить
+  </ActionBtn>
 </div>
-
-<h2 class="ml-5 mb-8 text-silvery text-[26px] font-light">Фестиваль Ералаш</h2>
 
 <div class="flex flex-col gap-8 mb-8">
   {#each invites as i (i.id)}
@@ -101,13 +101,6 @@
       </div>
 
       <button
-        class="absolute right-[52px] top-0 flex items-center justify-center w-[52px] h-[52px]
-             bg-biruza hover:bg-pinky trans-color"
-      >
-        <img src="images/icons/pencil.svg" alt="edit" class="w-3 h-3" />
-      </button>
-
-      <button
         class="absolute right-0 top-0 flex items-center justify-center w-[52px] h-[52px]
              bg-biruza hover:bg-pinky trans-color"
         on:click={() => removePerson(i)}
@@ -116,13 +109,4 @@
       </button>
     </div>
   {/each}
-</div>
-
-<div class="flex mb-[52px]">
-  <div class="mr-5">
-    <ActionBtn>Добавить</ActionBtn>
-  </div>
-  <div>
-    <ActionBtn>Подать заявку</ActionBtn>
-  </div>
 </div>
