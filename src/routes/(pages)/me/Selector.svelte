@@ -1,18 +1,12 @@
 <script lang="ts">
   import { clickoutside } from '@svelte-put/clickoutside';
+  import { Role } from '../../../enums/Role';
+  import { cur_role } from '../../../stores/role';
+
   // TODO: check if selected account belonges to user
 
   // ROLES
 
-  enum Role {
-    customer = 'customer',
-    performer = 'performer',
-    band = 'band',
-  }
-
-  type TRole = keyof typeof Role;
-
-  let cur_role = Role.performer;
   const roles = {
     [Role.customer]: 'Заказчик',
     [Role.performer]: 'Исполнитель',
@@ -24,13 +18,13 @@
   };
 
   const changeRole = (e: Event) => {
-    cur_role = (e.target as HTMLInputElement).value as Role;
-    cur_account = parseInt(Object.keys(accounts[cur_role])[0]);
+    $cur_role = (e.target as HTMLInputElement).value as Role;
+    cur_account = parseInt(Object.keys(accounts[$cur_role])[0]);
   };
+
 
   // ACCOUNTS
 
-  let cur_account: number = 21;
   type TAccounts = { [key in Role]: { [key: number]: string } };
   const accounts: TAccounts = {
     [Role.customer]: {
@@ -47,6 +41,8 @@
     },
   };
 
+  let cur_account: number = parseInt(Object.keys(accounts[$cur_role])[0]);
+
   const changeAccount = (e: Event) => {
     cur_account = parseInt((e.target as HTMLInputElement).value);
   };
@@ -57,7 +53,7 @@
 
 <div class="relative z-10 selector mb-5 px-[5%] text-[26px] flex flex-col md:flex-row">
   <div class="relative mr-8 font-bold text-graphite flex items-center z-10">
-    {roles[cur_role]}
+    {roles[$cur_role]}
     {#if Object.keys(accounts).length > 1}
       <input id="role" type="checkbox" class="peer hidden w-0 h-0" bind:checked={show_roles} />
       <label
@@ -78,7 +74,7 @@
              text-[15px] bg-biruza text-white shadow-2xl trans-all"
       >
         {#each Object.keys(accounts) as role}
-          {#if role !== cur_role}
+          {#if role !== $cur_role}
             <button
               value={role}
               on:click={changeRole}
@@ -96,9 +92,9 @@
 
   <div class="relative font-light text-silvery flex items-center">
     <div class="max-w-[90vw] whitespace-nowrap overflow-hidden overflow-ellipsis">
-      {accounts[cur_role][cur_account]}
+      {accounts[$cur_role][cur_account]}
     </div>
-    {#if Object.keys(accounts[cur_role]).length > 1}
+    {#if Object.keys(accounts[$cur_role]).length > 1}
       <input
         id="account"
         type="checkbox"
@@ -108,7 +104,9 @@
       <label
         for="account"
         class="flex items-center justify-center w-10 h-10 -rotate-90 peer-checked:rotate-90 trans-all cursor-pointer"
-        on:click|preventDefault={() => {show_accounts = show_accounts ? false : true}}
+        on:click|preventDefault={() => {
+          show_accounts = show_accounts ? false : true;
+        }}
         on:keypress={() => {}}
       >
         <img class="h-5" src="images/icons/left-angle.svg" alt="select role" />
@@ -119,7 +117,7 @@
         class="absolute top-8 flex flex-col max-h-0 peer-checked:max-h-96 overflow-y-hidden
               text-[15px] bg-biruza text-white shadow-2xl trans-all"
       >
-        {#each Object.entries(accounts[cur_role]) as [id, label]}
+        {#each Object.entries(accounts[$cur_role]) as [id, label]}
           {#if parseInt(id) !== cur_account}
             <button
               value={id}
