@@ -3,7 +3,7 @@
 
   let invites = [
     {
-      id: "1",
+      id: '1',
       pic: 'images/samples/woman.jpg',
       city: 'New York',
       name: 'ИП Агатова Ж. И.',
@@ -14,7 +14,7 @@
       },
     },
     {
-      id: "2",
+      id: '2',
       pic: 'images/samples/vocalist.jpg',
       city: 'Осло',
       name: 'Вокалист Анна Кйолкоген',
@@ -25,7 +25,7 @@
       },
     },
     {
-      id: "3",
+      id: '3',
       pic: 'images/samples/tomato.jpg',
       city: 'Санкт-Петербург',
       name: 'ООО Увлекательные помидоры одиннадцатиклассницы',
@@ -36,7 +36,7 @@
       },
     },
     {
-      id: "4",
+      id: '4',
       pic: 'images/samples/sax.jpg',
       city: 'Париж',
       name: 'Саксофонист Валера Игнатов',
@@ -47,7 +47,7 @@
       },
     },
     {
-      id: "5",
+      id: '5',
       pic: 'images/samples/band.jpg',
       city: 'Токио',
       name: 'Бороды и ветви',
@@ -101,13 +101,15 @@
       </div>
 
       <button
-        class="absolute right-[52px] top-0 flex items-center justify-center w-[52px] h-[52px] bg-biruza hover:bg-pinky trans-color"
+        class="absolute right-[52px] top-0 flex items-center justify-center w-[52px] h-[52px]
+             bg-biruza hover:bg-pinky trans-color"
       >
         <img src="images/icons/pencil.svg" alt="edit" class="w-3 h-3" />
       </button>
-ID: {i.id}
+
       <button
-        class="absolute right-0 top-0 flex items-center justify-center w-[52px] h-[52px] bg-biruza hover:bg-pinky trans-color"
+        class="absolute right-0 top-0 flex items-center justify-center w-[52px] h-[52px]
+             bg-biruza hover:bg-pinky trans-color"
         on:click={() => removePerson(i)}
       >
         <img src="images/icons/plus-white.svg" alt="delete" class="w-6 h-6 rotate-45" />
