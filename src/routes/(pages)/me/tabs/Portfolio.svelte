@@ -41,7 +41,6 @@
             src="https://www.youtube.com/embed/18-Ye2L3ej8?rel=0&amp;controls=1&amp;autoplay=0&amp;mute=0&amp;start=0"
             style="position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:auto"
             allow="autoplay; encrypted-media"
-            allowfullscreen=""
             title=""
             frameborder="0"
           />
