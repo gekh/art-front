@@ -55,7 +55,7 @@
   let show_accounts = false;
 </script>
 
-<div class="selector mb-5 px-[52px] text-[26px] flex flex-col md:flex-row">
+<div class="selector mb-5 px-[5%] text-[26px] flex flex-col md:flex-row">
   <div class="relative mr-8 font-bold text-graphite flex items-center z-10">
     {roles[cur_role]}
     {#if Object.keys(accounts).length > 1}
@@ -133,7 +133,7 @@
   </div>
 </div>
 
-<div class="mb-8 px-[52px]">
+<div class="mb-8 px-[5%]">
   <button class="flex items-center text-silvery hover:text-biruza trans-color">
     <img class="h-5 w-5 mr-2" src="images/icons/plus.svg" alt="add role" /> Добавить
   </button>

@@ -74,17 +74,12 @@
 <div class="flex gap-4 flex-wrap justify-center md:justify-start">
   {#each reviews as r}
     <div class="relative px-5 py-10 w-[320px] bg-white">
-      <div class="flex mb-[52px]">
+      <div class="flex mb-5">
         <div class="flex-[0_0_84px] flex w-[84px] h-[84px]">
           <img src={r.pic} alt="avatar" class="w-full h-full object-cover rounded-full" />
         </div>
         <div class="ml-5">
           <div class="mb-5 text-silvery">{r.city}</div>
-          <h2
-            class="block min-h-[48px] mb-5 text-[20px] leading-6 text-graphite font-bold break-all overflow-hidden"
-          >
-            {r.name}
-          </h2>
           <div class="flex font-bold text-graphite">
             <div class="w-[50px] flex items-center">
               <img src="images/icons/star.svg" alt="stars" class="w-3 h-3 mr-2" />
@@ -101,6 +96,12 @@
           </div>
         </div>
       </div>
+
+      <h2
+        class="block mb-5 text-[20px] leading-6 text-graphite font-bold break-all overflow-hidden"
+      >
+        {r.name}
+      </h2>
 
       <p class="">{r.text}</p>
     </div>

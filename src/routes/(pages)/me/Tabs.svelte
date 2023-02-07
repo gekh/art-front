@@ -23,7 +23,7 @@
   ];
 </script>
 
-<div class="flex flex-wrap px-[52px] text-graphite font-bold">
+<div class="flex flex-wrap px-[5%] text-graphite font-bold">
   {#each tabs as tab}
     <button
       value={tab.key}
@@ -37,7 +37,7 @@
   {/each}
 </div>
 
-<div class="py-[84px] px-[52px] bg-cloudy">
+<div class="py-[84px] px-[5%] bg-cloudy">
   {#if cur_tab === 'info'}
     <Info />
   {:else if cur_tab === 'reviews'}
