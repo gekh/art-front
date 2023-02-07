@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { fade, blur, fly, slide, scale, draw, crossfade } from 'svelte/transition';
   import { Role } from '../../../enums/Role';
   import { cur_role } from '../../../stores/role';
   import Archive from './tabs/Archive.svelte';
@@ -14,6 +15,9 @@
   import Reviews from './tabs/Reviews.svelte';
 
   let cur_tab = 'info';
+  $: if ($cur_role) {
+    cur_tab = 'info';
+  }
   const changeTab = (e: Event) => {
     cur_tab = (e.target as HTMLInputElement).value;
   };
@@ -70,32 +74,64 @@
     </button>
   {/each}
 </div>
-
+<!--
+fade
+blur
+fly
+slide
+scale
+draw
+crossfade
+-->
 <div class="py-[84px] px-[5%] bg-cloudy">
   {#if cur_tab === 'info'}
-    <Info />
+    <div transition:fly>
+      <Info />
+    </div>
   {:else if cur_tab === 'reviews'}
-    <Reviews />
+    <div transition:fly>
+      <Reviews />
+    </div>
   {:else if cur_tab == 'reports'}
-    <Reports />
+    <div in:fade out:fade>
+      <Reports />
+    </div>
   {:else if cur_tab == 'exchange'}
-    <Invites />
+    <div in:fade out:fade>
+      <Invites />
+    </div>
   {:else if cur_tab == 'events'}
-    <Events />
+    <div in:fade out:fade>
+      <Events />
+    </div>
   {:else if cur_tab == 'archive'}
-    <Archive />
+    <div in:fade out:fade>
+      <Archive />
+    </div>
   {:else if cur_tab === 'portfolio'}
-    <Portfolio />
+    <div in:fade out:fade>
+      <Portfolio />
+    </div>
   {:else if cur_tab === 'invites'}
-    <Invites />
+    <div in:fade out:fade>
+      <Invites />
+    </div>
   {:else if cur_tab === 'docs'}
-    <Docs />
+    <div in:fade out:fade>
+      <Docs />
+    </div>
   {:else if cur_tab === 'general'}
-    <General />
+    <div in:fade out:fade>
+      <General />
+    </div>
   {:else if cur_tab === 'participants'}
-    <Participants />
+    <div in:fade out:fade>
+      <Participants />
+    </div>
   {:else if cur_tab === 'donation'}
-    <Donation />
+    <div in:fade out:fade>
+      <Donation />
+    </div>
   {/if}
 </div>
 
