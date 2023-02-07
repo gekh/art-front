@@ -133,7 +133,7 @@
     position: relative;
   }
   button:after {
-    @apply absolute left-0 -bottom-1 w-0 h-1 content-[''] bg-biruza trans-all;
+    @apply absolute left-0 -bottom-1 w-0 h-1 content-[''] bg-biruza transition-all duration-200;
   }
   button:hover:after {
     @apply w-full;
