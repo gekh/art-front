@@ -2,7 +2,7 @@
 	export let is_menu_button_clicked: boolean;
 </script>
 
-<div class="menu z-20 {is_menu_button_clicked ? 'active' : ''}">
+<div class="fixed top-0 left-0 menu z-20 {is_menu_button_clicked ? 'active' : ''}">
 	<a href="#/">Главная</a>
 	<a href="#/">Топ</a>
 	<a href="#/">Исполнители и группы</a>
@@ -17,10 +17,15 @@
 
 <style lang="postcss">
 	.menu {
-		@apply absolute left-0 top-0 bg-black text-white;
+		@apply bg-black text-white;
 		@apply h-screen w-1/3 flex flex-col justify-center items-center overflow-x-auto;
 		transform: translate3d(-100%, 0px, 0px);
 		transition: all 0.3s ease-in;
+	}
+
+	.menu.active {
+		transform: translate3d(0%, 0px, 0px);
+		transition: all 0.6s ease-out;
 	}
 
 	@media (max-width: 800px) {
@@ -35,10 +40,6 @@
 		}
 	}
 
-	.menu.active {
-		transform: translate3d(0%, 0px, 0px);
-		transition: all 0.6s ease-out;
-	}
 
 	.menu > a {
 		@apply text-white mb-8 font-bold;
