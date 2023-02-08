@@ -9,8 +9,10 @@
 		show_registration = true;
 	}
 
-  function hideRegistration(event: Event) {
-    event.preventDefault();
+  function hideRegistration(event?: Event) {
+    if (event) {
+			event.preventDefault();
+		}
     enableScroll();
 		show_registration = false;
   }
@@ -22,8 +24,10 @@
 		show_login = true;
 	}
 
-	function hideLogin(event: Event) {
-    event.preventDefault();
+	function hideLogin(event?: Event) {
+		if (event) {
+			event.preventDefault();
+		}
     enableScroll();
 		show_login = false;
   }

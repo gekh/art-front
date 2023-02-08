@@ -74,62 +74,54 @@
     </button>
   {/each}
 </div>
-<!--
-fade
-blur
-fly
-slide
-scale
-draw
-crossfade
--->
+
 <div class="py-[84px] px-[5%] bg-cloudy">
   {#if cur_tab === 'info'}
-    <div transition:fly>
+    <div transition:fade={{ duration: 200 }}>
       <Info />
     </div>
   {:else if cur_tab === 'reviews'}
-    <div transition:fly>
+    <div transition:fade={{ duration: 200 }}>
       <Reviews />
     </div>
   {:else if cur_tab == 'reports'}
-    <div in:fade out:fade>
+    <div transition:fade={{ duration: 200 }}>
       <Reports />
     </div>
   {:else if cur_tab == 'exchange'}
-    <div in:fade out:fade>
+    <div transition:fade={{ duration: 200 }}>
       <Invites />
     </div>
   {:else if cur_tab == 'events'}
-    <div in:fade out:fade>
+    <div transition:fade={{ duration: 200 }}>
       <Events />
     </div>
   {:else if cur_tab == 'archive'}
-    <div in:fade out:fade>
+    <div transition:fade={{ duration: 200 }}>
       <Archive />
     </div>
   {:else if cur_tab === 'portfolio'}
-    <div in:fade out:fade>
+    <div transition:fade={{ duration: 200 }}>
       <Portfolio />
     </div>
   {:else if cur_tab === 'invites'}
-    <div in:fade out:fade>
+    <div transition:fade={{ duration: 200 }}>
       <Invites />
     </div>
   {:else if cur_tab === 'docs'}
-    <div in:fade out:fade>
+    <div transition:fade={{ duration: 200 }}>
       <Docs />
     </div>
   {:else if cur_tab === 'general'}
-    <div in:fade out:fade>
+    <div transition:fade={{ duration: 200 }}>
       <General />
     </div>
   {:else if cur_tab === 'participants'}
-    <div in:fade out:fade>
+    <div transition:fade={{ duration: 200 }}>
       <Participants />
     </div>
   {:else if cur_tab === 'donation'}
-    <div in:fade out:fade>
+    <div transition:fade={{ duration: 200 }}>
       <Donation />
     </div>
   {/if}
@@ -141,7 +133,7 @@ crossfade
     position: relative;
   }
   button:after {
-    @apply absolute left-0 -bottom-1 w-0 h-1 content-[''] bg-biruza trans-all;
+    @apply absolute left-0 -bottom-1 w-0 h-1 content-[''] bg-biruza transition-all duration-200;
   }
   button:hover:after {
     @apply w-full;
