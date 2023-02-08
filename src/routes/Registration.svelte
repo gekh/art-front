@@ -19,7 +19,8 @@
 
 	async function login() {
 		await pb.collection('users').authWithPassword(email, password);
-		goto('/me');
+		onClose.call();
+    goto('/me');
 	}
 
 	async function signUp() {
