@@ -37,7 +37,7 @@
 <div class="flex flex-wrap gap-8">
   {#each docs as d}
     <div class="relative flex items-center justify-center w-[300px] h-[300px] bg-white">
-      <span>{d.file}</span>
+      <span class="font-bold underline">{d.file}</span>
       <button
         class="absolute right-0 top-0 flex items-center justify-center w-[52px] h-[52px]
              bg-biruza hover:bg-pinky trans-color"
