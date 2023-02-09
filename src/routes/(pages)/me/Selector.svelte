@@ -90,7 +90,7 @@
               <button
                 value={role}
                 on:click={changeRole}
-                class="min-h-[52px] max-w-[50vw] px-8
+                class="max-w-[50vw] px-8 py-[14.75px]
                      flex items-center justify-center
                      font-normal hover:text-graphite trans-color text-center"
               >
@@ -105,7 +105,7 @@
 
   <div class="relative font-light text-silvery flex items-center">
     {#if Object.keys(accounts[$cur_role]).length <= 1}
-      <div class="max-w-[80vw] whitespace-nowrap overflow-hidden overflow-ellipsis">
+      <div class="max-w-[75vw] whitespace-nowrap overflow-hidden overflow-ellipsis">
         {accounts[$cur_role][cur_account]}
       </div>
     {:else}
@@ -124,7 +124,7 @@
         }}
         on:keypress={() => {}}
       >
-        <div class="max-w-[90vw] whitespace-nowrap overflow-hidden overflow-ellipsis">
+        <div class="max-w-[75vw] whitespace-nowrap overflow-hidden overflow-ellipsis">
           {accounts[$cur_role][cur_account]}
         </div>
         <div
@@ -147,7 +147,7 @@
               <button
                 value={id}
                 on:click={changeAccount}
-                class="min-h-[52px] max-w-[50vw] px-8
+                class="max-w-[80vw] px-8 py-[14.75px]
                    flex items-center justify-center
                    font-normal hover:text-graphite trans-color text-center"
               >
