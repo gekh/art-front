@@ -1,5 +1,7 @@
 <script lang="ts">
   import { getContext } from 'svelte';
+  import { roles} from '../../../stores/role';
+
   const { close }: any = getContext('simple-modal');
 
   import EnterPersonalInfo from './new-account-steps/EnterPersonalInfo.svelte';
@@ -10,6 +12,8 @@
 
   const save = () => {
     console.log(data);
+
+    $roles[data['role']][123] = data['name'];
 
   };
 </script>

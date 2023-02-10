@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { cur_role_type, cur_role, roles} from '../../../stores/role';
+
   const socials = {
     vk: 'https://vk.com',
     fb: 'https://fb.com',
@@ -20,7 +22,7 @@
   </div>
   <div class="ml-5">
     <div class="mb-5 text-silvery">Псебай</div>
-    <h2 class="mb-5 text-[26px] font-bold leading-none hidden md:block">Барабанщик Людовиг Бахмучев</h2>
+    <h2 class="mb-5 text-[26px] font-bold leading-none hidden md:block">{$roles[$cur_role_type][$cur_role]}</h2>
     <div class="flex mb-10">
       {#each Object.entries(socials) as [key, link]}
         <a href="{link}" class="w-5 h-5 mr-5"><img src="{socials_images[key]}" alt="{key}"></a>
@@ -42,4 +44,4 @@
     </div>
   </div>
 </div>
-<h2 class="mb-[52px] px-[5%] text-[26px] font-bold leading-[32px] md:hidden">Барабанщик Людовиг Бахмучев</h2>
+<h2 class="mb-[52px] px-[5%] text-[26px] font-bold leading-[32px] md:hidden">{$roles[$cur_role_type][$cur_role]}</h2>

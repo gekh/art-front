@@ -5,7 +5,7 @@
   import { clickoutside } from '@svelte-put/clickoutside';
   import { fly, slide } from 'svelte/transition';
   import type { RoleType } from '../../../enums/RoleType';
-  import { cur_role_type, roles, role_types} from '../../../stores/role';
+  import { cur_role_type, cur_role, roles, role_types} from '../../../stores/role';
 
   import { getContext } from 'svelte';
   import ModalNewAccount from './ModalNewAccount.svelte';
@@ -32,15 +32,17 @@
 
   const changeRoleType = (e: Event) => {
     $cur_role_type = (e.target as HTMLInputElement).value as RoleType;
-    cur_role = parseInt(Object.keys($roles[$cur_role_type])[0]);
+    $cur_role = parseInt(Object.keys($roles[$cur_role_type])[0]);
   };
 
   // ROLES
 
-  let cur_role: number = parseInt(Object.keys($roles[$cur_role_type])[0]);
+  if ($cur_role === 0) {
+    $cur_role = parseInt(Object.keys($roles[$cur_role_type])[0]);
+  }
 
   const changeRole = (e: Event) => {
-    cur_role = parseInt((e.target as HTMLInputElement).value);
+    $cur_role = parseInt((e.target as HTMLInputElement).value);
   };
 
   let show_role_types = false;
@@ -102,7 +104,7 @@
   <div class="relative font-light text-silvery flex items-center">
     {#if Object.keys($roles[$cur_role_type]).length <= 1}
       <div class="max-w-[75vw] whitespace-nowrap overflow-hidden overflow-ellipsis">
-        {$roles[$cur_role_type][cur_role]}
+        {$roles[$cur_role_type][$cur_role]}
       </div>
     {:else}
       <input
@@ -121,7 +123,7 @@
         on:keypress={() => {}}
       >
         <div class="max-w-[75vw] whitespace-nowrap overflow-hidden overflow-ellipsis">
-          {$roles[$cur_role_type][cur_role]}
+          {$roles[$cur_role_type][$cur_role]}
         </div>
         <div
           class="group flex items-center justify-center w-10 h-10
@@ -139,7 +141,7 @@
               text-[15px] bg-biruza text-white shadow-2xl trans-all"
         >
           {#each Object.entries($roles[$cur_role_type]) as [id, label]}
-            {#if parseInt(id) !== cur_role}
+            {#if parseInt(id) !== $cur_role}
               <button
                 value={id}
                 on:click={changeRole}
