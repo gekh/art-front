@@ -3,8 +3,8 @@
   import ActionBtn from '../../../../components/ActionBtn.svelte';
   const dispatch = createEventDispatcher();
 
-  const formSubmit = (e) => {
-    const formData = new FormData(e.target)
+  const formSubmit = (e: Event) => {
+    const formData = new FormData(e.target as HTMLFormElement)
 		const json = Object.fromEntries(formData.entries());
     dispatch('next', json);
   };

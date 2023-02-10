@@ -4,8 +4,8 @@
 
   import { clickoutside } from '@svelte-put/clickoutside';
   import { fly, slide } from 'svelte/transition';
-  import { Role } from '../../../enums/Role';
-  import { cur_role } from '../../../stores/role';
+  import { RoleType } from '../../../enums/RoleType';
+  import { cur_role_type, roles} from '../../../stores/role';
 
   import { getContext } from 'svelte';
   import ModalNewAccount from './ModalNewAccount.svelte';
@@ -24,67 +24,51 @@
     );
 
 
+  // ROLE TYPES
+
+  const role_types = {
+    [RoleType.customer]: 'Заказчик',
+    [RoleType.performer]: 'Исполнитель',
+    [RoleType.band]: 'Группа',
+  };
+
+  const getRoleTypeLabel = (role: string): string => {
+    return role_types[role as RoleType];
+  };
+
+  const changeRoleType = (e: Event) => {
+    $cur_role_type = (e.target as HTMLInputElement).value as RoleType;
+    cur_role = parseInt(Object.keys($roles[$cur_role_type])[0]);
+  };
+
   // ROLES
 
-  const roles = {
-    [Role.customer]: 'Заказчик',
-    [Role.performer]: 'Исполнитель',
-    [Role.band]: 'Группа',
-  };
-
-  const getRoleLabel = (role: string): string => {
-    return roles[role as Role];
-  };
+  let cur_role: number = parseInt(Object.keys($roles[$cur_role_type])[0]);
 
   const changeRole = (e: Event) => {
-    $cur_role = (e.target as HTMLInputElement).value as Role;
-    cur_account = parseInt(Object.keys(accounts[$cur_role])[0]);
+    cur_role = parseInt((e.target as HTMLInputElement).value);
   };
 
-  // ACCOUNTS
-
-  type TAccounts = { [key in Role]: { [key: number]: string } };
-  const accounts: TAccounts = {
-    [Role.customer]: {
-      12: 'ООО Увлекательные помидоры',
-      745: 'ИП Агатова Ж. И.',
-    },
-    [Role.performer]: {
-      21: 'Саксофонист Валера Игнатов',
-      213: 'Барабанщик Людовиг Бахмучев',
-      1423: 'Вокалист Анна Кйолкоген',
-    },
-    [Role.band]: {
-      125: 'Бороды и ветви',
-    },
-  };
-
-  let cur_account: number = parseInt(Object.keys(accounts[$cur_role])[0]);
-
-  const changeAccount = (e: Event) => {
-    cur_account = parseInt((e.target as HTMLInputElement).value);
-  };
-
+  let show_role_types = false;
   let show_roles = false;
-  let show_accounts = false;
 </script>
 
 <div class="relative z-10 selector mb-5 px-[5%] text-[26px] flex flex-col md:flex-row">
   <div class="relative mr-8 font-bold flex items-center z-10">
-    {#if Object.keys(accounts).length <= 1}
-      {roles[$cur_role]}
+    {#if Object.keys($roles).length <= 1}
+      {role_types[$cur_role_type]}
     {:else}
-      <input id="role" type="checkbox" class="peer hidden w-0 h-0" bind:checked={show_roles} />
+      <input id="role" type="checkbox" class="peer hidden w-0 h-0" bind:checked={show_role_types} />
       <label
         for="role"
         class="group flex items-center cursor-pointer"
         on:click|preventDefault={() => {
-          show_accounts = false;
-          show_roles = show_roles ? false : true;
+          show_roles = false;
+          show_role_types = show_role_types ? false : true;
         }}
         on:keypress={() => {}}
       >
-        {roles[$cur_role]}
+        {role_types[$cur_role_type]}
 
         <div
           class="flex items-center justify-center w-10 h-10
@@ -93,26 +77,26 @@
           <img src="images/icons/left-angle.svg" alt="select role" class="h-5 " />
         </div>
       </label>
-      {#if show_roles}
+      {#if show_role_types}
         <nav
           use:clickoutside
           on:clickoutside={(e) => {
-            show_roles = false;
+            show_role_types = false;
           }}
           transition:slide
           class="absolute top-8 flex flex-col overflow-y-hidden
              text-[15px] bg-biruza text-white shadow-2xl trans-all"
         >
-          {#each Object.keys(accounts) as role}
-            {#if role !== $cur_role}
+          {#each Object.keys($roles) as role}
+            {#if role !== $cur_role_type}
               <button
                 value={role}
-                on:click={changeRole}
+                on:click={changeRoleType}
                 class="max-w-[50vw] px-8 py-[14.75px]
                      flex items-center justify-center
                      font-normal hover:text-graphite trans-color text-center"
               >
-                {getRoleLabel(role)}
+                {getRoleTypeLabel(role)}
               </button>
             {/if}
           {/each}
@@ -122,28 +106,28 @@
   </div>
 
   <div class="relative font-light text-silvery flex items-center">
-    {#if Object.keys(accounts[$cur_role]).length <= 1}
+    {#if Object.keys($roles[$cur_role_type]).length <= 1}
       <div class="max-w-[75vw] whitespace-nowrap overflow-hidden overflow-ellipsis">
-        {accounts[$cur_role][cur_account]}
+        {$roles[$cur_role_type][cur_role]}
       </div>
     {:else}
       <input
         id="account"
         type="checkbox"
         class="peer hidden w-0 h-0"
-        bind:checked={show_accounts}
+        bind:checked={show_roles}
       />
       <label
         for="account"
         class="group flex items-center cursor-pointer"
         on:click|preventDefault={() => {
-          show_roles = false;
-          show_accounts = show_accounts ? false : true;
+          show_role_types = false;
+          show_roles = show_roles ? false : true;
         }}
         on:keypress={() => {}}
       >
         <div class="max-w-[75vw] whitespace-nowrap overflow-hidden overflow-ellipsis">
-          {accounts[$cur_role][cur_account]}
+          {$roles[$cur_role_type][cur_role]}
         </div>
         <div
           class="group flex items-center justify-center w-10 h-10
@@ -152,19 +136,19 @@
           <img src="images/icons/left-angle.svg" alt="select role" class="h-5 " />
         </div>
       </label>
-      {#if show_accounts}
+      {#if show_roles}
         <nav
           transition:slide
           use:clickoutside
-          on:clickoutside={() => (show_accounts = false)}
+          on:clickoutside={() => (show_roles = false)}
           class="absolute top-8 flex flex-col overflow-y-hidden
               text-[15px] bg-biruza text-white shadow-2xl trans-all"
         >
-          {#each Object.entries(accounts[$cur_role]) as [id, label]}
-            {#if parseInt(id) !== cur_account}
+          {#each Object.entries($roles[$cur_role_type]) as [id, label]}
+            {#if parseInt(id) !== cur_role}
               <button
                 value={id}
-                on:click={changeAccount}
+                on:click={changeRole}
                 class="max-w-[80vw] px-8 py-[14.75px]
                    flex items-center justify-center
                    font-normal hover:text-graphite trans-color text-center"

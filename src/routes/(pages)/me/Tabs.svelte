@@ -1,7 +1,7 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
-  import { Role } from '../../../enums/Role';
-  import { cur_role } from '../../../stores/role';
+  import { RoleType } from '../../../enums/RoleType';
+  import { cur_role_type } from '../../../stores/role';
   import Archive from './tabs/Archive.svelte';
   import Docs from './tabs/Docs.svelte';
   import Donation from './tabs/Donation.svelte';
@@ -15,7 +15,7 @@
   import Reviews from './tabs/Reviews.svelte';
 
   let cur_tab = 'info';
-  $: if ($cur_role) {
+  $: if ($cur_role_type) {
     cur_tab = 'info';
   }
   const changeTab = (e: Event) => {
@@ -23,7 +23,7 @@
   };
 
   let tabs = [{ key: 'info', title: 'Информация' }];
-  $: if ($cur_role == Role.performer) {
+  $: if ($cur_role_type == RoleType.performer) {
     tabs = [
       { key: 'info', title: 'Информация' },
       { key: 'reviews', title: 'Отзывы' },
@@ -33,7 +33,7 @@
       { key: 'general', title: 'Общие данные' },
       { key: 'donation', title: 'Донат' },
     ];
-  } else if ($cur_role == Role.band) {
+  } else if ($cur_role_type == RoleType.band) {
     tabs = [
       { key: 'info', title: 'Информация' },
       { key: 'reviews', title: 'Отзывы' },
