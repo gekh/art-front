@@ -12,7 +12,7 @@
     >
       <div class="max-w-[250px] order-2 md:order-1">
         <h2 class="mb-8 text-silvery text-[26px] font-light">Описание</h2>
-        <h3 class="mb-4 text-graphite text-[20px] font-bold">Фестиваль Ералаш</h3>
+        <h3 class="mb-4 text-[20px] font-bold">Фестиваль Ералаш</h3>
         <div>
           С 9 по 11 октября в Самаре проходил отборочный тур Всероссийского конкурса юных талантов
           «Ералаш». В фестивале приняли участие более 200 детей из разных городов России. Самарскую

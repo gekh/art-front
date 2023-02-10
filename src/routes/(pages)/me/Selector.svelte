@@ -1,10 +1,28 @@
 <script lang="ts">
+
+  // TODO: check if selected account belonges to user
+
   import { clickoutside } from '@svelte-put/clickoutside';
-  import { slide } from 'svelte/transition';
+  import { fly, slide } from 'svelte/transition';
   import { Role } from '../../../enums/Role';
   import { cur_role } from '../../../stores/role';
 
-  // TODO: check if selected account belonges to user
+  import { getContext } from 'svelte';
+  import ModalNewAccount from './ModalNewAccount.svelte';
+  const { open }: any = getContext('simple-modal');
+  const showModalNewAccount = () =>
+    open(
+      ModalNewAccount,
+      {},
+      {
+        transitionWindow: fly,
+        transitionWindowProps: {
+          y: -100,
+          duration: 1000,
+        },
+      },
+    );
+
 
   // ROLES
 
@@ -52,7 +70,7 @@
 </script>
 
 <div class="relative z-10 selector mb-5 px-[5%] text-[26px] flex flex-col md:flex-row">
-  <div class="relative mr-8 font-bold text-graphite flex items-center z-10">
+  <div class="relative mr-8 font-bold flex items-center z-10">
     {#if Object.keys(accounts).length <= 1}
       {roles[$cur_role]}
     {:else}
@@ -162,7 +180,10 @@
 </div>
 
 <div class="mb-8 px-[5%]">
-  <button class="flex items-center text-silvery hover:text-biruza trans-color">
+  <button
+    class="flex items-center text-silvery hover:text-biruza trans-color"
+    on:click={showModalNewAccount}
+  >
     <img class="h-5 w-5 mr-2" src="images/icons/plus.svg" alt="add role" /> Добавить
   </button>
 </div>

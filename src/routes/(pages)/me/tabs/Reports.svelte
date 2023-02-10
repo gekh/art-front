@@ -12,7 +12,7 @@
 <div class="relative grid grid-cols-1 lg:grid-cols-3 gap-8 py-[52px] px-5 mb-8 bg-white">
   <div>
     <h2 class="mb-8 text-silvery text-[26px] font-light">23.09.2019</h2>
-    <h3 class="mb-8 text-graphite text-[26px] font-bold">Певец в кафе</h3>
+    <h3 class="mb-8 text-[26px] font-bold">Певец в кафе</h3>
     <div class="text">
       Певец в кафе-баре "Айсберг", и в тот момент, когда он выходил на сцену, у него вдруг пропало
       дыхание. И так три раза подряд. В итоге он не смог спеть ни одной песни. По словам очевидцев,

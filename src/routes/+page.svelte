@@ -46,6 +46,7 @@
     document.body.style.top = `-${scrollY}px`;
     document.body.style.overflow = 'hidden';
     document.body.style.width = '100%';
+		document.body.style.paddingRight = '15px';
   };
 
   const enableScroll = () => {
@@ -53,6 +54,7 @@
     document.body.style.top = '';
     document.body.style.overflow = prevBodyOverflow || '';
     document.body.style.width = prevBodyWidth || '';
+		document.body.style.paddingRight = '';
     window.scrollTo(0, scrollY);
   };
 </script>

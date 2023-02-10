@@ -1,14 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-html, body {
-	font-family: 'Open Sans', sans-serif;
-	/* color: #fff; */
-	font-size: 16px; /* don't change, it's for tailwind.css and rem-based sizes. Should be exaxctly 16px.*/
-	/* letter-spacing: 1px; */
-}
-
 @layer utilities {
 	.trans-all {
 		transition: all 500ms ease;
@@ -23,6 +15,13 @@ html, body {
 	.trans-trans {
 		transition: transform 500ms ease;
 	}
+}
+
+html, body {
+	font-family: 'Open Sans', sans-serif;
+	/* color: #fff; */
+	font-size: 16px; /* don't change, it's for tailwind.css and rem-based sizes. Should be exaxctly 16px.*/
+	/* letter-spacing: 1px; */
 }
 
 * {

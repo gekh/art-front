@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { fade, blur, fly, slide, scale, draw, crossfade } from 'svelte/transition';
+  import { fade } from 'svelte/transition';
   import { Role } from '../../../enums/Role';
   import { cur_role } from '../../../stores/role';
   import Archive from './tabs/Archive.svelte';
@@ -61,7 +61,7 @@
   }
 </script>
 
-<div class="flex flex-wrap px-[5%] text-graphite font-bold">
+<div class="flex flex-wrap px-[5%] font-bold">
   {#each tabs as tab}
     <button
       value={tab.key}

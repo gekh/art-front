@@ -80,7 +80,7 @@
         </div>
         <div class="ml-5">
           <div class="mb-5 text-silvery">{r.city}</div>
-          <div class="flex font-bold text-graphite">
+          <div class="flex font-bold">
             <div class="w-[50px] flex items-center">
               <img src="images/icons/star.svg" alt="stars" class="w-3 h-3 mr-2" />
               {r.stat.stars}
@@ -98,7 +98,7 @@
       </div>
 
       <h2
-        class="block mb-5 text-[20px] leading-6 text-graphite font-bold break-all overflow-hidden"
+        class="block mb-5 text-[20px] leading-6 font-bold break-all overflow-hidden"
       >
         {r.name}
       </h2>
