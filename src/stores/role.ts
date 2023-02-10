@@ -9,6 +9,8 @@ export const role_types = {
   [RoleType.band]: 'Группа',
 };
 
+type TRoles = { [key in RoleType]: { [key: number]: string } };
+
 export const roles = writable({
   [RoleType.customer]: {
     12: 'ООО Увлекательные помидоры @@@',
@@ -22,4 +24,4 @@ export const roles = writable({
   [RoleType.band]: {
     125: 'Бороды и ветви',
   },
-});
+} as TRoles);

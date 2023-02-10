@@ -4,8 +4,8 @@
 
   import { clickoutside } from '@svelte-put/clickoutside';
   import { fly, slide } from 'svelte/transition';
-  import { RoleType } from '../../../enums/RoleType';
-  import { cur_role_type, roles} from '../../../stores/role';
+  import type { RoleType } from '../../../enums/RoleType';
+  import { cur_role_type, roles, role_types} from '../../../stores/role';
 
   import { getContext } from 'svelte';
   import ModalNewAccount from './ModalNewAccount.svelte';
@@ -25,12 +25,6 @@
 
 
   // ROLE TYPES
-
-  const role_types = {
-    [RoleType.customer]: 'Заказчик',
-    [RoleType.performer]: 'Исполнитель',
-    [RoleType.band]: 'Группа',
-  };
 
   const getRoleTypeLabel = (role: string): string => {
     return role_types[role as RoleType];
