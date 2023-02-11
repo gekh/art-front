@@ -26,7 +26,7 @@
       errors = ['Неверный логин или пароль.'];
     }
     isLoading = false;
-		onClose.call();
+    onClose.call();
     goto('/me');
   }
 

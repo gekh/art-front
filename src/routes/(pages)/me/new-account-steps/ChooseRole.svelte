@@ -2,10 +2,10 @@
   import ActionBtn from '../../../../components/ActionBtn.svelte';
   import { createEventDispatcher } from 'svelte';
 
-	const dispatch = createEventDispatcher();
+  const dispatch = createEventDispatcher();
 
   const setRole = (role_type: string) => {
-  	dispatch('next', {role_type});
+    dispatch('next', { role_type });
   };
 </script>
 

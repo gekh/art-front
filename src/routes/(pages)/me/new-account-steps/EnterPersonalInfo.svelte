@@ -1,11 +1,12 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
   import ActionBtn from '../../../../components/ActionBtn.svelte';
+
   const dispatch = createEventDispatcher();
 
   const formSubmit = (e: Event) => {
-    const formData = new FormData(e.target as HTMLFormElement)
-		const json = Object.fromEntries(formData.entries());
+    const formData = new FormData(e.target as HTMLFormElement);
+    const json = Object.fromEntries(formData.entries());
     dispatch('next', json);
   };
 </script>
