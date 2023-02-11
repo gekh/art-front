@@ -60,7 +60,6 @@
   ];
 
   const removePerson = (item) => {
-    console.log(item);
     invites = invites.filter((el) => el.id != item.id);
   };
 </script>

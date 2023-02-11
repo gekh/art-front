@@ -4,8 +4,8 @@
 
 	const dispatch = createEventDispatcher();
 
-  const setRole = (role: string) => {
-  	dispatch('next', {role});
+  const setRole = (role_type: string) => {
+  	dispatch('next', {role_type});
   };
 </script>
 

@@ -4,11 +4,11 @@
 
   import { clickoutside } from '@svelte-put/clickoutside';
   import { fly, slide } from 'svelte/transition';
-  import type { RoleType } from '../../../enums/RoleType';
+  import { RoleType } from '../../../enums/RoleType';
   import { cur_role_type, cur_role, roles, role_types} from '../../../stores/role';
-
   import { getContext } from 'svelte';
   import ModalNewAccount from './ModalNewAccount.svelte';
+
   const { open }: any = getContext('simple-modal');
   const showModalNewAccount = () =>
     open(
@@ -24,34 +24,27 @@
     );
 
 
-  // ROLE TYPES
-
   const getRoleTypeLabel = (role: string): string => {
     return role_types[role as RoleType];
   };
 
   const changeRoleType = (e: Event) => {
     $cur_role_type = (e.target as HTMLInputElement).value as RoleType;
-    $cur_role = parseInt(Object.keys($roles[$cur_role_type])[0]);
+    $cur_role = Object.keys($roles[$cur_role_type])[0];
   };
 
-  // ROLES
-
-  if ($cur_role === 0) {
-    $cur_role = parseInt(Object.keys($roles[$cur_role_type])[0]);
-  }
-
   const changeRole = (e: Event) => {
-    $cur_role = parseInt((e.target as HTMLInputElement).value);
+    $cur_role = (e.target as HTMLInputElement).value;
   };
 
   let show_role_types = false;
   let show_roles = false;
+  $: roles_keys = Object.keys($roles);
 </script>
 
 <div class="relative z-10 selector mb-5 px-[5%] text-[26px] flex flex-col md:flex-row">
   <div class="relative mr-8 font-bold flex items-center z-10">
-    {#if Object.keys($roles).length <= 1}
+    {#if roles_keys.length <= 1}
       {role_types[$cur_role_type]}
     {:else}
       <input id="role" type="checkbox" class="peer hidden w-0 h-0" bind:checked={show_role_types} />
@@ -83,7 +76,7 @@
           class="absolute top-8 flex flex-col overflow-y-hidden
              text-[15px] bg-biruza text-white shadow-2xl trans-all"
         >
-          {#each Object.keys($roles) as role}
+          {#each roles_keys as role}
             {#if role !== $cur_role_type}
               <button
                 value={role}
@@ -104,7 +97,7 @@
   <div class="relative font-light text-silvery flex items-center">
     {#if Object.keys($roles[$cur_role_type]).length <= 1}
       <div class="max-w-[75vw] whitespace-nowrap overflow-hidden overflow-ellipsis">
-        {$roles[$cur_role_type][$cur_role]}
+        {$roles[$cur_role_type][$cur_role].name}
       </div>
     {:else}
       <input
@@ -123,7 +116,7 @@
         on:keypress={() => {}}
       >
         <div class="max-w-[75vw] whitespace-nowrap overflow-hidden overflow-ellipsis">
-          {$roles[$cur_role_type][$cur_role]}
+          {$roles[$cur_role_type][$cur_role].name}
         </div>
         <div
           class="group flex items-center justify-center w-10 h-10
@@ -140,8 +133,8 @@
           class="absolute top-8 flex flex-col overflow-y-hidden
               text-[15px] bg-biruza text-white shadow-2xl trans-all"
         >
-          {#each Object.entries($roles[$cur_role_type]) as [id, label]}
-            {#if parseInt(id) !== $cur_role}
+          {#each Object.entries($roles[$cur_role_type]) as [id, data]}
+            {#if id !== $cur_role}
               <button
                 value={id}
                 on:click={changeRole}
@@ -149,7 +142,7 @@
                    flex items-center justify-center
                    font-normal hover:text-graphite trans-color text-center"
               >
-                {label}
+                {data.name}
               </button>
             {/if}
           {/each}

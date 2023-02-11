@@ -25,7 +25,6 @@
   ];
 
   const removeDoc = (item) => {
-    console.log(item);
     docs = docs.filter((el) => el.id != item.id);
   };
 </script>

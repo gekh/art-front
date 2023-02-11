@@ -1,13 +1,8 @@
 import { redirect } from '@sveltejs/kit';
-import { currentUser, pb } from '../pocketbase';
+import { pb } from '../pocketbase';
 
 export function load() {
-  let user;
-  currentUser.subscribe(value => {
-    user = value;
-  });
-
-  if (user) {
+  if (pb.authStore.model) {
     throw redirect(302, '/me');
   }
 }

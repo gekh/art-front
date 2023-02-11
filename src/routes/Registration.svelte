@@ -43,7 +43,6 @@
 				errors = [];
 				for (let key in err.data.data) {
 					errors = [...errors, key + ': ' + err.data.data[key].message];
-					console.log(key + ': ' + err.data.data[key].message);
 				}
 			}
 		} catch (err) {

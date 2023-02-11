@@ -22,10 +22,8 @@
     try {
       const user = await pb.collection('users').authWithPassword(email, password);
       name = $currentUser?.name;
-      console.log(user);
     } catch (err: any) {
       errors = ['Неверный логин или пароль.'];
-      console.log(err.data.message);
     }
     isLoading = false;
 		onClose.call();
