@@ -12,18 +12,4 @@ export const role_types = {
 
 type TRoles = { [key in RoleType]: { [key: string]: { name?: string, city?: string; }; } };
 
-export const roles = writable({
-  // [RoleType.customer]: {
-  //   '12': { name: 'ООО Увлекательные помидоры', city: 'Иркутск' },
-  //   '745': { name: 'ИП Агатова Ж. И.', city: 'Житомир' },
-  // },
-  // [RoleType.performer]: {
-  //   // '21': { name: 'Загрузка...', city: 'Загрузка...' },
-  //   '21': { name: 'Саксофонист Валера Игнатов', city: 'Карфаген' },
-  //   '213': { name: 'Барабанщик Людовиг Бахмучев', city: 'Псебай' },
-  //   '1423': { name: 'Вокалист Анна Кйолкоген', city: 'Лиссабон' },
-  // },
-  // [RoleType.band]: {
-  //   '125': { name: 'Бороды и ветви', city: 'Тогучин' },
-  // },
-} as TRoles);
+export const roles = writable({} as TRoles);
