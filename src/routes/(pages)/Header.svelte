@@ -31,7 +31,7 @@
 
 <a
   href="#/"
-  class="fixed right-[52px] h-[52px] px-5 ml-auto flex items-center text-graphite hover:text-biruza trans-color"
+  class="fixed right-[52px] h-[52px] px-5 ml-auto flex items-center hover:text-biruza trans-color"
   style="background: rgba(255, 255, 255, 0.7);"
 >
   Псебай

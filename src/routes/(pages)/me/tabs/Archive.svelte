@@ -7,11 +7,12 @@
 <div class="flex flex-wrap gap-8 justify-center lg:justify-start">
   {#each [...Array(events_len).keys()] as _}
     <div
-      class="relative grid grid-cols-1 md:grid-cols-2 gap-5 px-5 py-[52px] max-w-[550px] bg-white"
+      class="relative grid grid-cols-1 md:grid-cols-2 gap-5 px-10 py-[52px] max-w-[550px] bg-white"
+      style="box-shadow: inset 0px 0px 21px 3px gray;"
     >
       <div class="max-w-[250px] order-2 md:order-1">
         <h2 class="mb-8 text-silvery text-[26px] font-light">Описание</h2>
-        <h3 class="mb-4 text-graphite text-[20px] font-bold">Фестиваль Ералаш</h3>
+        <h3 class="mb-4 text-[20px] font-bold">Фестиваль Ералаш</h3>
         <div>
           С 9 по 11 октября в Самаре проходил отборочный тур Всероссийского конкурса юных талантов
           «Ералаш». В фестивале приняли участие более 200 детей из разных городов России. Самарскую

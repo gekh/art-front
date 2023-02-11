@@ -1,5 +1,5 @@
-export enum Role {
+export enum RoleType {
+  band = 'band',
   customer = 'customer',
   performer = 'performer',
-  band = 'band',
 }
