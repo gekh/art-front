@@ -1,3 +1,4 @@
+import type { TInfo } from '$lib/types/TInfo';
 import { writable } from 'svelte/store';
 import { RoleType } from '../enums/RoleType';
 
@@ -10,6 +11,6 @@ export const role_types = {
   [RoleType.band]: 'Группа',
 };
 
-type TRoles = { [key in RoleType]: { [key: string]: { name?: string, city?: string; }; } };
+type TRoles = { [key in RoleType]: { [key: string]: { name: string, city?: string; info: TInfo }; } };
 
 export const roles = writable({} as TRoles);

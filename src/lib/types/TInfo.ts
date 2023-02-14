@@ -1,13 +1,15 @@
-export type Info = {
+export type TInfo = {
+  "id":string,
+  "user_id": string,
   "role_id": string,
   "citizenship": string,
   "work_permit": string,
   "instrument": string,
   "genre": string,
   "occupation": string,
-  "travel": boolean,
+  "travel": string,
   "who_pays": string,
-  "teamable": boolean,
+  "teamable": string,
   "events": string,
   "price": string,
   "vk": string,
