@@ -50,5 +50,5 @@
   </div>
 </div>
 <h2 class="mb-[52px] px-[5%] text-[26px] font-bold leading-[32px] md:hidden">
-  {$roles[$cur_role_type][$cur_role]}
+  {$roles[$cur_role_type][$cur_role].name}
 </h2>
