@@ -3,10 +3,10 @@
   // TODO: check if selected account belonges to user
 
   import type { RoleType } from '$lib/enums/RoleType';
+  import { cur_role, cur_role_type, roles, role_types } from '$lib/stores/role';
   import { clickoutside } from '@svelte-put/clickoutside';
   import { getContext } from 'svelte';
   import { fly, slide } from 'svelte/transition';
-  import { cur_role, cur_role_type, roles, role_types } from '../../../stores/role';
   import ModalNewAccount from './ModalNewAccount.svelte';
 
   const { open }: any = getContext('simple-modal');

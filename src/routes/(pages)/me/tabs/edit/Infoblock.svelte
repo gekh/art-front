@@ -1,10 +1,9 @@
 <script lang="ts">
   import { pb } from '$lib/pocketbase';
+  import { cur_role, cur_role_type, roles } from '$lib/stores/role';
   import type { TInfo } from '$lib/types/TInfo';
   import type { TInfoblock } from '$lib/types/TInfoblock';
   import ActionBtn from '../../../../../components/ActionBtn.svelte';
-  import { roles, cur_role, cur_role_type } from '../../../../../stores/role';
-  import Login from '../../../../Login.svelte';
 
   export let ib: TInfoblock = {
     title: 'загрузка...',

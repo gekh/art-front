@@ -1,14 +1,14 @@
 <script lang="ts">
-  // TODO: abstract it to any user
-  import { currentUser } from '../../../lib/pocketbase';
-  import { roles } from '../../../stores/role';
-  const user = currentUser;
-
+  import { roles } from '$lib/stores/role';
   import Time from 'svelte-time';
+  import { currentUser } from '../../../lib/pocketbase';
   import Load from './Load.svelte';
   import ProfileCard from './ProfileCard.svelte';
   import Selector from './Selector.svelte';
   import Tabs from './Tabs.svelte';
+
+  // TODO: abstract it to any user
+  const user = currentUser;
 </script>
 
 <Load />

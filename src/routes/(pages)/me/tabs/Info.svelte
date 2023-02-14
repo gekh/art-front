@@ -1,8 +1,8 @@
 <script lang="ts">
   import { RoleType } from '$lib/enums/RoleType';
   import { address, citizenship, diff, partnership, socials, speciality } from '$lib/infoblocks';
+  import { cur_role_type } from '$lib/stores/role';
   import type { TInfoblock } from '$lib/types/TInfoblock';
-  import { cur_role_type } from '../../../../stores/role';
   import Infoblock from './edit/Infoblock.svelte';
 
   let infoblocks: Array<TInfoblock> = [];

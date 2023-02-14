@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { cur_role_type, cur_role, roles } from '../../../stores/role';
+  import { cur_role, cur_role_type, roles } from '$lib/stores/role';
 
   $: socials = {
     vk: $roles[$cur_role_type][$cur_role].info.vk,

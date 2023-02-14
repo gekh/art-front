@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { cur_role, cur_role_type, roles } from '$lib/stores/role';
   import Menu from './Menu.svelte';
 
   let is_menu_button_clicked = false;
@@ -34,7 +35,9 @@
   class="fixed right-[52px] h-[52px] px-5 ml-auto flex items-center hover:text-biruza trans-color"
   style="background: rgba(255, 255, 255, 0.7);"
 >
-  Псебай
+  {#if $roles !== undefined && Object.keys($roles).length > 0}
+    {$roles[$cur_role_type][$cur_role].city}
+  {/if}
 </a>
 
 <a href="#/" class="fixed right-0 w-[52px] h-[52px] p-4 bg-biruza hover:bg-pinky trans-color z-20">

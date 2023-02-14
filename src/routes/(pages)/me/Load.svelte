@@ -1,8 +1,8 @@
 <script lang="ts">
   import type { RoleType } from '$lib/enums/RoleType';
   import { pb } from '$lib/pocketbase';
+  import { cur_role, cur_role_type, roles } from '$lib/stores/role';
   import { onMount } from 'svelte';
-  import { cur_role, cur_role_type, roles } from '../../../stores/role';
   import ModalNewAccount from './ModalNewAccount.svelte';
 
   // TODO: close for unauthneticated
