@@ -1,7 +1,7 @@
 <script lang="ts">
   import { createEventDispatcher, getContext } from 'svelte';
   import type { RoleType } from '../../../enums/RoleType';
-  import { currentUser, pb } from '../../../pocketbase';
+  import { currentUser, pb } from '../../../lib/pocketbase';
   import { cur_role, cur_role_type, roles } from '../../../stores/role';
   import EnterPersonalInfo from './new-account-steps/EnterPersonalInfo.svelte';
   import ChooseRole from './new-account-steps/ChooseRole.svelte';

@@ -2,7 +2,7 @@
   import Registration from './Registration.svelte';
   import Login from './Login.svelte';
   import { goto } from '$app/navigation';
-  import { currentUser, pb } from '../pocketbase';
+  import { currentUser, pb } from '../lib/pocketbase';
 
   let show_registration = false;
   function showRegistration(event: Event) {

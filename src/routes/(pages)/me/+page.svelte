@@ -1,6 +1,6 @@
 <script lang="ts">
   // TODO: abstract it to any user
-  import { currentUser } from '../../../pocketbase';
+  import { currentUser } from '../../../lib/pocketbase';
   import { roles } from '../../../stores/role';
   const user = currentUser;
 
