@@ -1,7 +1,7 @@
 <script lang="ts">
+  import type { RoleType } from '$lib/enums/RoleType';
+  import { pb } from '$lib/pocketbase';
   import { onMount } from 'svelte';
-  import type { RoleType } from '../../../enums/RoleType';
-  import { pb } from '../../../pocketbase';
   import { cur_role, cur_role_type, roles } from '../../../stores/role';
   import ModalNewAccount from './ModalNewAccount.svelte';
 
@@ -23,9 +23,20 @@
         if (pb_roles[role_type] == undefined) {
           pb_roles[role_type] = {};
         }
+
+        let info;
+        try {
+          info = await pb.collection('info').getFirstListItem('role_id="' + cur['id'] + '"');
+        } catch (e) {
+          info = await pb.collection('info').create({
+            user_id: pb.authStore.model?.id,
+            role_id: cur['id'],
+          });
+        }
         pb_roles[role_type][cur['id']] = {
           name: cur['name'],
           city: cur['city'],
+          info,
         };
       }
 
