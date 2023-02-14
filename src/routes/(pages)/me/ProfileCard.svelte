@@ -25,7 +25,8 @@
     <h2 class="mb-5 text-[26px] font-bold leading-none hidden md:block">
       {$roles[$cur_role_type][$cur_role].name}
     </h2>
-    <div class="flex mb-10">
+    <div class="flex h-5 mb-10">
+      <span class="h-5"></span>
       {#each Object.entries(socials) as [key, link]}
         {#if link !== ""}
           <a href={link} class="w-5 h-5 mr-5"><img src={socials_images[key]} alt={key} /></a>
