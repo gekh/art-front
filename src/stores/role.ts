@@ -1,6 +1,6 @@
+import { RoleType } from '$lib/enums/RoleType';
 import type { TInfo } from '$lib/types/TInfo';
 import { writable } from 'svelte/store';
-import { RoleType } from '../enums/RoleType';
 
 export const cur_role_type = writable(RoleType.customer);
 export const cur_role = writable('');

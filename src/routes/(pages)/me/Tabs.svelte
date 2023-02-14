@@ -1,6 +1,6 @@
 <script lang="ts">
+  import { RoleType } from '$lib/enums/RoleType';
   import { fade } from 'svelte/transition';
-  import { RoleType } from '../../../enums/RoleType';
   import { cur_role_type } from '../../../stores/role';
   import Archive from './tabs/Archive.svelte';
   import Docs from './tabs/Docs.svelte';
