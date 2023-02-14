@@ -27,7 +27,7 @@ export const diff = {
 };
 
 export const address = {
-  title: 'Адрес',
+  title: 'Адреса',
   fields: [
     { field: 'juridical_address', title: 'Юридический адрес' },
     { field: 'factual_address', title: 'Фактический адрес' },
@@ -51,3 +51,52 @@ export const socials = {
   ],
 };
 
+export const requisites = {
+  title: 'Реквизиты',
+  fields: [
+    { field: 'inn', title: 'Инн' },
+    { field: 'passport', title: 'Номер паспорта' },
+    { field: 'snils', title: 'Снилс' },
+    { field: 'bank_name', title: 'Расчетный счет' },
+    { field: 'bank_account', title: 'Огрнип' },
+    { field: 'bank_ogrnip', title: 'Банк' },
+    { field: 'bank_bik', title: 'Бик Банка' },
+    { field: 'bank_ks', title: 'Кс Банка' },
+  ],
+};
+
+export const personal = {
+  title: 'Персона',
+  fields: [
+    { field: 'birthday', title: 'Дата рождения' },
+    { field: 'first_name', title: 'Имя' },
+    { field: 'last_name', title: 'Фамилия' },
+    { field: 'middle_name', title: 'Отчество' },
+  ],
+};
+
+export const home = {
+  title: 'Дом. адрес',
+  fields: [
+    { field: 'country', title: 'Страна' },
+    { field: 'city', title: 'Город' },
+    { field: 'street', title: 'Улица' },
+    { field: 'house', title: 'Дом' },
+    { field: 'pin', title: 'Индекс' },
+  ],
+};
+
+export const band = {
+  title: 'Группа',
+  fields: [
+    { field: 'band_name', title: 'Название' },
+  ],
+};
+
+export const band_home = {
+  title: 'Откуда',
+  fields: [
+    { field: 'country', title: 'Страна' },
+    { field: 'city', title: 'Город' },
+  ],
+};

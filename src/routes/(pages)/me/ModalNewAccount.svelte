@@ -1,10 +1,11 @@
 <script lang="ts">
   import { createEventDispatcher, getContext } from 'svelte';
-  import type { RoleType } from '$lib/enums/RoleType';
+  import { RoleType } from '$lib/enums/RoleType';
   import { currentUser, pb } from '../../../lib/pocketbase';
   import { cur_role, cur_role_type, roles } from '../../../stores/role';
   import EnterPersonalInfo from './new-account-steps/EnterPersonalInfo.svelte';
   import ChooseRole from './new-account-steps/ChooseRole.svelte';
+  import type { TInfo } from '$lib/types/TInfo';
 
   const dispatch = createEventDispatcher();
   const { close }: any = getContext('simple-modal');
@@ -19,23 +20,45 @@
 
   let query: TQueryCreateRole;
 
+  const createInfo = async (pb_role: any): Promise<TInfo>  => {
+    let type = pb_role['role_type'] as RoleType;
+
+    let info_query: TInfo = {
+        user_id: pb.authStore.model?.id,
+        role_id: pb_role['id'],
+      };
+
+      if (type === RoleType.band) {
+        info_query.band_name = pb_role.name;
+      } else {
+        info_query.first_name = pb_role.name;
+      }
+
+      info_query.city = pb_role.city;
+
+      return await pb.collection('info').create(info_query);
+  };
+
   const save = async () => {
     query['user_id'] = $currentUser?.id;
 
-    const response: any = await pb.collection('roles').create(query);
-    if (response) {
-      let type = response['role_type'] as RoleType;
+    const pb_role: any = await pb.collection('roles').create(query);
+
+    if (pb_role) {
+      let type = pb_role['role_type'] as RoleType;
+
       if ($roles[type] === undefined) {
         $roles[type] = {};
       }
 
-      $roles[type][response['id']] = {
-        name: response['name'],
-        city: response['city'],
+      $roles[type][pb_role['id']] = {
+        name: pb_role['name'],
+        city: pb_role['city'],
+        info: await createInfo(pb_role),
       };
 
       $cur_role_type = type;
-      $cur_role = response['id'];
+      $cur_role = pb_role['id'];
     } else {
       console.error('pb create role error');
     }
