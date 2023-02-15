@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { goto } from '$app/navigation';
+  import { pb } from '$lib/pocketbase';
   import { cur_role, cur_role_type, roles } from '$lib/stores/role';
   import Menu from './Menu.svelte';
 
@@ -40,7 +42,14 @@
   {/if}
 </a>
 
-<a href="#/" class="fixed right-0 w-[52px] h-[52px] p-4 bg-biruza hover:bg-pinky t-clr z-20">
+<a
+  href="#/"
+  class="fixed right-0 w-[52px] h-[52px] p-4 bg-biruza hover:bg-pinky t-clr z-20"
+  on:click|preventDefault={() => {
+    pb.authStore.clear();
+    goto('/');
+  }}
+>
   <img src="images/icons/profile.svg" alt="Profile" />
 </a>
 
