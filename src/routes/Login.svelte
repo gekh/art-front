@@ -27,6 +27,8 @@
     }
     isLoading = false;
     onClose.call();
+    document.cookie = pb.authStore.exportToCookie({httpOnly:false, secure: false}); // TODO: remove `sercure: false` as it unsafe to set cookie without https
+
     goto('/me');
   }
 
