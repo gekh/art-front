@@ -17,7 +17,7 @@
         <div class="relative flex w-[300px] h-[300px]">
           <img src="images/samples/band.jpg" alt="protfolio" class="object-cover" />
           <button
-            class="absolute right-0 top-0 flex items-center justify-center w-[52px] h-[52px] bg-biruza hover:bg-pinky trans-color"
+            class="absolute right-0 top-0 flex items-center justify-center w-[52px] h-[52px] bg-biruza hover:bg-pinky t-clr"
             on:click={() => {
               photos_len -= 1;
             }}
@@ -46,7 +46,7 @@
           />
         </div>
         <button
-          class="absolute right-0 top-0 flex items-center justify-center w-[52px] h-[52px] bg-biruza hover:bg-pinky trans-color"
+          class="absolute right-0 top-0 flex items-center justify-center w-[52px] h-[52px] bg-biruza hover:bg-pinky t-clr"
           on:click={() => {videos_len -= 1}}
         >
           <img src="images/icons/plus-white.svg" alt="delete" class="w-6 h-6 rotate-45" />

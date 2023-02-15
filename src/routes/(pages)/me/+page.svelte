@@ -16,7 +16,7 @@
 {#if Object.keys($roles).length > 0}
   <div class="pb-[52px]">
     <div class="mb-8 px-[5%] flex text-silvery">
-      <a href="#/" class="flex-1 flex items-center text-silvery hover:text-biruza trans-color">
+      <a href="#/" class="flex-1 flex items-center text-silvery hover:text-biruza t-clr">
         <img class="mr-2 h-5" src="images/icons/left-angle.svg" alt="back arrow icon" />
         <span>Назад</span>
       </a>

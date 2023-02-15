@@ -101,14 +101,14 @@
 
       <button
         class="absolute right-[52px] top-0 flex items-center justify-center w-[52px] h-[52px]
-             bg-biruza hover:bg-pinky trans-color"
+             bg-biruza hover:bg-pinky t-clr"
       >
         <img src="images/icons/pencil.svg" alt="edit" class="w-3 h-3" />
       </button>
 
       <button
         class="absolute right-0 top-0 flex items-center justify-center w-[52px] h-[52px]
-             bg-biruza hover:bg-pinky trans-color"
+             bg-biruza hover:bg-pinky t-clr"
         on:click={() => removePerson(i)}
       >
         <img src="images/icons/plus-white.svg" alt="delete" class="w-6 h-6 rotate-45" />

@@ -39,7 +39,7 @@
 {#if show_form === false}
   <div class="relative px-5 pt-5 pb-14 w-[320px] bg-white">
     <button
-      class="absolute right-0 top-0 flex items-center justify-center w-[52px] h-[52px] bg-biruza hover:bg-pinky trans-color"
+      class="absolute right-0 top-0 flex items-center justify-center w-[52px] h-[52px] bg-biruza hover:bg-pinky t-clr"
       on:click={showForm}
     >
       <img src="images/icons/pencil.svg" alt="edit" class="w-3 h-3" />

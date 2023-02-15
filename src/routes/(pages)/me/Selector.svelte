@@ -61,7 +61,7 @@
 
         <div
           class="flex items-center justify-center w-10 h-10
-                 -rotate-90 group-peer-checked:rotate-90 trans-all"
+                 -rotate-90 group-peer-checked:rotate-90 t-all"
         >
           <img src="images/icons/left-angle.svg" alt="select role" class="h-5 " />
         </div>
@@ -74,7 +74,7 @@
           }}
           transition:slide
           class="absolute top-8 flex flex-col overflow-y-hidden
-             text-[15px] bg-biruza text-white shadow-2xl trans-all"
+             text-[15px] bg-biruza text-white shadow-2xl t-all"
         >
           {#each roles_keys as role}
             {#if role !== $cur_role_type}
@@ -83,7 +83,7 @@
                 on:click={changeRoleType}
                 class="max-w-[50vw] px-8 py-[14.75px]
                      flex items-center justify-center
-                     font-normal hover:text-graphite trans-color text-center"
+                     font-normal hover:text-graphite t-clr text-center"
               >
                 {getRoleTypeLabel(role)}
               </button>
@@ -120,7 +120,7 @@
         </div>
         <div
           class="group flex items-center justify-center w-10 h-10
-                 -rotate-90 group-peer-checked:rotate-90 trans-all"
+                 -rotate-90 group-peer-checked:rotate-90 t-all"
         >
           <img src="images/icons/left-angle.svg" alt="select role" class="h-5 " />
         </div>
@@ -131,7 +131,7 @@
           use:clickoutside
           on:clickoutside={() => (show_roles = false)}
           class="absolute top-8 flex flex-col overflow-y-hidden
-              text-[15px] bg-biruza text-white shadow-2xl trans-all"
+              text-[15px] bg-biruza text-white shadow-2xl t-all"
         >
           {#each Object.entries($roles[$cur_role_type]) as [id, data]}
             {#if id !== $cur_role}
@@ -140,7 +140,7 @@
                 on:click={changeRole}
                 class="max-w-[80vw] px-8 py-[14.75px]
                    flex items-center justify-center
-                   font-normal hover:text-graphite trans-color text-center"
+                   font-normal hover:text-graphite t-clr text-center"
               >
                 {data.name}
               </button>
@@ -154,7 +154,7 @@
 
 <div class="mb-8 px-[5%]">
   <button
-    class="flex items-center text-silvery hover:text-biruza trans-color"
+    class="flex items-center text-silvery hover:text-biruza t-clr"
     on:click={showModalNewAccount}
   >
     <img class="h-5 w-5 mr-2" src="images/icons/plus.svg" alt="add role" /> Добавить

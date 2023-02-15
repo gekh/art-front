@@ -9,7 +9,7 @@
   classWindow="h-screen !my-0 !rounded-none"
   classContent="!h-full"
   classCloseButton="!top-0 !right-0 !w-[52px] !h-[52px]
-                    !text-center !bg-biruza hover:!bg-pinky !trans-color
+                    !text-center !bg-biruza hover:!bg-pinky !t-clr
                     !shadow-none !rounded-none
                     before:!bg-white before:!w-6 before:!left-[14px]
                     after:!bg-white  after:!w-6  after:!left-[14px]"

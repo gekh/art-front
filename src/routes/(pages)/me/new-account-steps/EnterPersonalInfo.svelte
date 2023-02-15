@@ -17,14 +17,14 @@
     required
     type="text"
     name="name"
-    class="w-[250px] h-[52px] mb-8 px-2 py-5 outline-none border border-cloudy focus:border-sky trans-color"
+    class="w-[250px] h-[52px] mb-8 px-2 py-5 outline-none border border-cloudy focus:border-sky t-clr"
   />
   <h3 class="mb-4 font-bold text-[20px]">Город</h3>
   <input
     required
     type="text"
     name="city"
-    class="w-[250px] h-[52px] mb-8 px-2 py-5 outline-none border border-cloudy focus:border-sky trans-color"
+    class="w-[250px] h-[52px] mb-8 px-2 py-5 outline-none border border-cloudy focus:border-sky t-clr"
   />
 
   <ActionBtn>Отправить</ActionBtn>

@@ -50,7 +50,7 @@
     </div>
   </div>
   <button
-    class="absolute right-0 top-0 flex items-center justify-center w-[52px] h-[52px] bg-biruza hover:bg-pinky trans-color"
+    class="absolute right-0 top-0 flex items-center justify-center w-[52px] h-[52px] bg-biruza hover:bg-pinky t-clr"
     on:click={() => {reports_len -= 1}}
   >
     <img src="images/icons/plus-white.svg" alt="delete" class="w-6 h-6 rotate-45" />
