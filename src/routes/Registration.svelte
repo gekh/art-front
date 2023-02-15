@@ -58,6 +58,7 @@
 
 <div
   on:click={onClose}
+  on:keypress={() => {}}
   id="modalBackdrop"
   class="backdrop-default"
   style="z-index: 1000; position: fixed; top: 0; bottom:0; left: 0; right:0; margin: 0px; background: rgb(255, 255, 255); opacity: 0.55;"
