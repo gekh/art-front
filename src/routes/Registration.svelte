@@ -2,7 +2,7 @@
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
   export let onClose: any;
-  import { currentUser, pb } from '../lib/pocketbase';
+  import { currentUser, pb } from '$lib/pocketbase';
 
   let name: string;
   let email: string;

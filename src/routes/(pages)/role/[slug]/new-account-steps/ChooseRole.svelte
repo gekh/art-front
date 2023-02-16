@@ -1,5 +1,5 @@
 <script lang="ts">
-  import ActionBtn from '../../../../components/ActionBtn.svelte';
+  import ActionBtn from '$lib/components/ActionBtn.svelte';
   import { createEventDispatcher } from 'svelte';
 
   const dispatch = createEventDispatcher();

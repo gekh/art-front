@@ -1,11 +1,13 @@
 <script lang="ts">
-  import type { RoleType } from '$lib/enums/RoleType';
+  import { RoleType } from '$lib/enums/RoleType';
   import { pb } from '$lib/pocketbase';
-  import { cur_role, cur_role_type, roles } from '$lib/stores/role';
+  import { cur_role, cur_role_type, roles, type_grouped_roles } from '$lib/stores/role';
+  import type { TInfo } from '$lib/types/TInfo';
   import { onMount } from 'svelte';
   import ModalNewAccount from './ModalNewAccount.svelte';
 
   // TODO: close for unauthneticated
+
 
   let no_roles = false;
   const loadRoles = async () => {
@@ -14,15 +16,14 @@
       filter: 'user_id="' + pb.authStore.model?.id + '"',
     });
 
+    console.log('let us load')
+
     if (pb_roles_raw.length === 0) {
       no_roles = true;
     } else {
       let pb_roles: any = {};
       for (let cur of pb_roles_raw) {
         const role_type = cur['role_type'] as RoleType;
-        if (pb_roles[role_type] == undefined) {
-          pb_roles[role_type] = {};
-        }
 
         let info;
         try {
@@ -33,16 +34,36 @@
             role_id: cur['id'],
           });
         }
-        pb_roles[role_type][cur['id']] = {
+
+        if ($type_grouped_roles[role_type] === undefined) {
+          $type_grouped_roles[role_type] = [];
+        }
+
+        $type_grouped_roles[role_type].push(cur['id']);
+
+        pb_roles[cur['id']] = {
+          id: cur['id'],
+          role_type,
           name: cur['name'],
           city: cur['city'],
-          info,
+          info: info.export() as TInfo,
         };
       }
 
-      $cur_role_type = Object.keys(pb_roles)[0] as RoleType;
-      $cur_role = Object.keys(pb_roles[$cur_role_type])[0];
       $roles = pb_roles;
+      console.log({roles: $roles, rolte_types: $type_grouped_roles});
+
+      if ($cur_role_type === RoleType.none) {
+        let last_role = Object.values($roles)[Object.keys($roles).length - 1];
+
+        $cur_role_type = last_role.role_type;
+        $cur_role = last_role.id;
+        console.log({
+          last_role,
+          cur_role_type: $cur_role_type,
+          cur_role: $cur_role,
+        });
+      }
     }
   };
 

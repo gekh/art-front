@@ -1,9 +1,9 @@
 <script lang="ts">
-  import ActionBtn from '../../../../components/ActionBtn.svelte';
+  import ActionBtn from '$lib/components/ActionBtn.svelte';
 
   let reviews = [
     {
-      pic: 'images/samples/woman.jpg',
+      pic: '/images/samples/woman.jpg',
       city: 'New York',
       name: 'ИП Агатова Ж. И.',
       stat: {
@@ -14,7 +14,7 @@
       text: 'Супер. Играл талантилво. Все вовремя.',
     },
     {
-      pic: 'images/samples/vocalist.jpg',
+      pic: '/images/samples/vocalist.jpg',
       city: 'Осло',
       name: 'Вокалист Анна Кйолкоген',
       stat: {
@@ -25,7 +25,7 @@
       text: 'Участвовал на рептициях с нами. Помога подготовить новую программу. Класс.',
     },
     {
-      pic: 'images/samples/tomato.jpg',
+      pic: '/images/samples/tomato.jpg',
       city: 'Санкт-Петербург',
       name: 'ООО Увлекательные помидоры одиннадцатиклассницы',
       stat: {
@@ -36,7 +36,7 @@
       text: '– Если так, то нам придется уступить ему дорогу. Они еще не успели отойти от костра, как из темноты донесся голос: – Эй, ребята! – Это был Эшкрофт. – Слыхали? – Что? – спросил Уэйтс. – Я слышал, что сюда идет парень из полиции. – А где он? – Да вон он. Я вижу его. Уэйтс посмотрел в ту сторону, куда указывал Эшкрофт, и увидел на фоне освещенного костра силуэт человека. Он шел к ним среди деревьев. – Черт, – пробормотал Уэйтс и, схватив барабанную палочку, заспешил к костру.',
     },
     {
-      pic: 'images/samples/sax.jpg',
+      pic: '/images/samples/sax.jpg',
       city: 'Париж',
       name: 'Саксофонист Валера Игнатов',
       stat: {
@@ -47,7 +47,7 @@
       text: 'норм рекомендую',
     },
     {
-      pic: 'images/samples/band.jpg',
+      pic: '/images/samples/band.jpg',
       city: 'Токио',
       name: 'Бороды и ветви',
       stat: {
@@ -82,15 +82,15 @@
           <div class="mb-5 text-silvery">{r.city}</div>
           <div class="flex font-bold">
             <div class="w-[50px] flex items-center">
-              <img src="images/icons/star.svg" alt="stars" class="w-3 h-3 mr-2" />
+              <img src="/images/icons/star.svg" alt="stars" class="w-3 h-3 mr-2" />
               {r.stat.stars}
             </div>
             <div class="w-[50px] flex items-center">
-              <img src="images/icons/text-bubble.svg" alt="comments" class="w-3 h-3 mr-2" />
+              <img src="/images/icons/text-bubble.svg" alt="comments" class="w-3 h-3 mr-2" />
               {r.stat.comments}
             </div>
             <div class="w-[50px] flex items-center">
-              <img src="images/icons/eye.svg" alt="views" class="w-3 h-3 mr-2" />
+              <img src="/images/icons/eye.svg" alt="views" class="w-3 h-3 mr-2" />
               {r.stat.views}
             </div>
           </div>

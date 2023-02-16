@@ -1,17 +1,14 @@
 <script lang="ts">
-  import ActionBtn from '../../../../components/ActionBtn.svelte';
+  import ActionBtn from '$lib/components/ActionBtn.svelte';
 
   let events_len = 10;
 </script>
 
-<div class="mb-8">
-  <ActionBtn>Добавить</ActionBtn>
-</div>
-
 <div class="flex flex-wrap gap-8 justify-center lg:justify-start">
   {#each [...Array(events_len).keys()] as _}
     <div
-      class="relative grid grid-cols-1 md:grid-cols-2 gap-5 px-5 py-[52px] max-w-[550px] bg-white"
+      class="relative grid grid-cols-1 md:grid-cols-2 gap-5 px-10 py-[52px] max-w-[550px] bg-white"
+      style="box-shadow: inset 0px 0px 21px 3px gray;"
     >
       <div class="max-w-[250px] order-2 md:order-1">
         <h2 class="mb-8 text-silvery text-[26px] font-light">Описание</h2>
@@ -26,7 +23,7 @@
         </div>
 
         <div class="mt-[52px]">
-          <ActionBtn>Опубликовать</ActionBtn>
+          <ActionBtn>Восстановить</ActionBtn>
         </div>
       </div>
 
@@ -39,12 +36,12 @@
         {/each}
       </div>
       <button
-        class="absolute right-0 top-0 flex items-center justify-center w-[52px] h-[52px] bg-biruza hover:bg-pinky t-clr"
+        class="absolute right-0 top-0 flex items-center justify-center w-[52px] h-[52px] bg-biruza hover:bg-pinky t-color"
         on:click={() => {
           events_len -= 1;
         }}
       >
-        <img src="images/icons/plus-white.svg" alt="delete" class="w-6 h-6 rotate-45" />
+        <img src="/images/icons/plus-white.svg" alt="delete" class="w-6 h-6 rotate-45" />
       </button>
     </div>
   {/each}

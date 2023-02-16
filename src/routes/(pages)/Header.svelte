@@ -26,31 +26,31 @@
 
 <a
   href="/"
-  class="fixed top-0 left-[52px] w-[52px] h-[52px] p-[10px] bg-biruza hover:bg-pinky t-clr z-20"
+  class="fixed top-0 left-[52px] w-[52px] h-[52px] p-[10px] bg-biruza hover:bg-pinky t-color z-20"
   on:click={toTop}
 >
-  <img src="logo/logo.svg" alt="Logo" />
+  <img src="/logo/logo.svg" alt="Logo" />
 </a>
 
 <a
   href="#/"
-  class="fixed right-[52px] h-[52px] px-5 ml-auto flex items-center hover:text-biruza t-clr"
+  class="fixed right-[52px] h-[52px] px-5 ml-auto flex items-center hover:text-biruza t-color"
   style="background: rgba(255, 255, 255, 0.7);"
 >
   {#if $roles !== undefined && Object.keys($roles).length > 0}
-    {$roles[$cur_role_type][$cur_role].city}
+    {$roles[$cur_role].city}
   {/if}
 </a>
 
 <a
   href="#/"
-  class="fixed right-0 w-[52px] h-[52px] p-4 bg-biruza hover:bg-pinky t-clr z-20"
+  class="fixed right-0 w-[52px] h-[52px] p-4 bg-biruza hover:bg-pinky t-color z-20"
   on:click|preventDefault={() => {
     pb.authStore.clear();
     goto('/');
   }}
 >
-  <img src="images/icons/profile.svg" alt="Profile" />
+  <img src="/images/icons/profile.svg" alt="Profile" />
 </a>
 
 <div class="h-[84px]" />

@@ -67,7 +67,7 @@
 	}
 
 	a {
-		@apply block mb-5 text-white whitespace-nowrap t-clr hover:text-biruza;
+		@apply block mb-5 text-white whitespace-nowrap t-color hover:text-biruza;
 	}
 
 	.copyright {

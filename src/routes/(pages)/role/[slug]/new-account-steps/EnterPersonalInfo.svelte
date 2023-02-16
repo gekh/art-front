@@ -1,6 +1,6 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
-  import ActionBtn from '../../../../components/ActionBtn.svelte';
+  import ActionBtn from '$lib/components/ActionBtn.svelte';
 
   const dispatch = createEventDispatcher();
 
@@ -17,14 +17,14 @@
     required
     type="text"
     name="name"
-    class="w-[250px] h-[52px] mb-8 px-2 py-5 outline-none border border-cloudy focus:border-sky t-clr"
+    class="w-[250px] h-[52px] mb-8 px-2 py-5 outline-none border border-cloudy focus:border-sky t-color"
   />
   <h3 class="mb-4 font-bold text-[20px]">Город</h3>
   <input
     required
     type="text"
     name="city"
-    class="w-[250px] h-[52px] mb-8 px-2 py-5 outline-none border border-cloudy focus:border-sky t-clr"
+    class="w-[250px] h-[52px] mb-8 px-2 py-5 outline-none border border-cloudy focus:border-sky t-color"
   />
 
   <ActionBtn>Отправить</ActionBtn>

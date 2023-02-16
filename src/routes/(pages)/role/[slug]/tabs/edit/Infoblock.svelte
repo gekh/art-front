@@ -3,14 +3,14 @@
   import { cur_role, cur_role_type, roles } from '$lib/stores/role';
   import type { TInfo } from '$lib/types/TInfo';
   import type { TInfoblock } from '$lib/types/TInfoblock';
-  import ActionBtn from '../../../../../components/ActionBtn.svelte';
+  import ActionBtn from '$lib/components/ActionBtn.svelte';
 
   export let ib: TInfoblock = {
     title: 'загрузка...',
     fields: [],
   };
 
-  $: ri = $roles[$cur_role_type][$cur_role].info;
+  $: ri = $roles[$cur_role].info;
 
   let show_form = false;
   const showForm = () => {
@@ -31,7 +31,7 @@
     }
 
     const record = await pb.collection('info').update(ri.id, data);
-    $roles[$cur_role_type][$cur_role].info = record;
+    $roles[$cur_role].info = record;
     show_form = false;
   };
 </script>
@@ -39,10 +39,10 @@
 {#if show_form === false}
   <div class="relative px-5 pt-5 pb-14 w-[320px] bg-white">
     <button
-      class="absolute right-0 top-0 flex items-center justify-center w-[52px] h-[52px] bg-biruza hover:bg-pinky t-clr"
+      class="absolute right-0 top-0 flex items-center justify-center w-[52px] h-[52px] bg-biruza hover:bg-pinky t-color"
       on:click={showForm}
     >
-      <img src="images/icons/pencil.svg" alt="edit" class="w-3 h-3" />
+      <img src="/images/icons/pencil.svg" alt="edit" class="w-3 h-3" />
     </button>
     <h2 class="mb-8 text-silvery text-[26px] font-light">{ib.title}</h2>
     {#each ib.fields as field}

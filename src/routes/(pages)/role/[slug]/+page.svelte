@@ -1,11 +1,18 @@
 <script lang="ts">
-  import { roles } from '$lib/stores/role';
+  import { currentUser } from '$lib/pocketbase';
+  import { cur_role, cur_role_type, roles } from '$lib/stores/role';
   import Time from 'svelte-time';
-  import { currentUser } from '../../../lib/pocketbase';
+  import { onMount } from 'svelte';
+  import type { PageData } from './$types';
   import Load from './Load.svelte';
   import ProfileCard from './ProfileCard.svelte';
   import Selector from './Selector.svelte';
   import Tabs from './Tabs.svelte';
+
+  export let data: PageData;
+
+  // $cur_role_type = data.role.role_type;
+  // $cur_role = data.role.id;
 
   // TODO: abstract it to any user
   const user = currentUser;
@@ -16,8 +23,8 @@
 {#if Object.keys($roles).length > 0}
   <div class="pb-[52px]">
     <div class="mb-8 px-[5%] flex text-silvery">
-      <a href="#/" class="flex-1 flex items-center text-silvery hover:text-biruza t-clr">
-        <img class="mr-2 h-5" src="images/icons/left-angle.svg" alt="back arrow icon" />
+      <a href="#/" class="flex-1 flex items-center text-silvery hover:text-biruza t-color">
+        <img class="mr-2 h-5" src="/images/icons/left-angle.svg" alt="back arrow icon" />
         <span>Назад</span>
       </a>
       {#if $user}

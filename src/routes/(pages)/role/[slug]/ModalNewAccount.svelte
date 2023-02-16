@@ -3,7 +3,7 @@
   import { cur_role, cur_role_type, roles } from '$lib/stores/role';
   import type { TInfo } from '$lib/types/TInfo';
   import { createEventDispatcher, getContext } from 'svelte';
-  import { currentUser, pb } from '../../../lib/pocketbase';
+  import { currentUser, pb } from '$lib/pocketbase';
   import ChooseRole from './new-account-steps/ChooseRole.svelte';
   import EnterPersonalInfo from './new-account-steps/EnterPersonalInfo.svelte';
 
