@@ -30,7 +30,7 @@
 
   const changeRoleType = (e: Event) => {
     $cur_role_type = (e.target as HTMLInputElement).value as RoleType;
-    let slug = Object.keys($roles)[0];
+    let slug = $type_grouped_roles[$cur_role_type][0];
     $cur_role = slug;
     goto('/role/' + slug);
   };
@@ -132,7 +132,7 @@
           class="absolute top-8 flex flex-col overflow-y-hidden
               text-[15px] bg-biruza text-white shadow-2xl t-all"
         >
-          {#each Object.entries($roles) as [id, data]}
+          {#each $type_grouped_roles[$cur_role_type] as id}
             {#if id !== $cur_role}
               <button
                 value={id}
@@ -141,7 +141,7 @@
                    flex items-center justify-center
                    font-normal hover:text-graphite t-color text-center"
               >
-                {data.name}
+                {$roles[id].name}
               </button>
             {/if}
           {/each}

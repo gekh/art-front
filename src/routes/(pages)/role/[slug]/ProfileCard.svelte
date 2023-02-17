@@ -1,6 +1,7 @@
 <script lang="ts">
   import { cur_role, cur_role_type, roles } from '$lib/stores/role';
 
+  let socials: { [key: string]: string };
   $: socials = {
     vk: $roles[$cur_role].info.vk,
     fb: $roles[$cur_role].info.fb,
@@ -8,7 +9,7 @@
     ok: $roles[$cur_role].info.ok,
   };
 
-  const socials_images = {
+  const socials_images: { [key: string]: string } = {
     vk: '/images/icons/socials/vk.svg',
     fb: '/images/icons/socials/fb.svg',
     youtube: '/images/icons/socials/youtube.svg',
@@ -26,9 +27,9 @@
       {$roles[$cur_role].name}
     </h2>
     <div class="flex h-5 mb-10">
-      <span class="h-5"></span>
+      <span class="h-5" />
       {#each Object.entries(socials) as [key, link]}
-        {#if link !== ""}
+        {#if link !== ''}
           <a href={link} class="w-5 h-5 mr-5"><img src={socials_images[key]} alt={key} /></a>
         {/if}
       {/each}

@@ -11,8 +11,8 @@
 
   export let data: PageData;
 
-  // $cur_role_type = data.role.role_type;
-  // $cur_role = data.role.id;
+  $cur_role_type = data.role.role_type;
+  $cur_role = data.role.id;
 
   // TODO: abstract it to any user
   const user = currentUser;
