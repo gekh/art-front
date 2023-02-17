@@ -20,7 +20,7 @@
   async function login() {
     await pb.collection('users').authWithPassword(email, password);
     onClose.call();
-    goto('/me');
+    goto('/role');
   }
 
   async function signUp() {
