@@ -3,7 +3,7 @@ import PocketBase from 'pocketbase';
 
 /** @type {import('@sveltejs/kit').Handle} */
 export const handle = (async ({ event, resolve }) => {
-    event.locals.pb = new PocketBase("http://127.0.0.1:8090");
+    event.locals.pb = new PocketBase("http://127.0.0.1:8099");
 
     // load the store data from the request cookie string
     event.locals.pb.authStore.loadFromCookie(event.request.headers.get('cookie') || '');
