@@ -38,13 +38,4 @@
 	p {
 		margin: 10px 40px;
 	}
-
-	ul {
-		margin: 10px 40px;
-		list-style: circle;
-	}
-
-	li {
-		margin: 10px 60px 10px 40px;
-	}
 </style>

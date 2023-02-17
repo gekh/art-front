@@ -2,7 +2,7 @@
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
   export let onClose: any;
-  import { currentUser, pb } from '../lib/pocketbase';
+  import { currentUser, pb } from '$lib/pocketbase';
 
   let name: string;
   let email: string;
@@ -20,7 +20,7 @@
   async function login() {
     await pb.collection('users').authWithPassword(email, password);
     onClose.call();
-    goto('/me');
+    goto('/role');
   }
 
   async function signUp() {
@@ -58,6 +58,7 @@
 
 <div
   on:click={onClose}
+  on:keypress={() => {}}
   id="modalBackdrop"
   class="backdrop-default"
   style="z-index: 1000; position: fixed; top: 0; bottom:0; left: 0; right:0; margin: 0px; background: rgb(255, 255, 255); opacity: 0.55;"

@@ -2,7 +2,7 @@
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
   export let onClose: any;
-  import { currentUser, pb } from '../lib/pocketbase';
+  import { currentUser, pb } from '$lib/pocketbase';
 
   let name: string;
   let email: string;
@@ -20,14 +20,20 @@
     isLoading = true;
     errors = [];
     try {
-      const user = await pb.collection('users').authWithPassword(email, password);
+      await pb.collection('users').authWithPassword(email, password);
       name = $currentUser?.name;
     } catch (err: any) {
       errors = ['Неверный логин или пароль.'];
     }
     isLoading = false;
     onClose.call();
-    goto('/me');
+    document.cookie = pb.authStore.exportToCookie({httpOnly:false, secure: false}); // TODO: remove `sercure: false` as it unsafe to set cookie without https
+
+    if (pb.authStore.model && pb.authStore.model.default_role !== "") {
+      goto('/role/' + pb.authStore.model.default_role);
+    } else {
+      goto('/role');
+    }
   }
 
   function signOut() {
@@ -37,6 +43,7 @@
 
 <div
   on:click={onClose}
+  on:keypress={() => {}}
   id="modalBackdrop"
   class="backdrop-default"
   style="z-index: 1000; position: fixed; inset: 0; margin: 0; background: rgb(255, 255, 255); opacity: 0.55;"
@@ -381,15 +388,7 @@
     margin-bottom: 5px;
     font-weight: 700;
   }
-  input[type='checkbox'] {
-    margin: 4px 0 0;
-    margin-top: 1px \9;
-    line-height: normal;
-  }
-  input[type='checkbox']:focus {
-    outline: 5px auto -webkit-focus-ring-color;
-    outline-offset: -2px;
-  }
+
   .form-control {
     display: block;
     width: 100%;
@@ -432,25 +431,7 @@
     background-color: transparent;
     border: 0;
   }
-  .checkbox {
-    position: relative;
-    display: block;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  fieldset[disabled] .checkbox label {
-    cursor: not-allowed;
-  }
-  .checkbox label {
-    min-height: 20px;
-    padding-left: 20px;
-    margin-bottom: 0;
-    font-weight: 400;
-    cursor: pointer;
-  }
-  .checkbox input[type='checkbox'] {
-    margin-top: -5px;
-  }
+
   .has-feedback {
     position: relative;
   }

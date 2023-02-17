@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{html,js,svelte,ts,pug}'],
@@ -16,6 +18,20 @@ module.exports = {
     extend: {},
   },
   plugins: [
+    plugin(function ({ addComponents }) {
+      addComponents({
+        '.t-all': {
+          transition: 'all 500ms ease'
+        }
+      });
+      addComponents({
+        '.t-color': {
+          'transition-property': 'color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter',
+          'transition-timing-function': 'ease',
+          'transition-duration': '500ms',
+        }
+      });
+    }),
     function groupPeer({ addVariant }) {
       let pseudoVariants = [
         // ... Any other pseudo variants you want to support.
@@ -33,4 +49,4 @@ module.exports = {
       }
     },
   ],
-}
+};
