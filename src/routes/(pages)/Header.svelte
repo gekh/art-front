@@ -37,7 +37,7 @@
   class="fixed right-[52px] h-[52px] px-5 ml-auto flex items-center hover:text-biruza t-color"
   style="background: rgba(255, 255, 255, 0.7);"
 >
-  {#if $roles !== undefined && Object.keys($roles).length > 0}
+  {#if $roles !== undefined && Object.keys($roles).length > 0 && $roles[$cur_role] !== undefined}
     {$roles[$cur_role].city}
   {/if}
 </a>
