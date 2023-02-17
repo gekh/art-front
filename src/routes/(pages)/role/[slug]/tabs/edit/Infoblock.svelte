@@ -20,13 +20,10 @@
   const formSubmit = async (e: Event) => {
     const formData = new FormData(e.target as HTMLFormElement);
     const json = Object.fromEntries(formData.entries());
-    console.log(json);
 
     let data: Partial<TInfo> = {};
 
     for (let field of ib.fields) {
-      console.log(field.field);
-      console.log(json[field.field]);
       data[field.field] = json[field.field];
     }
 
