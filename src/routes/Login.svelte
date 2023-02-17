@@ -27,9 +27,9 @@
     }
     isLoading = false;
     onClose.call();
-    document.cookie = pb.authStore.exportToCookie({httpOnly:false, secure: false}); // TODO: remove `sercure: false` as it unsafe to set cookie without https
+    document.cookie = pb.authStore.exportToCookie({ httpOnly: false, secure: false }); // TODO: remove `sercure: false` as it unsafe to set cookie without https
 
-    if (pb.authStore.model && pb.authStore.model.default_role !== "") {
+    if (pb.authStore.model && pb.authStore.model.default_role !== '') {
       goto('/role/' + pb.authStore.model.default_role);
     } else {
       goto('/role');

@@ -20,6 +20,7 @@
   async function login() {
     await pb.collection('users').authWithPassword(email, password);
     onClose.call();
+    document.cookie = pb.authStore.exportToCookie({ httpOnly: false, secure: false }); // TODO: remove `sercure: false` as it unsafe to set cookie without https
     goto('/role');
   }
 

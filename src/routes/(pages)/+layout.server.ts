@@ -11,7 +11,7 @@ export const load = (async ({ locals, params }) => {
     throw redirect(307, '/');
   }
 
-  const slug = params.slug;
+  const slug = params.slug ?? "";
 
   let role: Partial<TRole> = {};
   let roles: TRoles = {};

@@ -47,6 +47,9 @@
   class="fixed right-0 w-[52px] h-[52px] p-4 bg-biruza hover:bg-pinky t-color z-20"
   on:click|preventDefault={() => {
     pb.authStore.clear();
+    // document.cookie = 'pb_auth=NONE; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    // document.cookie = 'pb_auth_test=NONE; Path=/; Expires=Thu, 01 Jan 2024 00:00:01 GMT;';
+    document.cookie = 'pb_auth=NONE; Path=/; Expires=Thu, 01 Jan 2024 00:00:01 GMT;';
     goto('/');
   }}
 >
