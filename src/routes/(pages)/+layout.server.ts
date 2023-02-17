@@ -10,6 +10,7 @@ export const load = (async ({ locals, params }) => {
   let role: Partial<TRole> = {};
   let roles: TRoles = {};
   let type_grouped_roles: Partial<TTypeGroupedRoles> = {};
+  let last_role_id = "";
 
   try {
     const pb_role: Record = await locals.pb.collection('roles').getOne(slug);
@@ -26,6 +27,7 @@ export const load = (async ({ locals, params }) => {
     if (pb_roles_raw.length !== 0) {
       for (let cur of pb_roles_raw) {
         const role_type = cur['role_type'] as RoleType;
+        last_role_id = cur['id'];
 
         let info;
         try {
@@ -54,7 +56,13 @@ export const load = (async ({ locals, params }) => {
     }
   } catch (e) { }
 
+  let default_role = locals.pb.authStore.model?.default_role;
+  if (default_role === null || default_role === undefined || default_role === "") {
+    default_role = last_role_id;
+  }
+
   return {
+    default_role,
     role,
     roles,
     type_grouped_roles

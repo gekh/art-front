@@ -20,7 +20,7 @@
     isLoading = true;
     errors = [];
     try {
-      const user = await pb.collection('users').authWithPassword(email, password);
+      await pb.collection('users').authWithPassword(email, password);
       name = $currentUser?.name;
     } catch (err: any) {
       errors = ['Неверный логин или пароль.'];
@@ -29,7 +29,11 @@
     onClose.call();
     document.cookie = pb.authStore.exportToCookie({httpOnly:false, secure: false}); // TODO: remove `sercure: false` as it unsafe to set cookie without https
 
-    goto('/role');
+    if (pb.authStore.model && pb.authStore.model.default_role !== "") {
+      goto('/role/' + pb.authStore.model.default_role);
+    } else {
+      goto('/role');
+    }
   }
 
   function signOut() {

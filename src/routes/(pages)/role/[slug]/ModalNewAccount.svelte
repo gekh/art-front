@@ -48,6 +48,8 @@
     if (pb_role) {
       let type = pb_role['role_type'] as RoleType;
 
+      await pb.collection('users').update(pb.authStore.model!.id, {default_role: pb_role.id});
+
       if ($type_grouped_roles[type] === undefined) {
         $type_grouped_roles[type] = [];
       }

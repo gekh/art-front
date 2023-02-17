@@ -1,10 +1,11 @@
 <script lang="ts">
-  import { afterNavigate } from '$app/navigation';
+  import { afterNavigate, goto } from '$app/navigation';
   import Loading from '$lib/components/Loading.svelte';
-    import { RoleType } from '$lib/enums/RoleType';
+  import { RoleType } from '$lib/enums/RoleType';
   import { currentUser } from '$lib/pocketbase';
   import { cur_role, cur_role_type, roles, type_grouped_roles } from '$lib/stores/role';
   import type { AfterNavigate } from '@sveltejs/kit';
+  import { onMount } from 'svelte';
   import Time from 'svelte-time';
   import type { PageData } from './$types';
   import ProfileCard from './ProfileCard.svelte';
@@ -26,11 +27,12 @@
     if ($roles[slug] !== undefined) {
       $cur_role = slug;
       $cur_role_type = $roles[slug].role_type;
-      console.log({
-        slug: to?.params?.slug ?? '',
-        cur_role: $cur_role,
-        cur_role_type: $cur_role_type,
-      });
+    }
+  });
+
+  onMount(() => {
+    if (data.roles === undefined || Object.keys(data.roles).length === 0) {
+      goto('/role');
     }
   });
 </script>

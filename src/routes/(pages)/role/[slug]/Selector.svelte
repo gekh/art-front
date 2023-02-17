@@ -98,8 +98,10 @@
     {/if}
   </div>
 
+
+
   <div class="relative md:min-w-[240px] font-light text-silvery flex items-center">
-    {#if Object.keys($roles).length <= 1}
+    {#if $type_grouped_roles[$cur_role_type].length <= 1}
       <div class="max-w-[75vw] whitespace-nowrap overflow-hidden overflow-ellipsis">
         {$roles[$cur_role].name}
       </div>

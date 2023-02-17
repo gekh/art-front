@@ -8,9 +8,8 @@
   export let data: PageData;
 
   onMount(() => {
-    const role_id = Object.keys(data.roles)[0];
-    if (role_id !== undefined) {
-      goto('/role/' + role_id);
+    if (data.default_role.length > 0) {
+      goto('/role/' + data.default_role);
     }
   });
 </script>
