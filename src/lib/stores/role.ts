@@ -6,4 +6,4 @@ export const cur_role = writable('');
 export const cur_role_type = writable(RoleType.none);
 
 export const roles = writable({} as TRoles);
-export const type_grouped_roles = writable({} as TTypeGroupedRoles);
+export const type_grouped_roles = writable({} as Partial<TTypeGroupedRoles>);

@@ -1,10 +1,12 @@
 <script lang="ts">
+  import { afterNavigate } from '$app/navigation';
   import Loading from '$lib/components/Loading.svelte';
+    import { RoleType } from '$lib/enums/RoleType';
   import { currentUser } from '$lib/pocketbase';
   import { cur_role, cur_role_type, roles, type_grouped_roles } from '$lib/stores/role';
+  import type { AfterNavigate } from '@sveltejs/kit';
   import Time from 'svelte-time';
   import type { PageData } from './$types';
-  import Load from './Load.svelte';
   import ProfileCard from './ProfileCard.svelte';
   import Selector from './Selector.svelte';
   import Tabs from './Tabs.svelte';
@@ -13,14 +15,25 @@
 
   $roles = data.roles;
   $type_grouped_roles = data.type_grouped_roles;
-  $cur_role_type = data.role.role_type;
-  $cur_role = data.role.id;
+  $cur_role_type = data.role?.role_type ?? RoleType.none;
+  $cur_role = data.role?.id ?? '';
 
   // TODO: abstract it to any user
   const user = currentUser;
-</script>
 
-<Load />
+  afterNavigate(({ to }: AfterNavigate) => {
+    const slug = to?.params?.slug ?? '';
+    if ($roles[slug] !== undefined) {
+      $cur_role = slug;
+      $cur_role_type = $roles[slug].role_type;
+      console.log({
+        slug: to?.params?.slug ?? '',
+        cur_role: $cur_role,
+        cur_role_type: $cur_role_type,
+      });
+    }
+  });
+</script>
 
 {#if Object.keys($roles).length > 0}
   {#if $roles[$cur_role] === undefined}

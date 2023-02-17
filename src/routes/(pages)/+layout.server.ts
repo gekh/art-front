@@ -1,19 +1,21 @@
 import type { RoleType } from '$lib/enums/RoleType';
 import type { TInfo } from '$lib/types/TInfo';
-import type { TRoles, TTypeGroupedRoles } from '$lib/types/TRoles';
+import type { TRole, TRoles, TTypeGroupedRoles } from '$lib/types/TRoles';
 import type { Record } from 'pocketbase';
 import type { LayoutServerLoad } from './$types';
 
 export const load = (async ({ locals, params }) => {
   const slug = params.slug;
-  let role = {};
+
+  let role: Partial<TRole> = {};
+  let roles: TRoles = {};
+  let type_grouped_roles: Partial<TTypeGroupedRoles> = {};
+
   try {
     const pb_role: Record = await locals.pb.collection('roles').getOne(slug);
     role = pb_role.export();
   } catch (e) { }
 
-  let roles: TRoles = {};
-  let type_grouped_roles: Partial<TTypeGroupedRoles> = {};
 
   try {
     const MAX_RESULT = 200;
