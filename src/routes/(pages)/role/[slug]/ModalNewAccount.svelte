@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { goto } from '$app/navigation';
+  import { goto } from '$app/navigation';
   import { RoleType } from '$lib/enums/RoleType';
   import { currentUser, pb } from '$lib/pocketbase';
   import { cur_role, cur_role_type, roles, type_grouped_roles } from '$lib/stores/role';
@@ -48,7 +48,7 @@
     if (pb_role) {
       let type = pb_role['role_type'] as RoleType;
 
-      await pb.collection('users').update(pb.authStore.model!.id, {default_role: pb_role.id});
+      await pb.collection('users').update(pb.authStore.model!.id, { default_role: pb_role.id });
 
       if ($type_grouped_roles[type] === undefined) {
         $type_grouped_roles[type] = [];
@@ -85,11 +85,15 @@
       <EnterPersonalInfo
         on:next={(e) => {
           query = { ...query, ...e.detail };
-          close();
-          dispatch('close');
-          save();
+          cur_step += 1;
+          save().then(() => {
+            close();
+            dispatch('close');
+          });
         }}
       />
+    {:else}
+      <div style="padding: 40px; font-size: 18px;">Обождите...</div>
     {/if}
   </div>
 </div>
