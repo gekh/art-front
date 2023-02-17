@@ -1,19 +1,16 @@
-
 import type { RoleType } from '$lib/enums/RoleType';
 import type { TInfo } from '$lib/types/TInfo';
 import type { TRoles, TTypeGroupedRoles } from '$lib/types/TRoles';
 import type { Record } from 'pocketbase';
-import type { PageServerLoad } from './$types';
+import type { LayoutServerLoad } from './$types';
 
 export const load = (async ({ locals, params }) => {
   const slug = params.slug;
-  // console.log({auth: locals.pb.authStore.model});
   let role = {};
   try {
     const pb_role: Record = await locals.pb.collection('roles').getOne(slug);
     role = pb_role.export();
   } catch (e) { }
-
 
   let roles: TRoles = {};
   let type_grouped_roles: Partial<TTypeGroupedRoles> = {};
@@ -25,7 +22,6 @@ export const load = (async ({ locals, params }) => {
     });
 
     if (pb_roles_raw.length !== 0) {
-      let pb_roles: any = {};
       for (let cur of pb_roles_raw) {
         const role_type = cur['role_type'] as RoleType;
 
@@ -39,12 +35,11 @@ export const load = (async ({ locals, params }) => {
           });
         }
 
-        if (type_grouped_roles[role_type] !== undefined) {
-          type_grouped_roles[role_type].push(cur['id']);
-        } else {
+        if (type_grouped_roles[role_type] === undefined) {
           type_grouped_roles[role_type] = [cur['id']];
+        } else {
+          type_grouped_roles[role_type]!.push(cur['id']);
         }
-
 
         roles[cur['id']] = {
           id: cur['id'],
@@ -57,11 +52,9 @@ export const load = (async ({ locals, params }) => {
     }
   } catch (e) { }
 
-
-
   return {
     role,
     roles,
     type_grouped_roles
   };
-}) satisfies PageServerLoad;
+}) satisfies LayoutServerLoad;
