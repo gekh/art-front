@@ -1,10 +1,16 @@
 import type { RoleType } from '$lib/enums/RoleType';
 import type { TInfo } from '$lib/types/TInfo';
 import type { TRole, TRoles, TTypeGroupedRoles } from '$lib/types/TRoles';
+import { redirect } from '@sveltejs/kit';
 import type { Record } from 'pocketbase';
 import type { LayoutServerLoad } from './$types';
 
 export const load = (async ({ locals, params }) => {
+
+  if (locals.pb.authStore.model === null) {
+    throw redirect(307, '/');
+  }
+
   const slug = params.slug;
 
   let role: Partial<TRole> = {};
